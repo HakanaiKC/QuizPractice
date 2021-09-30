@@ -99,7 +99,7 @@
                         <div class="col-4" >
                             <div class="itemmore" >
                                 <c:if test="${randomQuiz.size() >=3}">
-                                    <span class="colorattr"onclick="location.href = '#';" style="cursor:pointer;"><b>More ></b></span>
+                                    <span class="colorattr"onclick="location.href = 'Recommend.jsp';" style="cursor:pointer;"><b>More ></b></span>
                                 </c:if>
                                 </div>
                         </div>

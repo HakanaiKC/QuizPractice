@@ -61,7 +61,7 @@
                          data-effects="parallax-background blend-background">
                         <div class="mdk-box__bg">             
                             <div class="mdk-box__bg-front"
-                                 style="background-image: url(assets/images/1280_rsz_aman-dhakal-205796-unsplash.jpg); background-position: center;">
+                                 style="background-image: url(assets/images/fpt.jpg); background-position: center;">
                             </div>
                         </div>
                     </div>
