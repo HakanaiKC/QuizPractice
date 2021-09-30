@@ -153,19 +153,20 @@
                             <div style="color: red">${requestScope.message2}</div>
                             <br/>
                             <!--Submit-->
-                            <button type="submit"
-                                    class="btn btn-primary btn-block mb-3">Sign Up</button>
-                            <div class="form-group text-center mb-0">
+                              <div class="form-group text-center mb-0">
                                 <div class="custom-control custom-checkbox">
                                     <input id="terms"
                                            type="checkbox"
                                            class="custom-control-input"
                                            checked
-                                           required>
+                                           required value="submit" onclick="if(!this.form.checkbox.checked){alert('You must agree to the terms first.');return false}">
                                     <label for="terms"
                                            class="custom-control-label text-black-70">I agree to the <a data-toggle="modal" href="#modal">Terms of Use</a></label>                         
                                 </div>
-                            </div>
+                            </div><br/>
+                            <button type="submit"
+                                    class="btn btn-primary btn-block mb-3">Sign Up</button>
+                            
                         </form>
                     </div>
                     <div class="card-footer text-center text-black-50">Already signed up? <a href="Login.jsp">Login</a></div>
