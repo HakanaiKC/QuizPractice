@@ -62,7 +62,8 @@ public class RegisterServlet extends HttpServlet {
                session.setAttribute("authcode", user);
                response.sendRedirect("verify.jsp");
            }else{
-      		  out.println("Failed to send verification email");
+      		  request.setAttribute("message2","Failed to send verification email");
+                   request.getRequestDispatcher("Register.jsp").forward(request, response);
       	   }
         }
             else{

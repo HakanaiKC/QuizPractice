@@ -68,7 +68,7 @@
                     <div class="container page__container d-flex align-items-end position-relative mb-4">
                         <div class="avatar avatar-xxl position-absolute bottom-0 left-0 right-0">
                             <c:if test = "${profileUser.avatar == null}">
-                                <img src="assets/images/256_rsz_clem-onojeghuo-150467-unsplash.jpg" alt="avatar"
+                                <img src="assets/images/unnamed.jpg" alt="avatar"
                                      class="avatar-img rounded-circle border-3">
                             </c:if>
                             <c:if test = "${profileUser.avatar != null}">

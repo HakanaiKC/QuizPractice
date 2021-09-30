@@ -26,7 +26,7 @@
                         </button>
 
                         <!-- Brand -->
-                        <a href="Home2?user_id=${userSeisson.getUser_id()}" class="navbar-brand">
+                           <a href="Home" class="navbar-brand">
                             <span class="d-none d-xs-md-block">QuizPractice</span>
                         </a>
 
@@ -44,8 +44,8 @@
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Student</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="Home2?user_id=${userSeisson.getUser_id()}">Home</a>
-                                        <a class="dropdown-item" href="PracticesList.jsp">My Quiz</a>
+                                        <a class="dropdown-item" href="Home">Home</a>
+                                        <a class="dropdown-item" href="Library.jsp">My Quiz</a>
                                         <a class="dropdown-item" href="#">Take a Exam</a>
                                         <a class="dropdown-item" href="#">Exam Results</a>               
                                         <a class="dropdown-item" href="#">Payment Method</a>
@@ -56,7 +56,7 @@
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Instructor</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="Home2?user_id=${userSeisson.getUser_id()}">Home</a>
+                                        <a class="dropdown-item" href="Home">Home</a>
                                         <a class="dropdown-item" href="#">Quiz Manager</a>
                                         <a class="dropdown-item" href="#">Earnings</a>
                                         <a class="dropdown-item" href="#">Statement</a>
@@ -99,7 +99,7 @@
                                 <li class="nav-item dropdown ml-1 ml-md-3">
                                     <c:if test = "${sessionScope.userSeisson.avatar == null}">
                                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img
-                                            src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="rounded-circle"
+                                            src="assets/images/unnamed.jpg" alt="Avatar" class="rounded-circle"
                                             width="40"></a>
                                     </c:if>
                                     <c:if test = "${sessionScope.userSeisson.avatar != null}">

@@ -37,6 +37,7 @@
                             </ul>
                         </c:if>
                         <!-- Account menu -->
+                        <c:if test="${sessionScope.userSeisson !=null}">
                         <div class="sidebar-heading">Account</div>
                         <ul class="sidebar-menu">
                             <li class="sidebar-menu-item">
@@ -57,7 +58,7 @@
                                     </li>
                                     <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button"
-                                           href="Profile.jsp">
+                                           href="ProfileServlet?id=${sessionScope.userSeisson.user_id}">
                                             <span class="sidebar-menu-text">Public Profile</span>
                                         </a>
                                     </li>
@@ -88,7 +89,7 @@
                                 </ul>
                             </li>
                         </ul>
-
+                        </c:if>
                         <!--Student-->
                         <c:if test="${sessionScope.userSeisson.role_id ==0}">
                             <div class="sidebar-heading">Student</div>
@@ -107,7 +108,7 @@
                                 </li>
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button"
-                                       href="PracticesList.jsp">
+                                       href="Library.jsp">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> My Quiz
                                     </a>
                                 </li>

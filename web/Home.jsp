@@ -1,4 +1,5 @@
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en"
@@ -55,11 +56,11 @@
             <!-- </div> -->
 
             <div class="container_body">
+                <c:if test="${sessionScope.userSeisson !=null}">
                 <div class="container_home">
                     <div class="row cardholder">
 
                         <div class="col-4">
-
                             <div class="itemname">Recent </div>
                             <!--<div class="debugg" >Because you learn from quizlearn-user </div>-->
                         </div>
@@ -68,22 +69,22 @@
                         </div>
                         <div class="col-4" >
                             <div class="itemmore" >
-                                <span class="colorattr"onclick="location.href = 'access_success.html';" style="cursor:pointer;">More></span>
+                                <span class="colorattr"onclick="location.href = 'Library.jsp';" style="cursor:pointer;"><b>More ></b></span>
                             </div>
                         </div>
                         <c:forEach items="${quizList}" begin="0" end="5" var="q">
                         <div class="col-sm-4 card" >
                             <div class="cardset" onclick="location.href = 'access_success.html';" style="cursor:pointer;">
                                 <div class="card-title">${q.name}</div>
-                                <div class="n-question">${q.questionNum}</div>
-                                <div class="price">${q.price}</div>
+                                <div class="n-question">${q.questionNum} questions</div>
+<!--                                <div class="price">${q.price} $</div>-->
                                 <div class="card-creator">${q.creator_name}</div>
                             </div>
                         </div>
                         </c:forEach>
-                        
                     </div>
                 </div>
+                </c:if>
                 <div class="container_home">
                     <div class="row cardholder">
 
@@ -97,8 +98,10 @@
                         </div>
                         <div class="col-4" >
                             <div class="itemmore" >
-                                <span class="colorattr"onclick="location.href = 'access_success.html';" style="cursor:pointer;">More></span>
-                            </div>
+                                <c:if test="${randomQuiz.size() >=3}">
+                                    <span class="colorattr"onclick="location.href = '#';" style="cursor:pointer;"><b>More ></b></span>
+                                </c:if>
+                                </div>
                         </div>
                         <c:forEach items="${randomQuiz}" begin="0" end="5" var="q">
                         <div class="col-sm-4 card" >
@@ -114,9 +117,9 @@
                 </div>
             </div>
         </div>
-        <%@include file="Boostrap_Header.jsp" %>
+       
         <%@include file="Footer.jsp" %>
-
+         <%@include file="Boostrap_Header.jsp" %>
         <!-- jQuery -->
         <script src="assets/vendor/jquery.min.js"></script>
 

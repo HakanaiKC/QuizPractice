@@ -42,13 +42,14 @@
         <link type="text/css"
               href="assets/css/app.css"
               rel="stylesheet">
-       
+
     </head>
 
     <body class=" fixed-layout">
         <c:if test="${sessionScope.userSeisson == null}" >
-             <% { response.sendRedirect("Home.jsp");
-            }%>
+            <% {
+                    response.sendRedirect("Home.jsp");
+                }%>
         </c:if> 
         <div class="preloader">
             <div class="sk-chase">
@@ -75,7 +76,7 @@
                 <div class="page ">
                     <div class="container page__container">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="Home.jsp">Home</a></li>
+                            <li class="breadcrumb-item"><a href="Home">Home</a></li>
                             <li class="breadcrumb-item active">Edit Account</li>
                         </ol>
                         <h1 class="h2">Edit Account</h1>
@@ -86,6 +87,11 @@
                                     <a class="nav-link active"
                                        href="#first"
                                        data-toggle="tab">Account</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                       href="#second"
+                                       data-toggle="tab">Profile</a>
                                 </li>
                             </ul>
 
@@ -102,7 +108,7 @@
                                             <div class="col-sm-9">
                                                 <div class="media align-items-center">
                                                     <div class="media-left">
-                                                        <div style="overflow: hidden;" class="icon-block rounded">
+                                                        <div class="icon-block rounded" style="overflow: hidden;">
                                                             <img src="uploads/${sessionScope.userSeisson.avatar}" style="max-width:85px;" id="image" class="material-icons text-muted-light md-36" value="photo">                        
                                                         </div>
                                                     </div>
@@ -114,17 +120,16 @@
                                                                    class="custom-file-input">
                                                             <label for="avatar"
                                                                    class="custom-file-label" name="avatar">Choose file</label>
-                                                        
+
                                                             <div style="color: green">${requestScope.messageAvatar}</div>
                                                         </div>
                                                     </div>
-                                                        <div class="col-sm-3">
-                                                           <input type="submit" class="form-control" value="Save"  > 
-                                                        </div>
+                                                    <div class="col-sm-5">
+                                                        <input type="submit" class="btn btn-success" value="Save"  > 
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </form>
                                     <script>
                                         document.getElementById("avatar").onchange = function () {
@@ -140,28 +145,27 @@
                                         };
                                     </script>
                                     <hr> 
-                                    <!--Fullname-->
+<!--                                    Fullname
                                     <form action="ChangeName?id=${sessionScope.userSeisson.user_id}" method="post">
-                                    <div class="form-group row">
-                                        <label for="name"
-                                               class="col-sm-3 col-form-label form-label">Full Name</label>
-                                        <div class="col-sm-8">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <input id="name" name="fullname"
-                                                           type="text" value="${sessionScope.userSeisson.username}"
-                                                           class="form-control"
-                                                           placeholder="Full Name">
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <input type="submit"  class="form-control" value="Save">
+                                        <div class="form-group row">
+                                            <label for="name"
+                                                   class="col-sm-3 col-form-label form-label">Full Name</label>
+                                            <div class="col-sm-8">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input id="name" name="fullname"
+                                                               type="text" value="${sessionScope.userSeisson.username}"
+                                                               class="form-control"
+                                                               placeholder="Full Name">
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <input type="submit" class="btn btn-success" value="Save">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                                           </form>
-                                                            <hr> 
-                                    <!--Email-->
+                                    </form>
+                                    Email
                                     <div class="form-group row">
                                         <label for="email"
                                                class="col-sm-3 col-form-label form-label">Email</label>
@@ -181,7 +185,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                                       <hr>                   
+                                    <hr>                   -->
                                     <!--Old pass-->
                                     <form action="ChangePassword?email=${sessionScope.userSeisson.email}" method="post">
                                         <div class="form-group row">
@@ -253,6 +257,98 @@
                                             </div>
                                         </div>
                                     </form>
+                                </div>
+
+                                <!--Profile-->                    
+                                <div class="tab-pane" id="second">
+                                    <!--Email-->
+                                    <div class="form-group row">
+                                        <label for="email"
+                                               class="col-sm-3 col-form-label form-label">Email</label>
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">
+                                                        <i class="material-icons md-18 text-muted">mail</i>
+                                                    </div>
+                                                </div>
+                                                <input type="text" 
+                                                       id="email" value="${sessionScope.userSeisson.email}"
+                                                       class="form-control"
+                                                       placeholder="Email Address"
+                                                       value="contact@mosaicpro.biz"
+                                                       disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Fullname-->
+                                    <form action="ChangeProfile?id=${sessionScope.userSeisson.user_id}" method="post">
+                                        <div class="form-group row">
+                                            <label for="name"
+                                                   class="col-sm-3 col-form-label form-label">Full Name</label>
+                                            <div class="col-sm-8">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input id="name" name="fullname"
+                                                               type="text" value="${sessionScope.userSeisson.username}"
+                                                               class="form-control"
+                                                               placeholder="Full Name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+<!--                                       </form>-->
+                                                               <hr>
+                                    <!--About me-->
+<!--                                    <form action="" method="">-->
+                                        <div class="form-group row">
+                                            <label for="name"
+                                                   class="col-sm-3 col-form-label form-label">About me</label>
+                                            <div class="col-sm-8">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <textarea id="aboutme" name="aboutme"
+                                                                  type="text" value=""
+                                                                  class="form-control"
+                                                                  rows="6">${sessionScope.userSeisson.about_me}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+<!--                                    </form>-->
+                                    <hr>
+                                    <!--Connect-->
+<!--                                    <form action="" method="">-->
+                                        <div class="form-group row">
+                                            <label for="name"
+                                                   class="col-sm-3 col-form-label form-label">Connect</label>
+                                            <div class="col-sm-8">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <textarea id="connect"name="connect"
+                                                                  type="text" value=""
+                                                                  class="form-control"
+                                                                  rows="6">${sessionScope.userSeisson.connect}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+<!--                                    </form>-->
+                                    <!--Save Changes-->
+                                    <div class="form-group row">
+                                        <div class="col-sm-8 offset-sm-3">
+                                            <div style="color: red">${requestScope.notsuccess}</div>
+                                            <div style="color: green">${requestScope.success}</div>
+                                            <br/>
+                                            <div class="media align-items-center">
+                                                <div class="media-left">
+                                                    <input type="submit"
+                                                           class="btn btn-success" value="Save Changes">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        </form>       
                                 </div>
                             </div>
                         </div>

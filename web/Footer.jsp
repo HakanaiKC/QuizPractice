@@ -61,8 +61,7 @@
                         </div>
                     </div>
                 </div>
-                <p class="text-50 text-white">Copyright &copy; 2016 - <a href="http://themeforest.net/item/learnplus-learning-management-application/15287372?ref=mosaicpro" class="text-white">Purchase LearnPlus</a></p>
-            </div>
+             </div>
         </div>
     </body>
 </html>

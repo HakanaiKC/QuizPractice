@@ -43,19 +43,27 @@
         <div class="row container_home">
             <div class="col-sm-2"></div>
             <div class="itemname col-sm-4">
-                Recent
+                <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle font-size-24pt" data-toggle="dropdown">Recent</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Recent</a>
+                            <a class="dropdown-item" href="#">Created</a>               
+                        </div>
+                    </li>
+                </ul>
             </div>
             <div class="col-sm-2">
                 <!-- Search -->
-                        <form class="search-form d-none d-md-flex">
-                            <input type="text" class="form-control" placeholder="Search in library">
-                            <button class="btn" type="button"><i
-                                    class="material-icons font-size-24pt">search</i></button>
-                        </form>
-                        <!-- // END Search -->
+                <form class="search-form d-none d-md-flex">
+                    <input type="text" class="form-control" placeholder="Search in library">
+                    <button class="btn" type="button"><i
+                            class="material-icons font-size-24pt">search</i></button>
+                </form>
+                <!-- // END Search -->
             </div>
             <div class="col-sm-4"></div>
-            
+
             <!--dùng foreach thì copy h?t ?o?n này, cái này là 1 card-->
             <div class="col-sm-2"></div>
             <div class="card1 col-sm-6">

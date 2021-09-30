@@ -181,21 +181,25 @@ public class UsersDAO extends DBContext {
             System.out.println(e);
         }
     }
-     public void updateName(String id, String name) {
+    
+      public void updateProfile(String id, String name, String aboutme, String connect) {
         String query = " update [Users]\n"
-                + "  set username = ?\n"
+                + "  set username = ?,\n"
+                + "   about_me = ?,\n"
+                + "   connect = ?\n"
                 + "  where user_id =?;";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, name);
-            ps.setString(2, id);
+            ps.setString(2, aboutme);
+            ps.setString(3, connect);
+            ps.setString(4, id);
             ps.executeUpdate();
 
         } catch (Exception e) {
             System.out.println(e);
         }
     }
-     
      
      
      

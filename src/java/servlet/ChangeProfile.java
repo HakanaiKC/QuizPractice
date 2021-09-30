@@ -5,25 +5,23 @@
  */
 package servlet;
 
-import dao.QuizDAO;
+import dao.UsersDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Quiz;
 import model.Users;
 
 /**
  *
- * @author nxhai
+ * @author Dell
  */
-@WebServlet(name = "Home", urlPatterns = {"/Home"})
-public class Home extends HttpServlet {
+@WebServlet(name = "ChangeProfile", urlPatterns = {"/ChangeProfile"})
+public class ChangeProfile extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,16 +36,16 @@ public class Home extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            QuizDAO qDAO = new QuizDAO();
-            Quiz q = new Quiz();
-            HttpSession session = request.getSession();
-            Users user = (Users) session.getAttribute("userSeisson");
-            List<Quiz> quiz = qDAO.getRecentQuiz(user.getUser_id());
-            request.setAttribute("quizList", quiz);
-            List<Quiz> listRandomQuiz = qDAO.getRandomQuiz();
-            request.setAttribute("randomQuiz", listRandomQuiz);
-            request.getRequestDispatcher("Home.jsp").forward(request, response);
-
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ChangeName</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ChangeName at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -63,18 +61,7 @@ public class Home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        QuizDAO qDAO = new QuizDAO();
-        Quiz q = new Quiz();
-        HttpSession session = request.getSession();
-        Users user = (Users) session.getAttribute("userSeisson");
-        if (user!=null) {
-        List<Quiz> quiz = qDAO.getRecentQuiz(user.getUser_id());
-        request.setAttribute("quizList", quiz);
-        }
-        List<Quiz> listRandomQuiz = qDAO.getRandomQuiz();
-        request.setAttribute("randomQuiz", listRandomQuiz);
-        request.getRequestDispatcher("Home.jsp").forward(request, response);
-
+        processRequest(request, response);
     }
 
     /**
@@ -88,7 +75,31 @@ public class Home extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //  processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        UsersDAO dao = new UsersDAO();
+        String id = request.getParameter("id");
+        String name = request.getParameter("fullname");
+        String aboutme = request.getParameter("aboutme");
+        String connect = request.getParameter("connect");
+//        PrintWriter out = response.getWriter();
+//        out.print(id+ " "+ name+ " "+ aboutme+ " "+ connect);
+        if (name.equals("")) {
+//            Users u = dao.getUserByID(id);
+//            //    out.println("new: "+ u);
+//            HttpSession session = request.getSession();
+//            session.setAttribute("userSeisson", u);
+            request.getRequestDispatcher("ChangePass.jsp").forward(request, response);
+        } else {
+
+            dao.updateProfile(id, name,aboutme,connect);
+            Users u = dao.getUserByID(id);
+            //    out.println("new: "+ u);
+            HttpSession session = request.getSession();
+            session.setAttribute("userSeisson", u);
+            request.getRequestDispatcher("ChangePass.jsp").forward(request, response);
+        }
     }
 
     /**
