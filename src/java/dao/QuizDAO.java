@@ -118,12 +118,45 @@ public class QuizDAO extends DBContext {
     
     
 
-    public List<Quiz> getRandomQuiz() {
+    public List<Quiz> getRandomQuiz(int user_id) {
         List<Quiz> list = new ArrayList<>();
         QuizDAO dao = new QuizDAO();
         try {
-            String query = "SELECT * FROM Quiz where price != 0\n"
-                    + "ORDER BY NEWID() ";
+            String query = "select q.creator_id, q.name, q.price, q.quiz_id from \n"
+                    + "((Users u join Enrollment e on u.user_id = e.user_id  )\n"
+                    + "join Quiz q on e.quiz_id != q.quiz_id) where u.user_id = ? and q.price>0 \n"
+                    + "and u.user_id != q.creator_id\n"
+                    + "order by NEWID() ";
+            PreparedStatement pd = connection.prepareStatement(query);
+             pd.setInt(1, user_id);
+            ResultSet rs = pd.executeQuery();
+
+            while (rs.next()) {
+                Quiz q = new Quiz();
+                int quiz_id = rs.getInt("quiz_id");
+                int creator_id = rs.getInt("creator_id");
+                String quiz_name = rs.getString("name");
+                double price = rs.getDouble("price");
+
+                q.setCreator_id(creator_id);
+                q.setQuiz_id(quiz_id);
+                q.setQuestionNum(dao.countQuestion(quiz_id));
+                q.setCreator_name(dao.getCreatorName(creator_id));
+                q.setName(quiz_name);
+                q.setPrice(price);
+                list.add(q);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+    
+    public List<Quiz> getRandomQuiz2() {
+        List<Quiz> list = new ArrayList<>();
+        QuizDAO dao = new QuizDAO();
+        try {
+            String query = "select * from Quiz where price != 0 Order by NEWID()";
             PreparedStatement pd = connection.prepareStatement(query);
             ResultSet rs = pd.executeQuery();
 
@@ -148,9 +181,9 @@ public class QuizDAO extends DBContext {
         return list;
     }
 
-//    public static void main(String[] args) {
-//        QuizDAO q = new QuizDAO();
-//           System.out.println(q.checkQuizExist(2));
-//        
-//    }
+    public static void main(String[] args) {
+        QuizDAO q = new QuizDAO();
+           System.out.println(q.getRandomQuiz(15));
+        
+    }
 }

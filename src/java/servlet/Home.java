@@ -44,10 +44,20 @@ public class Home extends HttpServlet {
             Users user = (Users) session.getAttribute("userSeisson");
             List<Quiz> quiz = qDAO.getRecentQuiz(user.getUser_id());
             request.setAttribute("quizList", quiz);
-            List<Quiz> listRandomQuiz = qDAO.getRandomQuiz();
-            request.setAttribute("randomQuiz", listRandomQuiz);
+            if (user != null) {
+                if (qDAO.getRandomQuiz(user.getUser_id()).isEmpty()) {
+                    List<Quiz> listRandomQuiz2 = qDAO.getRandomQuiz2();
+                    request.setAttribute("randomQuiz", listRandomQuiz2);
+                } else {
+                    List<Quiz> listRandomQuiz = qDAO.getRandomQuiz(user.getUser_id());
+                    request.setAttribute("randomQuiz", listRandomQuiz);
+                }
+            }
+            else {
+                List<Quiz> listRandomQuiz = qDAO.getRandomQuiz2();
+                request.setAttribute("randomQuiz", listRandomQuiz);
+            }
             request.getRequestDispatcher("Home.jsp").forward(request, response);
-
         }
     }
 
@@ -67,14 +77,20 @@ public class Home extends HttpServlet {
         Quiz q = new Quiz();
         HttpSession session = request.getSession();
         Users user = (Users) session.getAttribute("userSeisson");
-        if (user!=null) {
-        List<Quiz> quiz = qDAO.getRecentQuiz(user.getUser_id());
-        request.setAttribute("quizList", quiz);
-        }
-        List<Quiz> listRandomQuiz = qDAO.getRandomQuiz();
-        request.setAttribute("randomQuiz", listRandomQuiz);
-        request.getRequestDispatcher("Home.jsp").forward(request, response);
-
+       if (user != null) {
+                if (qDAO.getRandomQuiz(user.getUser_id()).isEmpty()) {
+                    List<Quiz> listRandomQuiz2 = qDAO.getRandomQuiz2();
+                    request.setAttribute("randomQuiz", listRandomQuiz2);
+                } else {
+                    List<Quiz> listRandomQuiz = qDAO.getRandomQuiz(user.getUser_id());
+                    request.setAttribute("randomQuiz", listRandomQuiz);
+                }
+            }
+            else {
+                List<Quiz> listRandomQuiz = qDAO.getRandomQuiz2();
+                request.setAttribute("randomQuiz", listRandomQuiz);
+            }
+            request.getRequestDispatcher("Home.jsp").forward(request, response);
     }
 
     /**
