@@ -27,10 +27,11 @@ body {
 /*    margin-top: 5px;*/
     height: 5rem;
 /*    display: flex;*/
+    margin-bottom: 10px;
     -moz-box-shadow: 3px 3px rgb(153, 153, 153);
     -webkit-box-shadow: 3px 3px rgb(153, 153, 153);
     box-shadow: 3px 3px rgb(211, 211, 211);
-
+    
     padding: 0;
     /*background-color: #f5f7fb !important;*/
     border: none !important;
