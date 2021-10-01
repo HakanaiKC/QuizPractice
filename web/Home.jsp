@@ -67,11 +67,15 @@
                         <div class="col-4 item">
 
                         </div>
+                        
                         <div class="col-4" >
                             <div class="itemmore" >
+                                <c:if test="${quizList.size() >6}">
                                 <span class="colorattr"onclick="location.href = 'Library.jsp';" style="cursor:pointer;"><b>More ></b></span>
-                            </div>
+                                </c:if>
+                                </div>
                         </div>
+                        
                         <c:forEach items="${quizList}" begin="0" end="5" var="q">
                         <div class="col-sm-4 card" >
                             <div class="cardset" onclick="location.href = 'access_success.html';" style="cursor:pointer;">
@@ -98,7 +102,7 @@
                         </div>
                         <div class="col-4" >
                             <div class="itemmore" >
-                                <c:if test="${randomQuiz.size() >=3}">
+                                <c:if test="${randomQuiz.size() >6}">
                                     <span class="colorattr"onclick="location.href = 'Recommend.jsp';" style="cursor:pointer;"><b>More ></b></span>
                                 </c:if>
                                 </div>
