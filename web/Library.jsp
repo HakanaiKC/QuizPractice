@@ -1,4 +1,5 @@
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en"
@@ -39,6 +40,11 @@
               rel="stylesheet">
     </head>
     <body>
+        <c:if test="${sessionScope.userSeisson == null}" >
+            <% {
+                    response.sendRedirect("Home");
+                }%>
+        </c:if>
         <%@include file="Header_All.jsp" %>
         <div class="row container_home">
             <div class="col-sm-2"></div>
@@ -47,8 +53,8 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle font-size-24pt" data-toggle="dropdown">Recent</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Recent</a>
-                            <a class="dropdown-item" href="#">Created</a>               
+                            <a class="dropdown-item" href="LibraryServlet?Action=Recent">Recent</a>
+                            <a class="dropdown-item" href="LibraryServlet?Action=Created">Created</a>               
                         </div>
                     </li>
                 </ul>
@@ -64,7 +70,7 @@
             </div>
             <div class="col-sm-4"></div>
 
-            <!--dùng foreach thì copy h?t ?o?n này, cái này là 1 card-->
+            <!--dÃ¹ng foreach thÃ¬ copy h?t ?o?n nÃ y, cÃ¡i nÃ y lÃ  1 card-->
             <div class="col-sm-2"></div>
             <div class="card1 col-sm-6">
                 <div class="content row">
@@ -75,7 +81,7 @@
 
             </div>
             <div class="col-sm-4"></div>
-            <!--??n ?ây-->
+            <!--??n ?Ã¢y-->
         </div>
 
         <%--<%@include file="Footer.jsp" %>--%>

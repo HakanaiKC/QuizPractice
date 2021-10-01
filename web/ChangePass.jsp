@@ -48,7 +48,7 @@
     <body class=" fixed-layout">
         <c:if test="${sessionScope.userSeisson == null}" >
             <% {
-                    response.sendRedirect("Home.jsp");
+                    response.sendRedirect("Home");
                 }%>
         </c:if> 
         <div class="preloader">
