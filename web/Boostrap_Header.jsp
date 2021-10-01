@@ -108,7 +108,7 @@
                                 </li>
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button"
-                                       href="Library.jsp">
+                                       href="LibraryServlet?Action=Recent">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> My Quiz
                                     </a>
                                 </li>

@@ -51,7 +51,7 @@
             <div class="itemname col-sm-4">
                 <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle font-size-24pt" data-toggle="dropdown">Recent</a>
+                        <a href="#" class="nav-link dropdown-toggle font-size-24pt" data-toggle="dropdown">${Action}</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="LibraryServlet?Action=Recent">Recent</a>
                             <a class="dropdown-item" href="LibraryServlet?Action=Created">Created</a>               
@@ -71,16 +71,18 @@
             <div class="col-sm-4"></div>
 
             <!--dÃ¹ng foreach thÃ¬ copy h?t ?o?n nÃ y, cÃ¡i nÃ y lÃ  1 card-->
+             <c:forEach items="${quizList}" var="q">
             <div class="col-sm-2"></div>
             <div class="card1 col-sm-6">
                 <div class="content row">
-                    <div class="n-question col-sm-2">n-question</div>
-                    <div class="card-creator col-sm-8">card-creator</div>
-                    <div class="card-title col-sm-10">card-title</div>
+                    <div class="n-question col-sm-4">${q.questionNum} questions</div>
+                    <div class="card-creator col-sm-6">${q.creator_name}</div>
+                    <div class="card-title col-sm-10">${q.name}</div>
                 </div>
 
             </div>
             <div class="col-sm-4"></div>
+            </c:forEach>
             <!--??n ?Ã¢y-->
         </div>
 

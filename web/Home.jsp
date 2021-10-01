@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -71,7 +70,7 @@
                         <div class="col-4" >
                             <div class="itemmore" >
                                 <c:if test="${quizList.size() >0}">
-                                <span class="colorattr"onclick="location.href = 'Library.jsp';" style="cursor:pointer;"><b>More ></b></span>
+                                <span class="colorattr"onclick="location.href = 'LibraryServlet?Action=Recent';" style="cursor:pointer;"><b>More ></b></span>
                                 </c:if>
                                 </div>
                         </div>

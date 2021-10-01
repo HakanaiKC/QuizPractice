@@ -45,7 +45,7 @@
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Student</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="Home">Home</a>
-                                        <a class="dropdown-item" href="Library.jsp">My Quiz</a>
+                                        <a class="dropdown-item" href="LibraryServlet?Action=Recent">My Quiz</a>
                                         <a class="dropdown-item" href="#">Take a Exam</a>
                                         <a class="dropdown-item" href="#">Exam Results</a>               
                                         <a class="dropdown-item" href="#">Payment Method</a>

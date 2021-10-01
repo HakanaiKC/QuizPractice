@@ -5,13 +5,18 @@
  */
 package servlet;
 
+import dao.QuizDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Quiz;
+import model.Users;
 
 /**
  *
@@ -37,7 +42,7 @@ public class LibraryServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LibraryServlet</title>");            
+            out.println("<title>Servlet LibraryServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LibraryServlet at " + request.getContextPath() + "</h1>");
@@ -58,14 +63,29 @@ public class LibraryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      //  processRequest(request, response);
-      PrintWriter out = response.getWriter();
-      String action = request.getParameter("Action");
+        //  processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        QuizDAO qDAO = new QuizDAO();
+        Quiz q = new Quiz();
+        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
+        Users user = (Users) session.getAttribute("userSeisson");
+        String action = request.getParameter("Action");
         if (action.equals("Recent")) {
-            out.print("Recent");
-        }else{
-        out.print("Created");
+            List<Quiz> quiz = qDAO.getRecentQuiz(user.getUser_id());
+            request.setAttribute("quizList", quiz);
+//            out.println(user);
+//            out.println("Recent");
+        } else {
+          
+        List<Quiz> quiz = qDAO.getQuizByCreatorID(String.valueOf(user.getUser_id()));
+        request.setAttribute("quizList", quiz);
+//            out.print("Created");
         }
+        request.setAttribute("Action", action);
+        request.getRequestDispatcher("Library.jsp").forward(request, response);
+
     }
 
     /**
