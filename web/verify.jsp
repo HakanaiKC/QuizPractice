@@ -53,7 +53,7 @@
                  style="min-width: 300px;">
                 <div class="d-flex justify-content-center mb-5 navbar-light">
                     <!-- Brand -->
-                    <a href="Home.jsp"
+                    <a href="Home"
                        class="navbar-brand m-0">
                         QuizPractice
                     </a>

@@ -108,12 +108,11 @@
                                         <div class="d-flex row align-items-center">
                                             <div class="card-title col-sm-11" style="font-size: 18px; font-weight: bold; margin: 0;">${q.name}</div>
                                             <div class="edit-button col-sm-1">
-                                                <input type="submit"
-                                                       class="btn btn-success" value="Edit">
+                                               
                                             </div>
                                             <div class="n-question col-sm-2">${q.questionNum} questions</div>
                                             <div class="card-price col-sm-2">${q.price}$</div>
-                                            <div class="last-update col-sm-2">last update</div>
+                                            <div class="last-update col-sm-2">Last update: ${q.last_Update}</div>
                                         </div>
                                     </div>
                                     </c:forEach>

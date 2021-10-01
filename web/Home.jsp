@@ -70,7 +70,7 @@
                         
                         <div class="col-4" >
                             <div class="itemmore" >
-                                <c:if test="${quizList.size() >6}">
+                                <c:if test="${quizList.size() >0}">
                                 <span class="colorattr"onclick="location.href = 'Library.jsp';" style="cursor:pointer;"><b>More ></b></span>
                                 </c:if>
                                 </div>

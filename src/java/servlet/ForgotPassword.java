@@ -41,29 +41,27 @@ public class ForgotPassword extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             UsersDAO dao = new UsersDAO();
             String email = request.getParameter("email_SendNewPass");
-           Register emailRegistered = dao.checkAccountExist(email);
-           
-           if(emailRegistered!=null){
-            SendEmail sm = new SendEmail();
-           String newPass = sm.getRandom();
-           NewPassword newPassword = new NewPassword(email, newPass);
-           boolean test = sm.sendNewPass(newPassword);
-           if(test==true){
-               dao.forgotPass(newPass, email);
-               request.getRequestDispatcher("ForgotPass.jsp").forward(request, response);
-           }else{
-      		  out.println("Failed to send verification email");
-                  request.getRequestDispatcher("ForgotPass.jsp").forward(request, response);
-      	   }
-           }
-           else{
-               request.setAttribute("messagePass", "Email is not registered");
-               request.getRequestDispatcher("ForgotPass.jsp").forward(request, response);
-               
-           }
+            Register emailRegistered = dao.checkAccountExist(email);
+
+            if (emailRegistered != null) {
+                SendEmail sm = new SendEmail();
+                String newPass = sm.getRandom();
+                NewPassword newPassword = new NewPassword(email, newPass);
+                boolean test = sm.sendNewPass(newPassword);
+                if (test == true) {
+                    dao.forgotPass(newPass, email);
+                    request.getRequestDispatcher("ForgotPass.jsp").forward(request, response);
+                } else {
+                    out.println("Failed to send verification email");
+                    request.getRequestDispatcher("ForgotPass.jsp").forward(request, response);
+                }
+            } else {
+                request.setAttribute("messagePass", "Email is not registered");
+                request.getRequestDispatcher("ForgotPass.jsp").forward(request, response);
+
+            }
         }
     }
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
