@@ -55,7 +55,8 @@ public class QuizDAO extends DBContext {
         List<Quiz> list = new ArrayList<>();
         QuizDAO dao = new QuizDAO();
         try {
-            String query = "select * from Quiz where creator_id = ?";// lay quiz_id, 
+            String query = "select * from Quiz where creator_id =?\n"
+                    + "order by last_update desc";// lay quiz_id, 
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setString(1, creatorId);
             ResultSet rs = pd.executeQuery();
@@ -117,8 +118,6 @@ public class QuizDAO extends DBContext {
         }
         return null;
     }
-    
-    
 
     public List<Quiz> getRandomQuiz(int user_id) {
         List<Quiz> list = new ArrayList<>();
@@ -130,7 +129,7 @@ public class QuizDAO extends DBContext {
                     + "and u.user_id != q.creator_id\n"
                     + "order by NEWID() ";
             PreparedStatement pd = connection.prepareStatement(query);
-             pd.setInt(1, user_id);
+            pd.setInt(1, user_id);
             ResultSet rs = pd.executeQuery();
 
             while (rs.next()) {
@@ -153,7 +152,7 @@ public class QuizDAO extends DBContext {
         }
         return list;
     }
-    
+
     public List<Quiz> getRandomQuiz2() {
         List<Quiz> list = new ArrayList<>();
         QuizDAO dao = new QuizDAO();
@@ -185,7 +184,7 @@ public class QuizDAO extends DBContext {
 
     public static void main(String[] args) {
         QuizDAO q = new QuizDAO();
-           System.out.println(q.getRandomQuiz(15));
-        
+        System.out.println(q.getRandomQuiz(15));
+
     }
 }
