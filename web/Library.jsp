@@ -48,17 +48,20 @@
         <%@include file="Header_All.jsp" %>
         <div class="row container_home">
             <div class="col-sm-2"></div>
+            <!--Drop down-->
             <div class="itemname col-sm-4">
                 <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle font-size-24pt" data-toggle="dropdown">${Action}</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="LibraryServlet?Action=Recent">Recent</a>
-                            <a class="dropdown-item" href="LibraryServlet?Action=Created">Created</a>               
+                            <a class="dropdown-item" href="LibraryServlet?Action=Created">Created</a>  
+                            <a class="dropdown-item" href="LibraryServlet?Action=All">All Quiz</a>
                         </div>
                     </li>
                 </ul>
             </div>
+            
             <div class="col-sm-2">
                 <!-- Search -->
                 <form class="search-form d-none d-md-flex">
