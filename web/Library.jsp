@@ -71,10 +71,10 @@
             <div class="col-sm-4"></div>
 
             <!--dÃ¹ng foreach thÃ¬ copy h?t ?o?n nÃ y, cÃ¡i nÃ y lÃ  1 card-->
-             <c:forEach items="${quizList}" var="q">
+             <c:forEach  items="${quizList}" var="q">
             <div class="col-sm-2"></div>
             <div class="card1 col-sm-6">
-                <div class="content row">
+                <div class="content row" onclick="location.href = 'LearnServlet';" style="cursor:pointer;">
                     <div class="n-question col-sm-4">${q.questionNum} questions</div>
                     <div class="card-creator col-sm-6">${q.creator_name}</div>
                     <div class="card-title col-sm-10">${q.name}</div>

@@ -123,13 +123,16 @@ public class QuizDAO extends DBContext {
         List<Quiz> list = new ArrayList<>();
         QuizDAO dao = new QuizDAO();
         try {
-            String query = "select q.creator_id, q.name, q.price, q.quiz_id from \n"
-                    + "((Users u join Enrollment e on u.user_id = e.user_id  )\n"
-                    + "join Quiz q on e.quiz_id != q.quiz_id) where u.user_id = ? and q.price>0 \n"
-                    + "and u.user_id != q.creator_id\n"
-                    + "order by NEWID() ";
+            String query = "SELECT * \n"
+                    + "FROM Quiz q\n"
+                    + "WHERE Not EXISTS (SELECT 1\n"
+                    + "                  FROM Enrollment e where e.quiz_id = q.quiz_id and e.user_id = ?\n"
+                    + "				  )\n"
+                    + "	AND q.creator_id <> ? and q.price>0\n"
+                    + "	order by newid() ";
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setInt(1, user_id);
+            pd.setInt(2, user_id);
             ResultSet rs = pd.executeQuery();
 
             while (rs.next()) {
