@@ -55,20 +55,31 @@
             <!-- </div> -->
 
             <div class="container_body">
-                
+
                 <div class="container_home">
                     <div class="row cardholder">
 
                         <div class="col-4">
                             <div>
-                                <div class="itemname">Recommend </div>
+                                <div class="itemname col-sm-4">
+                                    <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
+                                        <li class="nav-item dropdown">
+                                            <div class="nav-link dropdown-toggle itemname" data-toggle="dropdown">Recommend</div>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Recommend</a>
+                                                <a class="dropdown-item" href="#">Created</a>  
+                                                <a class="dropdown-item" href="#">All Quiz</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="col-4 item">
                             <div></div>
                         </div>
                         <div class="col-4" >
-                            
+
                         </div>
 
                         <div class="col-sm-4 card" >
@@ -147,7 +158,7 @@
                 </div>
             </div>
         </div>
-        
+
         <%@include file="Footer.jsp" %>
         <%@include file="Boostrap_Header.jsp" %>
         <!-- jQuery -->
