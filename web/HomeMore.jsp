@@ -1,3 +1,4 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -5,7 +6,7 @@
       dir="ltr">
     <head>
         <meta charset="UTF-8" />
-        <title>Home</title>
+        <title>Recommend</title>
 
         <link rel="stylesheet" href="assets/css/layout.css" />
 
@@ -55,70 +56,36 @@
             <!-- </div> -->
 
             <div class="container_body">
-                <c:if test="${sessionScope.userSeisson !=null}">
-                    <div class="container_home">
-                        <div class="row cardholder">
 
-                            <div class="col-4">
-                                <div class="itemname">Recent </div>
-                                <!--<div class="debugg" >Because you learn from quizlearn-user </div>-->
-                            </div>
-                            <div class="col-4 item">
-
-                            </div>
-
-                            <div class="col-4" >
-                                <div class="itemmore" >
-                                    <c:if test="${quizList.size() >0}">
-                                        <span class="colorattr"onclick="location.href = 'LibraryServlet?Action=Recent';" style="cursor:pointer;"><b>More ></b></span>
-                                    </c:if>
-                                </div>
-                            </div>
-
-                            <c:forEach items="${quizList}" begin="0" end="5" var="q">
-                                <div class="col-sm-4 card" >
-                                    <div class="cardset" onclick="location.href = 'LearnServlet';" style="cursor:pointer;">
-                                        <div class="card-title">${q.name}</div>
-                                        <div class="n-question">${q.questionNum} questions</div>
-        <!--                                <div class="price">${q.price} $</div>-->
-                                        <div class="card-creator">${q.creator_name}</div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                        </div>
-                    </div>
-                </c:if>
                 <div class="container_home">
                     <div class="row cardholder">
 
                         <div class="col-4">
-                            <div class="itemname col-sm-4">
-                                <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
-                                    <li class="nav-item dropdown">
-                                        <div class="nav-link dropdown-toggle itemname" data-toggle="dropdown">Recommend</div>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Recommend</a>
-<!--                                            <a class="dropdown-item" href="#">Created</a>  -->
-                                            <a class="dropdown-item" href="HomeMoreServlet?Action=All Quiz">All Quiz</a>
-                                        </div>
-                                    </li>
-                                </ul>
+                            <div>
+                                <div class="itemname col-sm-4">
+                                    <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
+                                        <li class="nav-item dropdown">
+                                            <div class="nav-link dropdown-toggle itemname" data-toggle="dropdown">${Action}</div>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="HomeMoreServlet?Action=Recommend">Recommend</a>
+                                                <!--                                                <a class="dropdown-item" href="#">Created</a>  -->
+                                                <a class="dropdown-item" href="HomeMoreServlet?Action=All Quiz">All Quiz</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="col-4 item">
                             <div></div>
                         </div>
                         <div class="col-4" >
-                            <div class="itemmore" >
-                                <c:if test="${randomQuiz.size() >=0}">
-                                    <span class="colorattr"onclick="location.href = 'HomeMoreServlet?Action=Recommend';" style="cursor:pointer;"><b>More ></b></span>
-                                </c:if>
-                            </div>
+
                         </div>
-                        <c:forEach items="${randomQuiz}" begin="0" end="5" var="q">
+                        <c:forEach items="${quizList}" var="q">
                             <div class="col-sm-4 card" >
                                 <div class="cardset" onclick="location.href = 'LearnServlet';" style="cursor:pointer;">
-                                    <div class="card-title">${q.name} </div>
+                                    <div class="card-title">${q.name}</div>
                                     <div class="n-question">${q.questionNum} questions</div>
                                     <div class="price">${q.price} $</div>
                                     <div class="card-creator">${q.creator_name}</div>

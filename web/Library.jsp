@@ -56,7 +56,7 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="LibraryServlet?Action=Recent">Recent</a>
                             <a class="dropdown-item" href="LibraryServlet?Action=Created">Created</a>  
-                            <a class="dropdown-item" href="LibraryServlet?Action=All">All Quiz</a>
+<!--                            <a class="dropdown-item" href="LibraryServlet?Action=All">All Quiz</a>-->
                         </div>
                     </li>
                 </ul>

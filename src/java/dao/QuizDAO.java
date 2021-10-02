@@ -82,6 +82,35 @@ public class QuizDAO extends DBContext {
         }
         return list;
     }
+    public List<Quiz> getAllQuiz() {
+        List<Quiz> list = new ArrayList<>();
+        QuizDAO dao = new QuizDAO();
+        try {
+            String query = "select * from Quiz ";// lay quiz_id, 
+            PreparedStatement pd = connection.prepareStatement(query);
+            ResultSet rs = pd.executeQuery();
+
+            while (rs.next()) {
+                Quiz q = new Quiz();
+                int quiz_id = rs.getInt("quiz_id");
+                int creator_id = rs.getInt("creator_id");
+                String quiz_name = rs.getString("name");
+                double price = rs.getDouble("price");
+                Date date = rs.getDate("last_update");
+                q.setCreator_id(creator_id);
+                q.setQuiz_id(quiz_id);
+                q.setQuestionNum(dao.countQuestion(quiz_id));
+                q.setCreator_name(dao.getCreatorName(creator_id));
+                q.setName(quiz_name);
+                q.setPrice(price);
+                q.setLast_Update(date);
+                list.add(q);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
 
     public int countQuestion(int quizID) {
 //        List<Quiz> list = new ArrayList<>();

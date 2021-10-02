@@ -20,10 +20,10 @@ import model.Users;
 
 /**
  *
- * @author nxhai
+ * @author Dell
  */
-@WebServlet(name = "Home", urlPatterns = {"/Home"})
-public class Home extends HttpServlet {
+@WebServlet(name = "HomeMoreServlet", urlPatterns = {"/HomeMoreServlet"})
+public class HomeMoreServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,25 +38,16 @@ public class Home extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            QuizDAO qDAO = new QuizDAO();
-            Quiz q = new Quiz();
-            HttpSession session = request.getSession();
-            Users user = (Users) session.getAttribute("userSeisson");
-            List<Quiz> quiz = qDAO.getRecentQuiz(user.getUser_id());
-            request.setAttribute("quizList", quiz);
-            if (user != null) { //neu user lay ve co gia tri
-                if (qDAO.getRandomQuiz(user.getUser_id()).isEmpty()) {
-                    List<Quiz> listRandomQuiz2 = qDAO.getRandomQuiz2(); // neu getRandomQuiz trong thi sang GRQ2
-                    request.setAttribute("randomQuiz", listRandomQuiz2);
-                } else {
-                    List<Quiz> listRandomQuiz = qDAO.getRandomQuiz(user.getUser_id()); //neu getRandomQuiz co du lieeu thi tra ve nó
-                    request.setAttribute("randomQuiz", listRandomQuiz);
-                }
-            } else { // neu user lay ve bi trong
-                List<Quiz> listRandomQuiz = qDAO.getRandomQuiz2();
-                request.setAttribute("randomQuiz", listRandomQuiz);
-            }
-            request.getRequestDispatcher("Home.jsp").forward(request, response);
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet HomeMoreServlet</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet HomeMoreServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -72,25 +63,34 @@ public class Home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //  processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String action = request.getParameter("Action");
+        PrintWriter out = response.getWriter();
         QuizDAO qDAO = new QuizDAO();
         Quiz q = new Quiz();
         HttpSession session = request.getSession();
         Users user = (Users) session.getAttribute("userSeisson");
-        if (user != null) {
+        if (action.equals("Recommend")) {
+           if (user != null) {
             if (qDAO.getRandomQuiz(user.getUser_id()).isEmpty()) {
                 List<Quiz> listRandomQuiz2 = qDAO.getRandomQuiz2();
-                request.setAttribute("randomQuiz", listRandomQuiz2);
+                request.setAttribute("quizList", listRandomQuiz2);
             } else {
-                List<Quiz> quiz = qDAO.getRecentQuiz(user.getUser_id());
-                request.setAttribute("quizList", quiz);
                 List<Quiz> listRandomQuiz = qDAO.getRandomQuiz(user.getUser_id());
-                request.setAttribute("randomQuiz", listRandomQuiz);
+                request.setAttribute("quizList", listRandomQuiz);
             }
         } else {
             List<Quiz> listRandomQuiz = qDAO.getRandomQuiz2();
-            request.setAttribute("randomQuiz", listRandomQuiz);
+            request.setAttribute("quizList", listRandomQuiz);
         }
-        request.getRequestDispatcher("Home.jsp").forward(request, response);
+        } else {
+            List<Quiz> listAllQuiz = qDAO.getAllQuiz();
+            request.setAttribute("quizList", listAllQuiz);
+        }
+        request.setAttribute("Action", action);
+        request.getRequestDispatcher("HomeMore.jsp").forward(request, response);
     }
 
     /**
