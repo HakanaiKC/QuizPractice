@@ -25,7 +25,7 @@ public class QuizDAO extends DBContext {
         QuizDAO dao = new QuizDAO();
         try {
             String query = "select * from ((Quiz q  join Enrollment e on q.quiz_id = e.quiz_id) \n"
-                    + "join Users u on e.user_id = u.user_id) where e.user_id =?";// lay quiz_id, creator_id,..
+                    + "join Users u on e.user_id = u.user_id) where e.user_id =? order by day_enroll desc";// lay quiz_id, creator_id,..
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setInt(1, user_id);
             ResultSet rs = pd.executeQuery();
