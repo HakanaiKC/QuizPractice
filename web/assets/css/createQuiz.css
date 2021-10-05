@@ -1,0 +1,117 @@
+.container_body{
+    min-height: 700px;
+    width: 100%;
+}
+body {
+    height: 100%;
+    background-color: #f5f7fb;
+    
+    font-size: 18px;
+    min-height: 900px;
+}
+.quiz{
+    margin-top: 30px;
+    height: auto;
+    border: 1px solid gray;
+    background-color: white;
+    border-radius: 10px;
+}
+.quiz-title-div{
+    margin-top: 10px;
+    margin-left: 20px;
+    padding-left: 30px;
+    width: 100%;
+    font-size: 30px;
+    border: none;    
+}
+.quiz-price-div{
+    margin-top: 10px;
+    /*margin-left: 20px;*/
+    /*padding-left: 30px;*/
+    width: 100%;
+    font-size: 30px;
+    border: none;  
+}
+.quiz-description-div{
+    margin-left: 20px;
+    padding-left: 30px;
+    /*width: 100%;*/
+    font-size: 18px;
+    border: none; 
+}
+
+textarea{  
+   
+  /* box-sizing: padding-box; */
+  overflow:hidden;
+  /* demo only: */
+  padding:10px;
+  width: 100%;
+  font-size:14px;
+  /*margin:50px auto;*/
+  /*display:block;*/
+  border: none;
+  border-bottom: 1px solid gray;
+  
+}
+.question-div{
+    margin-top: 10px;
+    margin-left: 20px;
+    padding-left: 30px;
+    /*width: 100%;*/
+    font-size: 18px;
+    border: none; 
+}
+.question{
+    margin-top: 30px;
+    height: auto;
+    border: 1px solid gray;
+    background-color: white;
+    border-radius: 10px;
+}
+.option-content{
+    padding: 0;
+}
+.choose-right-option-div {
+    margin: 0;
+    margin-top: 10px;
+    margin-left: 20px;
+    
+    /*padding-left: 30px;*/
+    
+}
+.remove-option-div{
+    margin: 0;
+    margin-left: 15px;
+    margin-top: 10px;
+    padding: 0;
+}
+.question-instruction-div{
+    margin-top: 10px;
+    margin-left: 20px;
+    padding: 0;
+/*    padding-left: 30px;*/
+}
+/*.choose-right-option{
+    border-radius: 100%;
+}*/
+
+.add-more-option-div{
+    margin-top: 10px;
+    margin-left: 20px;
+    padding-left: 30px;
+}
+.add-more-question-div{
+    margin-top: 10px;
+    /*margin-left: 20px;*/
+    padding-left: 30px;
+}
+.save-quiz{
+    /*padding-top: 10px;*/
+    /*margin-top: 10px;*/
+    float: right;
+}
+.save-quiz-div{
+      margin-top: 10px;
+      margin-bottom: 20px;
+}
