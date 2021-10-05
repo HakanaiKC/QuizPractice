@@ -26,7 +26,7 @@
                         </button>
 
                         <!-- Brand -->
-                           <a href="Home" class="navbar-brand">
+                        <a href="Home" class="navbar-brand">
                             <span class="d-none d-xs-md-block">QuizPractice</span>
                         </a>
 
@@ -37,6 +37,7 @@
                                     class="material-icons font-size-24pt">search</i></button>
                         </form>
                         <!-- // END Search -->
+                        <div style="padding-left: 10px;"><a class="d-none d-lg-flex btn btn-info" href="CreateQuiz.jsp" role="button">Create</a></div>                        
                         <div class="flex"></div>
 
                         <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
@@ -99,15 +100,15 @@
                                 <li class="nav-item dropdown ml-1 ml-md-3">
                                     <div class="avatar avatar-xxl position-absolute bottom-0 left-0 right-0"></div>
                                     <c:if test = "${sessionScope.userSeisson.avatar == null}">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img
-                                            src="assets/images/unnamed.jpg" alt="Avatar" class="rounded-circle"
-                                            width="40"></a>
-                                    </c:if>
-                                    <c:if test = "${sessionScope.userSeisson.avatar != null}">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img
+                                                src="assets/images/unnamed.jpg" alt="Avatar" class="rounded-circle"
+                                                width="40"></a>
+                                        </c:if>
+                                        <c:if test = "${sessionScope.userSeisson.avatar != null}">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img
                                                 src="uploads/${sessionScope.userSeisson.avatar}" alt="Avatar" class="rounded-circle"
                                                 width="40" height="40"></a>
-                                    </c:if>
+                                        </c:if>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="ChangePass.jsp">
                                             <i class="material-icons">edit</i> Edit Account

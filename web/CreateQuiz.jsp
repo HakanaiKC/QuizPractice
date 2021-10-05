@@ -40,7 +40,16 @@
     </head>
     <body>
         <%@include file="Header_All.jsp" %>
-
+        <div class="preloader">
+            <div class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+        </div>
 
         <div class="container_body row">
             <!--PHAN MO TA QUIZ-->
@@ -53,7 +62,7 @@
                                    style="border: none; border-bottom: 1px solid gray; width: 100%;" />
                         </div>
                         <div class="col-sm-2 quiz-price-div">
-                            <input type="text" name="quiz-price" placeholder="Price" 
+                            <input type="number" name="quiz-price" placeholder="Price" 
                                    style="border: none; border-bottom: 1px solid gray; width: 100%; " />
                         </div>
                         <div class="col-sm-11 quiz-description-div" >
@@ -78,15 +87,15 @@
                             <div class="choose-right-option-div col-sm-1">
                                 <input class="choose-right-option" type="checkbox" name="choose-right-option" value="ON" />
                             </div>
-                            <div class="option-content col-sm-9">
+                            <div class="option-content col-sm-7">
                                 <input type="text" name="answer" placeholder="option-content" 
                                        style="border: none; border-bottom: 1px solid gray; width: 100%;" />
                             </div>
-                            <div class="remove-option-div col-sm-1">                               
-                                <a class="remove-option" type="text" name="remove-option">remove</a>
+                            <div class="remove-option-div col-sm-3">                               
+                                <button class="remove-option btn btn-white btn-sm" type="submit" name="remove-option"><i class="fas fa-trash-alt"></i></button>
                             </div>
                             <div class="add-more-option-div col-sm-1">
-                                <input class="add-more-option" type="submit" value="Add option" />
+                                <input class="add-more-option btn-primary" type="submit" value="Add option" />
                             </div>
                             <div class="col-sm-10"></div>                            
                         </div>
@@ -103,10 +112,10 @@
             <!--PHAN BUTTON "ADD-QUESTION" VA "SAVE"-->
             <div class="col-sm-3"></div>
             <div class="col-sm-5 add-more-question-div">
-                <input class="add-more-question" type="submit" value="Add Question" />
+                <input class="add-more-question btn btn-success" type="submit" value="Add Question" />
             </div>
             <div class="col-sm-1 save-quiz-div">
-                <input class="save-quiz" type="submit" value="Save" />
+                <input class="save-quiz btn btn-white" type="submit" value="Save" />
             </div>
             <div class="col-sm-3"></div>
             <!--KET THUC 2 BUTTON-->
