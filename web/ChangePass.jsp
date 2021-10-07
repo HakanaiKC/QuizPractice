@@ -112,7 +112,7 @@
                                                             <img src="uploads/${sessionScope.userSeisson.avatar}" style="max-width:85px;" id="image" class="material-icons text-muted-light md-36" value="photo">                        
                                                         </div>
                                                     </div>
-                                                    <div class="media-body">
+                                                    <div class="media-body col-sm-6">
                                                         <div class="custom-file"
                                                              style="width: auto;">
                                                             <input type="file" name="avatar"
@@ -124,7 +124,7 @@
                                                             <div style="color: green">${requestScope.messageAvatar}</div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-5">
+                                                    <div class="col-xs-3">
                                                         <input type="submit" class="btn btn-success" value="Save"  > 
                                                     </div>
                                                 </div>
@@ -145,47 +145,47 @@
                                         };
                                     </script>
                                     <hr> 
-<!--                                    Fullname
-                                    <form action="ChangeName?id=${sessionScope.userSeisson.user_id}" method="post">
-                                        <div class="form-group row">
-                                            <label for="name"
-                                                   class="col-sm-3 col-form-label form-label">Full Name</label>
-                                            <div class="col-sm-8">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <input id="name" name="fullname"
-                                                               type="text" value="${sessionScope.userSeisson.username}"
-                                                               class="form-control"
-                                                               placeholder="Full Name">
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input type="submit" class="btn btn-success" value="Save">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                    Email
-                                    <div class="form-group row">
-                                        <label for="email"
-                                               class="col-sm-3 col-form-label form-label">Email</label>
-                                        <div class="col-sm-6 col-md-6">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text">
-                                                        <i class="material-icons md-18 text-muted">mail</i>
-                                                    </div>
-                                                </div>
-                                                <input type="text" 
-                                                       id="email" value="${sessionScope.userSeisson.email}"
-                                                       class="form-control"
-                                                       placeholder="Email Address"
-                                                       value="contact@mosaicpro.biz"
-                                                       disabled>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>                   -->
+                                    <!--                                    Fullname
+                                                                        <form action="ChangeName?id=${sessionScope.userSeisson.user_id}" method="post">
+                                                                            <div class="form-group row">
+                                                                                <label for="name"
+                                                                                       class="col-sm-3 col-form-label form-label">Full Name</label>
+                                                                                <div class="col-sm-8">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-6">
+                                                                                            <input id="name" name="fullname"
+                                                                                                   type="text" value="${sessionScope.userSeisson.username}"
+                                                                                                   class="form-control"
+                                                                                                   placeholder="Full Name">
+                                                                                        </div>
+                                                                                        <div class="col-md-2">
+                                                                                            <input type="submit" class="btn btn-success" value="Save">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                        Email
+                                                                        <div class="form-group row">
+                                                                            <label for="email"
+                                                                                   class="col-sm-3 col-form-label form-label">Email</label>
+                                                                            <div class="col-sm-6 col-md-6">
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <div class="input-group-text">
+                                                                                            <i class="material-icons md-18 text-muted">mail</i>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <input type="text" 
+                                                                                           id="email" value="${sessionScope.userSeisson.email}"
+                                                                                           class="form-control"
+                                                                                           placeholder="Email Address"
+                                                                                           value="contact@mosaicpro.biz"
+                                                                                           disabled>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr>                   -->
                                     <!--Old pass-->
                                     <form action="ChangePassword?email=${sessionScope.userSeisson.email}" method="post">
                                         <div class="form-group row">
@@ -297,10 +297,10 @@
                                                 </div>
                                             </div>
                                         </div>
-<!--                                       </form>-->
-                                                               <hr>
-                                    <!--About me-->
-<!--                                    <form action="" method="">-->
+                                        <!--                                       </form>-->
+                                        <hr>
+                                        <!--About me-->
+                                        <!--                                    <form action="" method="">-->
                                         <div class="form-group row">
                                             <label for="name"
                                                    class="col-sm-3 col-form-label form-label">About me</label>
@@ -315,10 +315,10 @@
                                                 </div>
                                             </div>
                                         </div>
-<!--                                    </form>-->
-                                    <hr>
-                                    <!--Connect-->
-<!--                                    <form action="" method="">-->
+                                        <!--                                    </form>-->
+                                        <hr>
+                                        <!--Connect-->
+                                        <!--                                    <form action="" method="">-->
                                         <div class="form-group row">
                                             <label for="name"
                                                    class="col-sm-3 col-form-label form-label">Connect</label>
@@ -333,22 +333,22 @@
                                                 </div>
                                             </div>
                                         </div>
-<!--                                    </form>-->
-                                    <!--Save Changes-->
-                                    <div class="form-group row">
-                                        <div class="col-sm-8 offset-sm-3">
-                                            <div style="color: red">${requestScope.notsuccess}</div>
-                                            <div style="color: green">${requestScope.success}</div>
-                                            <br/>
-                                            <div class="media align-items-center">
-                                                <div class="media-left">
-                                                    <input type="submit"
-                                                           class="btn btn-success" value="Save Changes">
+                                        <!--                                    </form>-->
+                                        <!--Save Changes-->
+                                        <div class="form-group row">
+                                            <div class="col-sm-8 offset-sm-3">
+                                                <div style="color: red">${requestScope.notsuccess}</div>
+                                                <div style="color: green">${requestScope.success}</div>
+                                                <br/>
+                                                <div class="media align-items-center">
+                                                    <div class="media-left">
+                                                        <input type="submit"
+                                                               class="btn btn-success" value="Save Changes">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                        </form>       
+                                    </form>       
                                 </div>
                             </div>
                         </div>

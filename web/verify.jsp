@@ -70,7 +70,7 @@
                     <div class="card-body">
                         <!--Form-->
                         <form action="VerifyCode" method="post">
-                            <p class="Form-subtitle">Hi [name], <br><br>
+                            <p class="Form-subtitle">
                                 We just need to verify your email address before you can access to QuizPractice.<br><br>
                                 Verify your email address by enter verification code<br><br>
                                 Best Regard! The QuizPractice team</p>

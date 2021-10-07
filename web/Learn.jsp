@@ -214,7 +214,6 @@
             <script src="assets/vendor/jquery.star-rating-svg_1.js"></script>
     </body>
 
-    <!--DO NOT TOUCH-->
     <script>
                                     String.prototype.isEmpty = function () {
                                         // Returns if a string has only whitespace
