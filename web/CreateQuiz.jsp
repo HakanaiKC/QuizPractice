@@ -175,7 +175,7 @@
                     function addQuestion() {
                         var clone = original.cloneNode(true); // "deep" clone
                         clone.id = "createq" + ++i;
-                        original.parentNode.appendChild(clone);
+                        original.appendChild(clone);
                     }
                     function removeQuestion() {
                         button.remove();
