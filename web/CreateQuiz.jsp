@@ -73,54 +73,62 @@
             </div>
             <div class="col-sm-3"></div>
             <!--KET THUC PHAN MO TA QUIZ-->
+        </div>   
 
-
-            <!--PHAN MO TA QUESTION-->
-            <div class="create_new_quesiton row" id='createq' style="width: 100%;">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-6 question"> 
-                    <div class="question-infor row">
-                        <form id="question-information">
-                            <div class="col-sm-11 question-div" >
-                                <textarea class="question-description" rows='2' placeholder='Question'></textarea>
-                            </div>
-                            <div class="col-sm-12 row option-div" >
+        <!--PHAN MO TA QUESTION-->
+        <div class="create_new_quesiton row" name="quiz" id="createq" style="width: 100%;">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6 question"> 
+                <div class="question-infor row" >
+                    <form id="question-information">
+                        <div class="col-sm-11 question-div" id="question">
+                            <textarea class="question-description" rows="2" placeholder="Question"></textarea>
+                        </div>
+                        <div class="col-sm-12 row option-div">
+                            <div id="innerQue" class="innerQue row">
                                 <div class="choose-right-option-div col-sm-1">
                                     <input class="choose-right-option" type="checkbox" name="choose-right-option" value="ON" />
                                 </div>
-                                <div class="option-content col-sm-7">
-                                    <input type="text" name="answer" placeholder="option-content" 
-                                           style="border: none; border-bottom: 1px solid gray; width: 100%;" />
-                                </div>
+                                <div class="option-content col-sm-7" id="option-content">
+                                    <input type="text" id="answer" placeholder="option-content"
+                                           style="border: none; border-bottom: 1px solid gray; width: 100%;" />                                
+                                </div>                         
                                 <div class="remove-option-div col-sm-3">                               
-                                    <button class="remove-option btn btn-white btn-sm" type="submit" name="remove-option"><i class="fas fa-trash-alt"></i></button>
-                                </div>
-                                <div class="add-more-option-div col-sm-1">
-                                    <input class="add-more-option btn-primary" type="submit" value="Add option" />
-                                </div>
-                                <div class="col-sm-10"></div>                            
+                                    <button class="remove-option btn btn-white btn-sm" type="button" id="removeInnerQue"><i class="fas fa-trash-alt"></i></button>
+                                </div>                         
+                            </div>   
+                            <!--Multiple question-->
+                            
+                            <!--End of Multi Que-->
+                            <div class="add-more-option-div col-sm-3">
+                                <button class="add-more-option btn-primary" onclick="addInnerQue()" type="button">Add option</button>
                             </div>
-                            <div class="col-sm-11 question-instruction-div" >
-                                <textarea class="question-instruction" rows='2' placeholder='Instruction'></textarea>
-                            </div>
-                            <br>
-                            <div class="col-sm-2 remove-question-div">
-                                <button class="remove-question" onclick="removeQuestion(this)">Remove Question</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>            
-                <div class="col-sm-3"></div>
-            </div>
-            <!--KET THUC PHAN MO TA QUESTION-->
-
-            <script>
-
-            </script>
+                            <div class="col-sm-10"></div>                            
+                        </div>
+                        <div class="col-sm-11 question-instruction-div" id="Instruction">
+                            <textarea class="question-instruction" rows="2" placeholder="Instruction"></textarea>
+                        </div>
+                        <br>
+                        <div class="col-sm-2 remove-question-div">
+                            <button id="removeRow" type="button" class="btn btn-danger">Remove</button>
+                        </div>
+                    </form>
+                </div>
+            </div>            
+            <div class="col-sm-3"></div>                
+        </div>
+        <!--KET THUC PHAN MO TA QUESTION-->
+        
+        <!--Add new question-->
+        <div id="newRow" class="newQue row">
+        <!--End of new question-->    
+        </div>
+        
+        <div class="bton row">
             <!--PHAN BUTTON "ADD-QUESTION" VA "SAVE"-->
             <div class="col-sm-3"></div>
             <div class="col-sm-5 add-more-question-div">
-                <button class="add-more-question btn btn-success" onclick="addQuestion()" type="submit">Add Question</button>
+                <button class="add-more-question btn btn-success" onclick="addQue()" type="submit">Add Question</button>
             </div>            
             <div class="col-sm-1 save-quiz-div">
                 <input class="save-quiz btn btn-white" type="submit" value="Save" />
@@ -151,35 +159,8 @@
         <!-- Highlight.js -->
         <script src="assets/js/hljs.js"></script>
 
-        <script src="assets/vendor/infinity.js"></script>
-        <script src="assets/vendor/infinity.min.js"></script>
-        <!--JS AUTOSIZE TEXT-AREA-->
-        <script>
-                    var textarea = document.querySelector(".quiz-description");
-                    var textarea1 = document.querySelector(".question-description");
-                    var textarea2 = document.querySelector(".question-instruction");
-                    textarea.addEventListener('keydown', autosize);
-                    textarea1.addEventListener('keydown', autosize);
-                    textarea2.addEventListener('keydown', autosize);
-                    function autosize() {
-                        var el = this;
-                        setTimeout(function () {
-                            el.style.cssText = 'height:auto; padding:0';
-                            el.style.cssText = 'height:' + el.scrollHeight + 'px';
-                        }, 0);
-                    }
+        <!--Our js-->
+        <script src="assets/js/CreateQuiz.js"></script>
 
-                    var i = 0;
-                    var original = document.getElementById('createq');
-
-                    function addQuestion() {
-                        var clone = original.cloneNode(true); // "deep" clone
-                        clone.id = "createq" + ++i;
-                        original.parentNode.appendChild(clone);
-                    }
-                    function removeQuestion() {
-                        button.remove();
-                    }
-        </script>
     </body>
 </html>
