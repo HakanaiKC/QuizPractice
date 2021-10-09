@@ -50,93 +50,96 @@
                 <div class="sk-chase-dot"></div>
             </div>
         </div>
-
-        <div class="container_body row">
-            <!--PHAN MO TA QUIZ-->
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6 quiz"> 
-                <form name="quiz-information">
-                    <div class="quiz-infor row">
-                        <div class="col-sm-9 quiz-title-div">
-                            <input type="text" name="quiz-title" placeholder="Quiz Title" 
-                                   style="border: none; border-bottom: 1px solid gray; width: 100%;" />
-                        </div>
-                        <div class="col-sm-2 quiz-price-div">
-                            <input type="number" name="quiz-price" placeholder="Price" 
-                                   style="border: none; border-bottom: 1px solid gray; width: 100%; " />
-                        </div>
-                        <div class="col-sm-11 quiz-description-div" >
-                            <textarea class="quiz-description" rows='2' placeholder='Quiz description'></textarea>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-sm-3"></div>
-            <!--KET THUC PHAN MO TA QUIZ-->
-        </div>   
-
-        <!--PHAN MO TA QUESTION-->
-        <div class="create_new_quesiton row" name="quiz" id="createq" style="width: 100%;">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6 question"> 
-                <div class="question-infor row" >
-                    <form id="question-information">
-                        <div class="col-sm-11 question-div" id="question">
-                            <textarea class="question-description" rows="2" placeholder="Question"></textarea>
-                        </div>
-                        <div class="col-sm-12 row option-div">
-                            <div id="innerQue" class="innerQue row">
-                                <div class="choose-right-option-div col-sm-1">
-                                    <input class="choose-right-option" type="checkbox" name="choose-right-option" value="ON" />
-                                </div>
-                                <div class="option-content col-sm-7" id="option-content">
-                                    <input type="text" id="answer" placeholder="option-content"
-                                           style="border: none; border-bottom: 1px solid gray; width: 100%;" />                                
-                                </div>                         
-                                <div class="remove-option-div col-sm-3">                               
-                                    <button class="remove-option btn btn-white btn-sm" type="button" id="removeInnerQue"><i class="fas fa-trash-alt"></i></button>
-                                </div>                         
-                            </div>   
-                            <!--Multiple question-->
-                            
-                            <!--End of Multi Que-->
-                            <div class="add-more-option-div col-sm-3">
-                                <button class="add-more-option btn-primary" onclick="addInnerQue()" type="button">Add option</button>
+        <div style="min-height: 700px;">
+            <div class="container_body row">
+                <!--PHAN MO TA QUIZ-->
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6 quiz"> 
+                    <form name="quiz-information">
+                        <div class="quiz-infor row">
+                            <div class="col-sm-9 quiz-title-div">
+                                <input type="text" name="quiz-title" placeholder="Quiz Title" 
+                                       style="border: none; border-bottom: 1px solid gray; width: 100%;" />
                             </div>
-                            <div class="col-sm-10"></div>                            
-                        </div>
-                        <div class="col-sm-11 question-instruction-div" id="Instruction">
-                            <textarea class="question-instruction" rows="2" placeholder="Instruction"></textarea>
-                        </div>
-                        <br>
-                        <div class="col-sm-2 remove-question-div">
-                            <button id="removeRow" type="button" class="btn btn-danger">Remove</button>
+                            <div class="col-sm-2 quiz-price-div">
+                                <input type="number" name="quiz-price" placeholder="Price" 
+                                       style="border: none; border-bottom: 1px solid gray; width: 100%; "  />
+                            </div>
+                            <div class="col-sm-11 quiz-description-div" >
+                                <textarea class="quiz-description" rows='2' placeholder='Quiz description'></textarea>
+                            </div>
                         </div>
                     </form>
                 </div>
-            </div>            
-            <div class="col-sm-3"></div>                
-        </div>
-        <!--KET THUC PHAN MO TA QUESTION-->
-        
-        <!--Add new question-->
-        <div id="newRow" class="newQue row">
-        <!--End of new question-->    
-        </div>
-        
-        <div class="bton row">
-            <!--PHAN BUTTON "ADD-QUESTION" VA "SAVE"-->
-            <div class="col-sm-3"></div>
-            <div class="col-sm-5 add-more-question-div">
-                <button class="add-more-question btn btn-success" onclick="addQue()" type="submit">Add Question</button>
-            </div>            
-            <div class="col-sm-1 save-quiz-div">
-                <input class="save-quiz btn btn-white" type="submit" value="Save" />
-            </div>
-            <div class="col-sm-3"></div>
-            <!--KET THUC 2 BUTTON-->
-        </div>
+                <div class="col-sm-3"></div>
+                <!--KET THUC PHAN MO TA QUIZ-->
+            </div>   
 
+            <!--PHAN MO TA QUESTION-->
+            <div class="create_new_quesiton row" name="quiz" id="createq"  style="width: 100%;">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6 question"> 
+                    <div class="remove-question-div">
+                        <button id="removeRow" type="button" class="" style="float: right; margin-top:20px; margin-right: 20px;">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div> 
+                    <div class="question-infor row" >
+                        <form id="question-information">
+                            <div class="col-sm-11 question-div" id="question">
+                                <textarea class="question-description" rows="2" placeholder="Question"></textarea>
+                            </div>
+                            <div class="col-sm-12 row option-div">
+                                <div id="createQue1" style="width: 100%;">
+                                    <div id="innerQue" class="innerQue row">
+                                        <div class="choose-right-option-div col-sm-1">
+                                            <input class="choose-right-option" type="checkbox" name="choose-right-option" value="ON" />
+                                        </div>
+                                        <div class="option-content col-sm-9" id="option-content">
+                                            <input type="text" id="answer" placeholder="option-content"
+                                                   style="border: none; border-bottom: 1px solid gray; width: 100%;" />                                
+                                        </div>                         
+                                        <div class="remove-option-div col-sm-1">                               
+                                            <button class="remove-option btn btn-white btn-sm" type="button" id="removeInnerQue"><i class="fas fa-trash-alt"></i></button>
+                                        </div>                         
+                                    </div>
+                                </div>
+                                <div class="add-more-option-div col-sm-3">
+                                    <button class="add-more-option btn-primary" onclick="addInnerQue('createQue1')" type="button">Add option</button>
+                                    
+                                </div>
+                                <div class="col-sm-10"></div>                            
+                            </div>
+                            <div class="col-sm-11 question-instruction-div" id="Instruction">
+                                <textarea class="question-instruction" rows="2" placeholder="Instruction"></textarea>
+                            </div>
+                            <br>
+
+                        </form>
+                    </div>
+                </div>            
+                <div class="col-sm-3"></div>                
+            </div>
+            <!--KET THUC PHAN MO TA QUESTION-->
+
+            <!--Add new question-->
+            <div id="newRow" class="newQue row">
+                <!--End of new question-->    
+            </div>
+
+            <div class="bton row">
+                <!--PHAN BUTTON "ADD-QUESTION" VA "SAVE"-->
+                <div class="col-sm-3"></div>
+                <div class="col-sm-5 add-more-question-div">
+                    <button class="add-more-question btn btn-success" onclick="addQue()" type="button">Add Question</button>
+                </div>            
+                <div class="col-sm-1 save-quiz-div">
+                    <input class="save-quiz btn btn-white" type="submit" value="Save" />
+                </div>
+                <div class="col-sm-3"></div>
+                <!--KET THUC 2 BUTTON-->
+            </div>
+        </div>
         <%@include file="Footer.jsp" %>
         <%@include file="Boostrap_Header.jsp" %>
         <!-- jQuery -->
@@ -161,6 +164,20 @@
 
         <!--Our js-->
         <script src="assets/js/CreateQuiz.js"></script>
-
+        <script>
+                        var textarea = document.querySelector(".quiz-description");
+//var textarea1 = document.querySelector(".question-description");
+//var textarea2 = document.querySelector(".question-instruction");
+                        textarea.addEventListener('keydown', autosize);
+//textarea1.addEventListener('keydown', autosize);
+//textarea2.addEventListener('keydown', autosize);
+                        function autosize() {
+                            var el = this;
+                            setTimeout(function () {
+                                el.style.cssText = 'height:auto; padding:0';
+                                el.style.cssText = 'height:' + el.scrollHeight + 'px';
+                            }, 0);
+                        }
+        </script>
     </body>
 </html>
