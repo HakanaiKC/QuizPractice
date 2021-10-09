@@ -1,13 +1,12 @@
 .container_body{
-    min-height: 700px;
+    /*min-height: 700px;*/
     width: 100%;
 }
 body {
     height: 100%;
-    background-color: #f5f7fb;
-    
+    background-color: #f5f7fb;    
     font-size: 18px;
-    min-height: 900px;
+    /*min-height: 900px;*/
 }
 .quiz{
     margin-top: 30px;
@@ -63,6 +62,7 @@ textarea{
     border: none; 
 }
 .question{
+    witdh:100%;
     margin-top: 30px;
     height: auto;
     border: 1px solid gray;
@@ -75,10 +75,16 @@ textarea{
 .choose-right-option-div {
     margin: 0;
     margin-top: 10px;
-    margin-left: 20px;
+    margin-left: 30px;
     
     /*padding-left: 30px;*/
     
+}
+.innerQue{
+    width: 100%;
+}
+#question-information{
+    width: 100%;
 }
 .remove-option-div{
     margin: 0;
