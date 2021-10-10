@@ -19,6 +19,13 @@ import model.Quiz;
  * @author nxhai
  */
 public class QuizDAO extends DBContext {
+    public List<Quiz> getQuizByPage(List<Quiz> list, int start, int end) {
+        List<Quiz> t = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            t.add(list.get(i));
+        }
+        return t;
+    }
 
     public List<Quiz> getRecentQuiz(int user_id) {
         List<Quiz> list = new ArrayList<>();
