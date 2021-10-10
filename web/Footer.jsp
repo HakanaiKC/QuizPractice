@@ -14,42 +14,31 @@
         <div class="bg-primary border-top-2 bg-body" footer-brand="Frontend Matter">
             <div class="page-section d-flex flex-column container page__container">
                 <div class="row mb-32pt border-bottom">
-                    <div class="col-lg-3 mb-32pt">
+                    <div class="col-lg-4 mb-32pt">
                         <h2 class="brand mb-24pt text-white">
                             QuizPractice
                         </h2>
                         <p class="measure-paragraph mr-8pt mb-0 text-50 text-white">QuizPractice dedicated our best to develop the best place to improve your knowledge. Founded in 2021</p>
                     </div>
-                    <div class="col-lg-9 mb-32pt">
+                    <div class="col-lg-8 mb-32pt">
                         <div class="row smaller">
-                            <div class="col-lg-3 col-md-6 mb-32pt mb-lg-0 ">
+                            <div class="col-lg-4 col-md-6 mb-32pt mb-lg-0 ">
                                 <h4 class="mb-8pt text-white">Contact</h4>
                                 <ul class="list-unstyled d-flex flex-column mb-0">
                                     <li class="mb-2"><p class="text-white"><span class="fas fa-phone"></span>Phone: 0912345678</p></li>
                                     <li class="mb-2"><p class="text-white"><span class="fas fa-envelope"></span>Email: hakanai20@gmail.com</p></li>
                                 </ul>
                             </div>
-                            <div class="col-lg-3 col-md-6 mb-32pt mb-lg-0">
-                                <h4 class="mb-8pt text-white">Topic</h4>
-                                <ul class="list-unstyled d-flex flex-column mb-0">
-                                    <li class="mb-2"><a href="#" class="text-white"
-                                                        target="_self">Something &amp; Something</a></li>
-                                </ul>
-                                <ul class="list-unstyled d-flex flex-column mb-0">
-                                    <li class="mb-2"><a href="#" class="text-white"
-                                                        target="_self">Something &amp; Something</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
+                            <div class="col-lg-4 col-md-6">
                                 <h4 class="mb-8pt text-white">Payment</h4>
                                 <ul class="list-unstyled d-flex flex-column mb-0">
                                     <li class="mb-2"><img src="assets/images/visa.svg"
-                                                          alt="cc"
+                                                          alt="visa"
                                                           width="40"
                                                           class="mr-3"></li>
                                 </ul>
                             </div>
-                            <div class="col-lg-3 col-md-6">
+<!--                            <div class="col-lg-3 col-md-6">
                                 <h4 class="mb-8pt text-white">Sponsor</h4>
                                 <ul class="list-unstyled d-flex flex-column mb-0">
                                     <li class="mb-2"><img src="assets/images/FBT.png"
@@ -57,7 +46,7 @@
                                                           width="120"
                                                           class="mr-3"></li>
                                 </ul>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>

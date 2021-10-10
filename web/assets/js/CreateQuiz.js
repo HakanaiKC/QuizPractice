@@ -1,17 +1,3 @@
-//var textarea = document.querySelector(".quiz-description");
-//var textarea1 = document.querySelector(".question-description");
-//var textarea2 = document.querySelector(".question-instruction");
-//textarea.addEventListener('keydown', autosize);
-//textarea1.addEventListener('keydown', autosize);
-//textarea2.addEventListener('keydown', autosize);
-//function autosize() {
-//    var el = this;
-//    setTimeout(function () {
-//        el.style.cssText = 'height:auto; padding:0';
-//        el.style.cssText = 'height:' + el.scrollHeight + 'px';
-//    }, 0);
-//}
-
 // add row
 let i =1;
 
@@ -62,7 +48,6 @@ function addQue() {
     
     $('#newRow').append(html);
     
-//    console.log(i);
 };
 
 // remove row

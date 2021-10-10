@@ -5,7 +5,7 @@
       dir="ltr">
     <head>
         <meta charset="UTF-8" />
-        <title>QuizPractice</title>
+        <title>Create Quiz</title>
 
         <link rel="stylesheet" href="assets/css/createQuiz.css" type="text/css" />
 

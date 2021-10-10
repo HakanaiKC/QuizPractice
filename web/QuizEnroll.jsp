@@ -5,7 +5,7 @@
       dir="ltr">
     <head>
         <meta charset="UTF-8" />
-        <title>Home</title>
+        <title>Quiz Enroll</title>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>

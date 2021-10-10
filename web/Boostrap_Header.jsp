@@ -64,13 +64,7 @@
                                     </li>
                                     <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button"
-                                           href="MyRegistrations.jsp">
-                                            <span class="sidebar-menu-text">Subscription</span>
-                                        </a>
-                                    </li>
-                                    <li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button"
-                                           href="#">
+                                           href="Payment.jsp">
                                             <span class="sidebar-menu-text">Payment Method</span>
                                         </a>
                                     </li>
@@ -96,13 +90,13 @@
                             <ul class="sidebar-menu sm-active-button-bg">
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button"
-                                       href="#">
+                                       href="TakeExam.jsp">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i> Take an Exam
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button"
-                                       href="#">
+                                       href="QuizResult.jsp">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">poll</i> Exam Results
                                     </a>
                                 </li>

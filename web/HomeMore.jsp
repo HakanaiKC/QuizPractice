@@ -86,9 +86,9 @@
                             <div class="col-sm-4 card" >
                                 <div class="cardset" onclick="location.href = 'LearnServlet';" style="cursor:pointer;">
                                     <div class="card-title">${q.name}</div>
-                                    <div class="n-question">${q.questionNum} questions</div>
-                                    <div class="price">${q.price} $</div>
-                                    <div class="card-creator">${q.creator_name}</div>
+                                    <div class="media-body n-question">${q.questionNum} questions</div>
+                                    <div class="media-body price">${q.price} $</div>
+                                    <div class="media-body card-creator">${q.creator_name}</div>
                                 </div>
                             </div>
                         </c:forEach>

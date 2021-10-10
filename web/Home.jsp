@@ -60,7 +60,7 @@
                         <div class="row cardholder">
 
                             <div class="col-4">
-                                <div class="itemname">Recent </div>
+                                <div class="itemname h2">Recent </div>
                                 <!--<div class="debugg" >Because you learn from quizlearn-user </div>-->
                             </div>
                             <div class="col-4 item">
@@ -78,10 +78,10 @@
                             <c:forEach items="${quizList}" begin="0" end="5" var="q">
                                 <div class="col-sm-4 card" >
                                     <div class="cardset" onclick="location.href = 'LearnServlet';" style="cursor:pointer;">
-                                        <div class="card-title">${q.name}</div>
-                                        <div class="n-question">${q.questionNum} questions</div>
-        <!--                                <div class="price">${q.price} $</div>-->
-                                        <div class="card-creator">${q.creator_name}</div>
+                                        <div class="media-body card-title">${q.name}</div>
+                                        <div class="media-body n-question">${q.questionNum} questions</div>
+        <!--                                <div class="media-body price">${q.price} $</div>-->
+                                        <div class="media-body card-creator">${q.creator_name}</div>
                                     </div>
                                 </div>
                             </c:forEach>
@@ -95,11 +95,21 @@
                             <div class="itemname col-sm-4">
                                 <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
                                     <li class="nav-item dropdown">
-                                        <div class="nav-link dropdown-toggle itemname" data-toggle="dropdown">Recommend</div>
+<!--                                        <div class="nav-link dropdown-toggle itemname" data-toggle="dropdown">Recommend</div>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="#">Recommend</a>
-<!--                                            <a class="dropdown-item" href="#">Created</a>  -->
+                                            <a class="dropdown-item" href="#">Created</a>  
                                             <a class="dropdown-item" href="HomeMoreServlet?Action=All Quiz">All Quiz</a>
+                                        </div>-->
+                                        <div class="dropdown">
+                                            <a href="#"
+                                               class="dropdown-toggle text-black-70"
+                                               data-toggle="dropdown">Recommend</a>
+                                            <div class="dropdown-menu">
+                                                <a href="" class="dropdown-item text-black-70">Recommend</a>
+                                                <a href="" class="dropdown-item text-black-70">Created</a>
+                                                <a class="dropdown-item text-black-70" href="HomeMoreServlet?Action=All Quiz">All Quiz</a>
+                                            </div>
                                         </div>
                                     </li>
                                 </ul>
@@ -111,7 +121,7 @@
                         <div class="col-4" >
                             <div class="itemmore" >
                                 <c:if test="${randomQuiz.size() >=0}">
-                                    <span class="colorattr"onclick="location.href = 'HomeMoreServlet?Action=Recommend';" style="cursor:pointer;"><b>More ></b></span>
+                                    <span class="colorattr btn btn-white" onclick="location.href = 'HomeMoreServlet?Action=Recommend';"><b>More ></b></span>
                                 </c:if>
                             </div>
                         </div>
@@ -119,9 +129,9 @@
                             <div class="col-sm-4 card" >
                                 <div class="cardset" onclick="location.href = 'LearnServlet';" style="cursor:pointer;">
                                     <div class="card-title">${q.name} </div>
-                                    <div class="n-question">${q.questionNum} questions</div>
-                                    <div class="price">${q.price} $</div>
-                                    <div class="card-creator">${q.creator_name}</div>
+                                    <div class="media-body n-question">${q.questionNum} questions</div>
+                                    <div class="media-body price">${q.price} $</div>
+                                    <div class="media-body card-creator">${q.creator_name}</div>
                                 </div>
                             </div>
                         </c:forEach>
