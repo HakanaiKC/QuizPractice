@@ -64,8 +64,8 @@
             
             <div class="col-sm-2">
                 <!-- Search -->
-                <form class="search-form d-none d-md-flex">
-                    <input type="text" class="form-control" placeholder="Search in library">
+                <form class="search-form d-none d-md-flex" action="LibraryServlet?Action=${Action}" method="post">
+                    <input type="text" name="SearchQuiz" value="${SearchQuizLB}" class="form-control" placeholder="Search in library">
                     <button class="btn" type="button"><i
                             class="material-icons font-size-24pt">search</i></button>
                 </form>

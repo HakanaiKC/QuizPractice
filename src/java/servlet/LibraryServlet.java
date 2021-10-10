@@ -78,9 +78,9 @@ public class LibraryServlet extends HttpServlet {
 //            out.println(user);
 //            out.println("Recent");
         } else {
-          
-        List<Quiz> quiz = qDAO.getQuizByCreatorID(String.valueOf(user.getUser_id()));
-        request.setAttribute("quizList", quiz);
+
+            List<Quiz> quiz = qDAO.getQuizByCreatorID(String.valueOf(user.getUser_id()));
+            request.setAttribute("quizList", quiz);
 //            out.print("Created");
         }
         request.setAttribute("Action", action);
@@ -99,7 +99,29 @@ public class LibraryServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //  processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+         HttpSession session = request.getSession();
+        Users user = (Users) session.getAttribute("userSeisson");
+        String action = request.getParameter("Action");
+        String search = request.getParameter("SearchQuiz");
+        QuizDAO qDAO = new QuizDAO();
+        Quiz q = new Quiz();
+         if (action.equals("Recent")) {
+            List<Quiz> quiz = qDAO.getRecentQuizByName(user.getUser_id(),search);
+            request.setAttribute("quizList", quiz);
+//            out.println(user);
+//            out.println("Recent");
+        } else {
+
+            List<Quiz> quiz = qDAO.searchQuizByCreatorIDandQuizName(String.valueOf(user.getUser_id()),search);
+            request.setAttribute("quizList", quiz);
+//            out.print("Created");
+        }
+        request.setAttribute("SearchQuizLB", search);
+        request.setAttribute("Action", action);
+        request.getRequestDispatcher("Library.jsp").forward(request, response);
     }
 
     /**
