@@ -47,9 +47,9 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="Home">Home</a>
                                         <a class="dropdown-item" href="LibraryServlet?Action=Recent">My Quiz</a>
-                                        <a class="dropdown-item" href="#">Take a Exam</a>
+                                        <a class="dropdown-item" href="TakeExam.jsp">Take a Exam</a>
                                         <a class="dropdown-item" href="#">Exam Results</a>               
-                                        <a class="dropdown-item" href="#">Payment Method</a>
+                                        <a class="dropdown-item" href="Payment.jsp">Payment Method</a>
                                     </div>
                                 </li>
                             </c:if>
