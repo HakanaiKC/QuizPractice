@@ -111,7 +111,35 @@ public class QuizDAO extends DBContext {
         }
         return list;
     }
-
+  public List<Quiz> searchByName(String search) {
+        List<Quiz> list = new ArrayList<>();
+        QuizDAO dao = new QuizDAO();
+        try {
+            String query = " select * from quiz where [name] like ? ";// lay quiz_id, 
+            PreparedStatement pd = connection.prepareStatement(query);
+            pd.setString(1, "%" + search + "%");
+            ResultSet rs = pd.executeQuery();
+            while (rs.next()) {
+                Quiz q = new Quiz();
+                int quiz_id = rs.getInt("quiz_id");
+                int creator_id = rs.getInt("creator_id");
+                String quiz_name = rs.getString("name");
+                double price = rs.getDouble("price");
+                Date date = rs.getDate("last_update");
+                q.setCreator_id(creator_id);
+                q.setQuiz_id(quiz_id);
+                q.setQuestionNum(dao.countQuestion(quiz_id));
+                q.setCreator_name(dao.getCreatorName(creator_id));
+                q.setName(quiz_name);
+                q.setPrice(price);
+                q.setLast_Update(date);
+                list.add(q);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
     public int countQuestion(int quizID) {
 //        List<Quiz> list = new ArrayList<>();
         try {
@@ -216,7 +244,10 @@ public class QuizDAO extends DBContext {
 
     public static void main(String[] args) {
         QuizDAO q = new QuizDAO();
-        System.out.println(q.getRandomQuiz(15));
-
+//        System.out.println(q.getRandomQuiz(15));
+         List<Quiz> list2 = q.searchByName("toán");
+        for (Quiz o : list2) {
+            System.out.println(o);
+        }
     }
 }
