@@ -36,6 +36,7 @@
                             <button class="btn" type="button"><i
                                     class="material-icons font-size-24pt">search</i></button>
                         </form>
+                            <div name="SearchQuiz" value="${SearchQuiz}" ></div>
                         <!-- // END Search -->
                         <div style="padding-left: 10px;"><a class="d-none d-lg-flex btn btn-info" href="CreateQuiz.jsp" role="button">Create</a></div>                        
                         <div class="flex"></div>

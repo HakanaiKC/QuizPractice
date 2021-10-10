@@ -61,6 +61,7 @@
                     <div class="row cardholder">
 
                         <div class="col-4">
+                            <c:if test="${Action != null}">
                             <div>
                                 <div class="itemname col-sm-4">
                                     <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
@@ -74,7 +75,8 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> 
+                            </c:if>     
                         </div>
                         <div class="col-4 item">
                             <div></div>
@@ -82,7 +84,7 @@
                         <div class="col-4" >
 
                         </div>
-                        <c:forEach items="${quizList}" var="q">
+                        <c:forEach items="${quizList}" var="q" >
                             <div class="col-sm-4 card" >
                                 <div class="cardset" onclick="location.href = 'LearnServlet';" style="cursor:pointer;">
                                     <div class="card-title">${q.name}</div>
@@ -94,43 +96,83 @@
                         </c:forEach>
                     </div>
                 </div>
-                                            <c:if test="${quizList.size() >=9}">               <!-- Pagination -->
-                        <ul class="pagination justify-content-center pagination-sm">
-                            <li class="page-item disabled">
-                                <a class="page-link"
-                                   href="#"
-                                   aria-label="Previous">
-                                    <span aria-hidden="true"
-                                          class="material-icons">chevron_left</span>
-                                    <span>Prev</span>
-                                </a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link"
-                                   href="#"
-                                   aria-label="1">
-                                    <span>1</span>
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link"
-                                   href="#"
-                                   aria-label="1">
-                                    <span>2</span>
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link"
-                                   href="#"
-                                   aria-label="Next">
-                                    <span>Next</span>
-                                    <span aria-hidden="true"
-                                          class="material-icons">chevron_right</span>
-                                </a>
-                            </li>
-                        </ul>
-                        </c:if>      
-                                            <br/>
+                <c:if test="${num >=2}">               <!-- Pagination -->
+                    <c:if test="${Action != null}">
+                    <ul class="pagination justify-content-center pagination-sm">
+<!--                        <li class="page-item disabled">-->
+                            <li class="${page-1>0 ?"page-item":"page-item disabled"}">
+                            <a class="page-link"
+                               href="HomeMoreServlet?Action=${Action}&page=${page-1}"
+                               aria-label="Previous">
+                                <span aria-hidden="true"
+                                      class="material-icons">chevron_left</span>
+                                <span>Prev</span>
+                            </a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link"
+                               href="HomeMoreServlet?Action=${Action}&page=${page}"
+                               aria-label="1">
+                                <span>${page}</span>
+                            </a>
+                        </li>
+                        <li class="${page+1<=num ?"page-item":"page-item disabled"}">
+                            <a class="page-link"
+                                href="HomeMoreServlet?Action=${Action}&page=${page+1}"
+                               aria-label="1">
+                                <span>${page+1}</span>
+                            </a>
+                        </li>
+                        <li class="${page+1<=num ?"page-item":"page-item disabled"}">
+                            <a class="page-link"
+                               href="HomeMoreServlet?Action=${Action}&page=${page+1}"
+                               aria-label="Next">
+                                <span>Next</span>
+                                <span aria-hidden="true"
+                                      class="material-icons">chevron_right</span>
+                            </a>
+                        </li>
+                    </ul>
+                               </c:if>
+                    <c:if test="${Action == null}">
+                    <ul class="pagination justify-content-center pagination-sm">
+<!--                        <li class="page-item disabled">-->
+                            <li class="${page-1>0 ?"page-item":"page-item disabled"}">
+                            <a class="page-link"
+                               href="HomeSearchServlet?SearchQuiz=${SearchQuiz}&page=${page-1}"
+                               aria-label="Previous">
+                                <span aria-hidden="true"
+                                      class="material-icons">chevron_left</span>
+                                <span>Prev</span>
+                            </a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link"
+                               href="HomeSearchServlet?SearchQuiz=${SearchQuiz}&page=${page}"
+                               aria-label="1">
+                                <span>${page}</span>
+                            </a>
+                        </li>
+                        <li class="${page+1<=num ?"page-item":"page-item disabled"}">
+                            <a class="page-link"
+                                href="HomeSearchServlet?SearchQuiz=${SearchQuiz}&page=${page+1}"
+                               aria-label="1">
+                                <span>${page+1}</span>
+                            </a>
+                        </li>
+                        <li class="${page+1<=num ?"page-item":"page-item disabled"}">
+                            <a class="page-link"
+                               href="HomeSearchServlet?SearchQuiz=${SearchQuiz}&page=${page+1}"
+                               aria-label="Next">
+                                <span>Next</span>
+                                <span aria-hidden="true"
+                                      class="material-icons">chevron_right</span>
+                            </a>
+                        </li>
+                    </ul>
+                               </c:if>
+                </c:if>      
+                <br/>
             </div>
         </div>
 
