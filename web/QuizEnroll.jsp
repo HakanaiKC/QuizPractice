@@ -51,7 +51,7 @@
                         SAS Programmer Professional
                     </div>
                     <div>
-                        <span class="rate-total" data-rating="2.5"></span>
+                        <span class="rate-total" data-rating="4.8"></span>
                         <div class="text-light">1,993 ratings</div>
                     </div>                    
                     <div class="creator-div">

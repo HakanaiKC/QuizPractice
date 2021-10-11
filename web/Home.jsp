@@ -60,7 +60,7 @@
                         <div class="row cardholder">
 
                             <div class="col-4">
-                                <div class="itemname h2">Recent </div>
+                                <div class="itemname">Recent </div>
                                 <!--<div class="debugg" >Because you learn from quizlearn-user </div>-->
                             </div>
                             <div class="col-4 item">
