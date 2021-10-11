@@ -90,7 +90,7 @@
                                 <p class="text-muted">Submitted on 2nd Feb 2016</p>
                             </div>  
                             <div class="media-right col-md-2" style="padding-left: 40px;">
-                                <a href="TakeExam.jsp"
+                                <a href="ReviewQuiz.jsp"
                                    class="btn btn-primary">Review <i class="fas fa-eye btn__icon--right"></i></a>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                                 <p class="text-muted">Submitted on 2nd Jan 2017</p>
                             </div>  
                             <div class="media-right col-md-2" style="padding-left: 40px;">
-                                <a href="#"
+                                <a href="ReviewQuiz.jsp"
                                    class="btn btn-primary">Review <i class="fas fa-eye btn__icon--right"></i></a>
                             </div>
                         </div>
