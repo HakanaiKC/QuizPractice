@@ -15,7 +15,7 @@
         <!-- Custom Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500%7CRoboto:400,500&display=swap"
               rel="stylesheet">
-        
+
         <!-- Perfect Scrollbar -->
         <link type="text/css"
               href="assets/vendor/perfect-scrollbar.css"
@@ -98,9 +98,6 @@
                 </div>
             </div>
             <!--End Rate-->
-
-
-
 
             <div class="row border col-sm-12 cardholder1">
 
@@ -233,5 +230,18 @@
                 x.style.display = "none";
             }
         }
+        $(".my-rating-9").starRating({
+            disableAfterRate: false,
+            totalStars: 5,
+            useFullStars: true,
+            activeColor: 'rgb(242, 208, 73)',
+            useGradient: false,
+            onHover: function (currentIndex, currentRating, $el) {
+                $('.live-rating').text(currentIndex);
+            },
+            onLeave: function (currentIndex, currentRating, $el) {
+                $('.live-rating').text(currentRating);
+            }
+        });
     </script>
 </html>
