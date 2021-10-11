@@ -155,13 +155,5 @@
 
         <!-- Highlight.js -->
         <script src="assets/js/hljs.js"></script>
-
-        <!-- Required by countdown -->
-        <script src="assets/vendor/moment.min.js"></script>
-        <!-- Easy Countdown -->
-        <script src="assets/vendor/jquery.countdown.min.js"></script>
-
-        <!-- Init -->
-        <script src="assets/js/countdown.js"></script>
     </body>
 </html>
