@@ -90,7 +90,13 @@
                             <ul class="sidebar-menu sm-active-button-bg">
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button"
-                                       href="TakeExam.jsp">
+                                       href="CreateQuiz.jsp">
+                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">edit</i> Create Quiz
+                                    </a>
+                                </li>
+                                <li class="sidebar-menu-item">
+                                    <a class="sidebar-menu-button"
+                                       href="QuizResult.jsp">
                                         <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i> Take an Exam
                                     </a>
                                 </li>

@@ -104,7 +104,7 @@
                 <!--Left box-->
                 <div class="col-sm-1 menu">
                     <div class="cardset">
-                        <div class="learn"><a href="#">Learn</a></div>
+                        <div class="learn"><a href="Learn.jsp">Learn</a></div>
                         <div class="exam"><a href="QuizResult.jsp">Exam</a></div>
                         <div class="review"><a href="QuizResult.jsp">Review</a></div>
                     </div>

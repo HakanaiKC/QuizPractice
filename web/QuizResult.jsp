@@ -138,7 +138,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <button type="button" class="btn btn-primary">Yes</button>
+                        <button onclick="location.href='TakeExam.jsp'" type="submit" class="btn btn-primary">Yes</button>
                     </div>
                 </div>
             </div>

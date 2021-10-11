@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="assets/css/star-rating-svg.css">
         <script src="assets/vendor/jquery.star-rating-svg.js"></script>
         <link type="text/css"
-              href="assets/css/learn.css"
+              href="assets/css/LearnQuiz.css"
               rel="stylesheet">
         <!-- Custom Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500%7CRoboto:400,500&display=swap"

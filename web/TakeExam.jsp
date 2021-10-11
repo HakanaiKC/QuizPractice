@@ -53,7 +53,7 @@
                 <div class="sk-chase-dot"></div>
             </div>
         </div>
-        
+
         <div class="mdk-header-layout__content">
 
             <div data-push
@@ -67,37 +67,9 @@
                             <li class="breadcrumb-item active">Exam</li>
                         </ol>
 
-                        <!--Question info-->
-                        <div class="card-group">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <h4 class="mb-0"><strong>25</strong></h4>
-                                    <small class="text-muted-light">TOTAL</small>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <h4 class="text-success mb-0"><strong>3</strong></h4>
-                                    <small class="text-muted-light">CORECT</small>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <h4 class="text-danger mb-0"><strong>5</strong></h4>
-                                    <small class="text-muted-light">WRONG</small>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <h4 class="text-primary mb-0"><strong>17</strong></h4>
-                                    <small class="text-muted-light">LEFT</small>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end Question info-->
-
                         <!--Question card-->
                         <div class="card">
+                            <!--Question Title-->
                             <div class="card-header">
                                 <div class="media align-items-center">
                                     <div class="media-left">
@@ -105,11 +77,13 @@
                                     </div>
                                     <div class="media-body">
                                         <h4 class="card-title">
-                                            Github command to deploy comits?
+                                            Đá trong tiếng Anh nghĩa là gì?
                                         </h4>
                                     </div>
                                 </div>
                             </div>
+
+                            <!--Question Multiple Choice-->
                             <div class="card-body">
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
@@ -117,7 +91,7 @@
                                                type="checkbox"
                                                class="custom-control-input">
                                         <label for="customCheck01"
-                                               class="custom-control-label">git push</label>
+                                               class="custom-control-label">rock</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -126,7 +100,7 @@
                                                type="checkbox"
                                                class="custom-control-input">
                                         <label for="customCheck02"
-                                               class="custom-control-label">git commit -m "message"</label>
+                                               class="custom-control-label">kick</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -135,19 +109,82 @@
                                                type="checkbox"
                                                class="custom-control-input">
                                         <label for="customCheck03"
-                                               class="custom-control-label">git pull</label>
+                                               class="custom-control-label">ice</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input id="customCheck04"
+                                               type="checkbox"
+                                               class="custom-control-input">
+                                        <label for="customCheck04"
+                                               class="custom-control-label">stone</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr style="border-width: 1em; border-color: whitesmoke; ">
+
+                            <!--End Question-->
+                            <div class="card-header">
+                                <div class="media align-items-center">
+                                    <div class="media-left">
+                                        <h4 class="mb-0"><strong>#10</strong></h4>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="card-title">
+                                            Tính tổng hệ số tối giản của phương trình sau: <p>Al4C3 + FeS2 + HNO3 --> Al2(SO4)3 + Fe2(SO4)3 + NO + NO2 + CO2 + H2O<p> 
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Question Multiple Choice-->
+                            <div class="card-body form-group">
+                                <div class="custom-controls-stacked">
+                                    <div class="form-group">
+                                        <div class="custom-control custom-radio">
+                                            <input id="radioStacked1"
+                                                   name="radio-stacked"
+                                                   type="radio"
+                                                   class="custom-control-input">
+                                            <label for="radioStacked1"
+                                                   class="custom-control-label">204</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-radio">
+                                            <input id="radioStacked2"
+                                                   name="radio-stacked"
+                                                   type="radio"
+                                                   class="custom-control-input">
+                                            <label for="radioStacked2"
+                                                   class="custom-control-label">205</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-radio">
+                                            <input id="radioStacked3"
+                                                   name="radio-stacked"
+                                                   type="radio"
+                                                   class="custom-control-input">
+                                            <label for="radioStacked3"
+                                                   class="custom-control-label">206</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer">
                                 <a href="#"
-                                   class="btn btn-white">Skip</a>
+                                   class="btn btn-info"><i class="material-icons btn__icon--right">chevron_left</i>Previous</a>
                                 <a href="#"
-                                   class="btn btn-success float-right">Submit <i class="material-icons btn__icon--right">send</i></a>
+                                   class="btn btn-info float-right">Next <i class="material-icons btn__icon--right">chevron_right</i></a>
                             </div>
                         </div>
                         <!--End Question card-->
                     </div>
+                    <a href="#"
+                       class="btn btn-success">Submit <i class="material-icons btn__icon--right">send</i></a>
                 </div>
 
                 <!--Questions list-->
@@ -161,12 +198,10 @@
                             <div class="sidebar-p-y" style="padding-top: 5em;">
                                 <div class="sidebar-heading">Time left</div>
                                 <div class="countdown sidebar-p-x"
-                                     data-value="4:30:30" <!--hour:minute:second-->
-                                     data-unit="hour"></div>
+                                     data-value="13:77:69"></div> <!--hour:minute:second-->                                      
                                 <!--End Time-->   
 
                                 <!--Question-->
-                                <div class="sidebar-heading">Pending</div>
                                 <ul class="list-group list-group-fit">
                                     <li class="list-group-item active">
                                         <a href="#">
@@ -175,7 +210,31 @@
                                                     <span class="btn btn-white btn-circle">#9</span>
                                                 </span>
                                                 <span class="media-body">
-                                                    Github command to deploy comits?
+                                                    Đá trong tiếng Anh là gì?
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#">
+                                            <span class="media align-items-center">
+                                                <span class="media-left">
+                                                    <span class="btn btn-white btn-circle">#10</span>
+                                                </span>
+                                                <span class="media-body">
+                                                    Tính tổng hệ số tối giản của phương trình sau:
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#">
+                                            <span class="media align-items-center">
+                                                <span class="media-left">
+                                                    <span class="btn btn-white btn-circle">#11</span>
+                                                </span>
+                                                <span class="media-body">
+                                                    Ai sẽ làm thủ tướng vào năm 2030?
                                                 </span>
                                             </span>
                                         </a>
