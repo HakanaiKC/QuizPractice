@@ -99,7 +99,7 @@ a {
 }
 .menu {
     margin-top: 1rem;
-    height: 30rem;
+    height: auto;
     /*border: 1px dotted blueviolet;*/
     margin-right: 15px;
 }

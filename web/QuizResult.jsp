@@ -54,6 +54,27 @@
             </div>
         </div>
 
+        <div class="modal fade" id="examModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Rate the quiz</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <span class="my-rating-2"></span>
+                        <span class="live-rating"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Rate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="mdk-header-layout__content d-flex flex-column">
             <div class="page ">
 
@@ -62,7 +83,7 @@
                         <li class="breadcrumb-item"><a href="Home">Home</a></li>
                         <li class="breadcrumb-item active">Quiz Results</li>
                     </ol>
-                    
+
                     <!--Title-->
                     <div class="media mb-headings align-items-center">
                         <div class="media-body">
@@ -70,7 +91,7 @@
                             <p class="text-muted">Submitted on 2nd Feb 2016</p>
                         </div>
                     </div>
-                    
+
                     <!--Result and Restart-->
                     <div class="card">
                         <div class="card-header">
@@ -86,7 +107,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!--Question-->
                     <div class="card">
                         <div class="card-header">

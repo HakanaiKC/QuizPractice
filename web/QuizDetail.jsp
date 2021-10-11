@@ -3,14 +3,14 @@
       dir="ltr">
     <head>
         <meta charset="UTF-8" />
-        <title>Learn</title>        
+        <title>Quiz Practice</title>        
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
         <link rel="stylesheet" type="text/css" href="assets/css/star-rating-svg.css">
         <script src="assets/vendor/jquery.star-rating-svg.js"></script>
         <link type="text/css"
-              href="assets/css/learn.css"
+              href="assets/css/QuizDetail.css"
               rel="stylesheet">
         <!-- Custom Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500%7CRoboto:400,500&display=swap"
@@ -66,7 +66,7 @@
 
                 <!--Rate-->
                 <div class="col-sm-6">
-                    <div class="my-rating-4" data-rating="2.5"> 
+                    <span class="rate-total" data-rating="4.8"></span>
                         <!--Change average rating-->
 
                         <!--User rate-->    
@@ -83,7 +83,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <span class="my-rating-9"></span>
+                                        <span class="my-rating-2"></span>
                                         <span class="live-rating"></span>
                                     </div>
                                     <div class="modal-footer">
@@ -104,9 +104,9 @@
                 <!--Left box-->
                 <div class="col-sm-1 menu">
                     <div class="cardset">
-                        <div class="learn"><a href="access_success.html">Learn</a></div>
-                        <div class="exam"><a href="access_success.html">Exam</a></div>
-                        <div class="review"><a href="access_success.html">Review</a></div>
+                        <div class="learn"><a href="#">Learn</a></div>
+                        <div class="exam"><a href="QuizResult.jsp">Exam</a></div>
+                        <div class="review"><a href="QuizResult.jsp">Review</a></div>
                     </div>
                 </div>
                 <!--Left box-->
@@ -125,9 +125,11 @@
                     </div>
 
                     <div class="buttonn">
-                        <button type="button">Previous</button>
+                        <button type="button" style="border: none; background-color: white;"><span aria-hidden="true"
+                                      class="material-icons">chevron_left</span></button>
                         <span id="positionIndex">0/0</span>
-                        <button type="button">Next</button>
+                        <button type="button" style="border: none; background-color: white;"><span aria-hidden="true"
+                                      class="material-icons">chevron_right</span></button>
                     </div>
                 </div>
                 <div class="col-sm-1"></div>
@@ -230,7 +232,7 @@
                 x.style.display = "none";
             }
         }
-        $(".my-rating-9").starRating({
+        $(".my-rating-2").starRating({
             disableAfterRate: false,
             totalStars: 5,
             useFullStars: true,
@@ -242,6 +244,15 @@
             onLeave: function (currentIndex, currentRating, $el) {
                 $('.live-rating').text(currentRating);
             }
+        });
+        $(function () {
+            $(".rate-total").starRating({
+                totalStars: 5,
+                starSize: 20,
+                activeColor: 'rgb(242, 208, 73)',
+                useGradient: false,
+                readOnly: true
+            });
         });
     </script>
 </html>
