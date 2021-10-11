@@ -42,6 +42,18 @@
               rel="stylesheet">
     </head>
     <body>
+        <div class="preloader">
+            <div class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+        </div>
+        
+        
         <div class="container_body row">
             <div class="col-12 top-panel">
                 <div class="homeLogo">learn</div>

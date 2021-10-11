@@ -68,6 +68,9 @@
                         <div class="media-body">
                             <h1 class="h2">Your attempts</h1>
                         </div>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ExamModal">
+                            Attempt your exam
+                        </button>
                     </div>
 
                     <!--Result-->
@@ -109,9 +112,7 @@
                     </div>
                     <!--End Result-->
                 </div>
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ExamModal">
-                    Attempt your exam
-                </button>
+
             </div>     
         </div>
 
@@ -127,8 +128,8 @@
                     </div>
                     <div class="modal-body row">
                         <div class="md-form col-md-6">
-                        <h4>Set Question Limit</h4>
-                        <input class="form-control" type="number" placeholder="Number of Questions" value="#">
+                            <h4>Set Question Limit</h4>
+                            <input class="form-control" type="number" placeholder="Number of Questions" value="#">
                         </div> 
                         <br>                        
                         <div class="md-form col-md-6">
@@ -138,7 +139,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <button onclick="location.href='TakeExam.jsp'" type="submit" class="btn btn-primary">Yes</button>
+                        <button onclick="location.href = 'TakeExam.jsp'" type="submit" class="btn btn-primary">Yes</button>
                     </div>
                 </div>
             </div>

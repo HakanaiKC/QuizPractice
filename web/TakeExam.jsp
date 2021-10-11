@@ -11,7 +11,11 @@
     <head>
         <meta charset="UTF-8" />
         <title>Exam</title>
-
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+        </style>
         <!-- Custom Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500%7CRoboto:400,500&display=swap"
               rel="stylesheet">
@@ -122,12 +126,12 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <!--End Question-->
                             <hr style="border-width: 1em; border-color: whitesmoke; ">
 
-                            <!--End Question-->
+                            <!--2nd Question-->                            
                             <div class="card-header">
-                                <div class="media align-items-center">
+                                <div class="media align-items-center" id="multique">
                                     <div class="media-left">
                                         <h4 class="mb-0"><strong>#10</strong></h4>
                                     </div>
@@ -174,17 +178,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <a href="#"
-                                   class="btn btn-info"><i class="material-icons btn__icon--right">chevron_left</i>Previous</a>
-                                <a href="#"
-                                   class="btn btn-info float-right">Next <i class="material-icons btn__icon--right">chevron_right</i></a>
-                            </div>
                         </div>
                         <!--End Question card-->
                     </div>
-                    <a href="#"
-                       class="btn btn-success">Submit <i class="material-icons btn__icon--right">send</i></a>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ExamSubmit" style="float: right; margin-right: 1.5em;">
+                        Submit<i class="material-icons btn__icon--right">send</i>
+                    </button>
                 </div>
 
                 <!--Questions list-->
@@ -216,25 +215,13 @@
                                         </a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href="#">
+                                        <a onclick="Scroll()" style="cursor: pointer;">
                                             <span class="media align-items-center">
                                                 <span class="media-left">
                                                     <span class="btn btn-white btn-circle">#10</span>
                                                 </span>
                                                 <span class="media-body">
                                                     Tính tổng hệ số tối giản của phương trình sau:
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#">
-                                            <span class="media align-items-center">
-                                                <span class="media-left">
-                                                    <span class="btn btn-white btn-circle">#11</span>
-                                                </span>
-                                                <span class="media-body">
-                                                    Ai sẽ làm thủ tướng vào năm 2030?
                                                 </span>
                                             </span>
                                         </a>
@@ -246,9 +233,35 @@
                     </div>
                 </div>
                 <!--End Questions list-->
+            </div>           
+        </div>
+        <!--Submit Pop-up-->
+        <div class="modal fade" id="ExamSubmit" tabindex="-1" role="dialog" aria-labelledby="SubmitModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: orange;">
+                        <h3 class="modal-title" id="SubmitModalLabel">Do you want to submit your work?</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body row">
+                        <strong>Remember to check all your work before submitting</strong>                
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <button onclick="location.href = 'QuizResult.jsp'" type="submit" class="btn btn-warning">Yes</button>
+                    </div>
+                </div>
             </div>
         </div>
         <%@include file="Boostrap_Header.jsp" %>
+        <script>
+            function Scroll() {
+                var elmnt = document.getElementById("multique")[0];
+                elmnt.scrollIntoView();
+            }
+        </script>
         <!-- jQuery -->
         <script src="assets/vendor/jquery.min.js"></script>
 
