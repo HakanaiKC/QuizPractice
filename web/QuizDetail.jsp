@@ -212,12 +212,12 @@
         <script src="assets/vendor/jquery.star-rating-svg_1.js"></script>
     </body>
     <script>
-                    const cards = document.querySelectorAll(".cards__single");
+        const cards = document.querySelectorAll(".cards__single");
 
-                    function flipCard() {
-                        this.classList.toggle("flip");
-                    }
-                    cards.forEach((card) => card.addEventListener("click", flipCard));
+        function flipCard() {
+            this.classList.toggle("flip");
+        }
+        cards.forEach((card) => card.addEventListener("click", flipCard));
     </script>
 
     <script>

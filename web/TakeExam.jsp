@@ -161,7 +161,7 @@
                             <div class="sidebar-p-y" style="padding-top: 5em;">
                                 <div class="sidebar-heading">Time left</div>
                                 <div class="countdown sidebar-p-x"
-                                     data-value="4"
+                                     data-value="4:30:30" <!--hour:minute:second-->
                                      data-unit="hour"></div>
                                 <!--End Time-->   
 
