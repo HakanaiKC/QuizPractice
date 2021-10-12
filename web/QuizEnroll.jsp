@@ -48,43 +48,42 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
                     <div class="quiz-title-div">
-                        SAS Programmer Professional
+                         ${quiz.name}
                     </div>
                     <div>
                         <span class="rate-total" data-rating="4.8"></span>
                         <div class="text-light">1,993 ratings</div>
                     </div>                    
                     <div class="creator-div">
-                        <div class="avatar"><a href="#" role="button"><img
-                                    src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="rounded-circle"
-                                    width="48"></a>
+                        <div class="avatar"><a href="ProfileServlet?id=${creator.user_id}" role="button">
+                                <c:if test = "${creator.avatar == null}">
+                                <img src="assets/images/unnamed.jpg" alt="Avatar" class="rounded-circle"
+                                    width="48">
+                                </c:if>
+                                <c:if test = "${creator.avatar != null}">
+                                <img src="uploads/${creator.avatar}" alt="Avatar" class="rounded-circle"
+                                    width="48">
+                                </c:if>
+                            </a>
                         </div>
-                        <div class="creator-name">Arthas Menethil</div>
+                        <div class="creator-name">${quiz.creator_name}</div>
                     </div>
-                    <div class="button-enroll-div">
-                        <input type="submit" value="Enroll" name="enroll-button" class="button-enroll" style="width: 150px;"/>
+                     <div class="button-enroll-div">
+                        <c:if test="${quiz.price == 0}">
+                        <input type="submit" value="Enroll for free" name="enroll-button" class="button-enroll" style="width: 150px;"/>
+                        </c:if>
+                        <c:if test="${quiz.price != 0}">
+                        <input type="submit" value="Enroll for ${quiz.price}$" name="enroll-button" class="button-enroll" style="width: 150px;"/>
+                        </c:if>
                     </div>
-                    <div class="nums-of-enroll"><p>1223 already enrolled</p></div>
+                    <div class="nums-of-enroll"><p>${numOfEroll} already enrolled</p></div>
 
                     <!--<div class="col-sm-1"></div>-->
                 </div>
                 <div class="col-sm-6 description-div">
                     <h2>Descriptions</h2>
                     <p>
-                        When you complete the SAS Base Programming courses, 
-                        you will have demonstrated skills in manipulating and transforming data, 
-                        SAS data sets, creating basic detail and summary reports using SAS
-                        procedures and identifying and correcting data, syntax and programming
-                        logic errors.  These skills prepare you for the SAS Base Programming 
-                        Specialist certification exam. 
-                    </p>
-                    <p>
-                        When you complete the SAS Base Programming courses, 
-                        you will have demonstrated skills in manipulating and transforming data, 
-                        SAS data sets, creating basic detail and summary reports using SAS
-                        procedures and identifying and correcting data, syntax and programming
-                        logic errors.  These skills prepare you for the SAS Base Programming 
-                        Specialist certification exam. 
+                        ${quiz.description}
                     </p>
                 </div>
             </div>
