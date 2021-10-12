@@ -46,6 +46,16 @@
                 }%>
         </c:if>
         <%@include file="Header_All.jsp" %>
+        <div class="preloader">
+            <div class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+        </div>
         <div class="row container_home">
             <div class="col-sm-2"></div>
             <!--Drop down-->

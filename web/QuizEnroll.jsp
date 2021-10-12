@@ -43,6 +43,16 @@
     </head>
     <body>
         <%@include file="Header_All.jsp" %>
+        <div class="preloader">
+            <div class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+        </div>
         <div class="container_body">
             <div class="row panel_top">
                 <div class="col-sm-1"></div>
