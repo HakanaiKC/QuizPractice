@@ -77,7 +77,7 @@
 
                             <c:forEach items="${quizList}" begin="0" end="5" var="q">
                                 <div class="col-sm-4 card" >
-                                    <div class="cardset" onclick="location.href = 'LearnServlet?quizid=${q.quiz_id}';" style="cursor:pointer;">
+                                    <div class="cardset" onclick="location.href = 'QuizDetailServlet?quizid=${q.quiz_id}';" style="cursor:pointer;">
                                         <div class="card-title">${q.name}</div>
                                         <div class="n-question">${q.questionNum} questions</div>
         <!--                                <div class="price">${q.price} $</div>-->
