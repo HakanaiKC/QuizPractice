@@ -5,8 +5,6 @@
  */
 package servlet;
 
-import dao.QuizDAO;
-import dao.UsersDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,15 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Quiz;
-import model.Users;
 
 /**
  *
  * @author Dell
  */
-@WebServlet(name = "QuizEnrollServlet", urlPatterns = {"/QuizEnrollServlet"})
-public class QuizEnrollServlet extends HttpServlet {
+@WebServlet(name = "QuizDetailServlet", urlPatterns = {"/QuizDetailServlet"})
+public class QuizDetailServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +37,10 @@ public class QuizEnrollServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet QuizEnrollServlet</title>");
+            out.println("<title>Servlet QuizDetailsServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet QuizEnrollServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet QuizDetailsServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,18 +58,8 @@ public class QuizEnrollServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // processRequest(request, response);
-        String quizId = request.getParameter("quizid");
-        QuizDAO dao = new QuizDAO();
-        UsersDAO udao = new UsersDAO();
-        Quiz quiz = dao.getQuizByID(quizId);
-        int numOfEroll = dao.countUserEnrollAQuiz(quizId);
-        Users creator = udao.getUserByID(String.valueOf(quiz.getCreator_id()));
-        request.setAttribute("quiz", quiz);
-        request.setAttribute("creator", creator);
-        request.setAttribute("numOfEroll", numOfEroll);
-        request.getRequestDispatcher("QuizEnroll.jsp").forward(request, response);
-        request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
+      //  processRequest(request, response);
+      request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
     }
 
     /**
