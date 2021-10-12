@@ -44,6 +44,10 @@
         <link type="text/css"
               href="assets/css/app.css"
               rel="stylesheet">
+
+        <!-- Sweet Alert -->
+        <link rel="stylesheet"
+              href="assets/css/sweetalert.css">
     </head>
     <body>
         <%@include file="Header_All.jsp" %>
@@ -240,17 +244,19 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header" style="background-color: orange;">
-                        <h3 class="modal-title" id="SubmitModalLabel">Do you want to submit your work?</h3>
+                        <h4 class="modal-title" id="SubmitModalLabel">Do you want to submit your work?</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body row">
-                        <strong>Remember to check all your work before submitting</strong>                
+                        <span class="media-body" style="font-size: 30px;">
+                            Remember to check all your work before submitting.
+                        </span>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <button onclick="location.href = 'QuizResult.jsp'" type="submit" class="btn btn-warning">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button onclick="location.href = 'QuizResult.jsp'" type="submit" class="btn btn-success">Yes</button>
                     </div>
                 </div>
             </div>
@@ -289,5 +295,12 @@
 
         <!-- Init -->
         <script src="assets/js/countdown.js"></script>
+
+        <!-- Global Settings -->
+        <script src="assets/js/settings.js"></script>
+
+        <!-- Sweet Alert -->
+        <script src="assets/vendor/sweetalert.min.js"></script>
+        <script src="assets/js/sweetalert.js"></script>
     </body>
 </html>

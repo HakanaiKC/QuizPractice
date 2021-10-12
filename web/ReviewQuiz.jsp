@@ -90,44 +90,103 @@
                                 <div class="media-left">
                                     <div class="text-muted-light">1.</div>
                                 </div>
-                                <div class="media-body">Tính tổng 2 số nguyên</div>
+                                <div class="media-body">Đá tảng tiếng Anh là gì</div>
                                 <div class="media-right"><span class="badge badge-success ">Correct</span></div>
                             </div>
+                            <!--Question Multiple Choice-->
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input id="customCheck01"
+                                               type="checkbox"
+                                               class="custom-control-input"
+                                               checked disabled>
+                                        <label for="customCheck01"
+                                               class="custom-control-label">rock</label>
+                                               <i class="fas fa-times" style="color: red;"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input id="customCheck02"
+                                               type="checkbox"
+                                               class="custom-control-input"
+                                               checked disabled>
+                                        <label for="customCheck02"
+                                               class="custom-control-label">kick</label>
+                                               <i class="fas fa-times" style="color: red;"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input id="customCheck03"
+                                               type="checkbox"
+                                               class="custom-control-input"
+                                               disabled>
+                                        <label for="customCheck03"
+                                               class="custom-control-label">ice</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input id="customCheck04"
+                                               type="checkbox"
+                                               class="custom-control-input"
+                                               disabled>
+                                        <label for="customCheck04"
+                                               class="custom-control-label">stone</label>
+                                               <i class="fas fa-check" style="color: green;"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
+
+                        <!--Wrong Answer-->
                         <li class="list-group-item">
                             <div class="media">
                                 <div class="media-left">
                                     <div class="text-muted-light">2.</div>
                                 </div>
-                                <div class="media-body">Tính tổ hợp</div>
-                                <div class="media-right"><span class="badge badge-success ">Correct</span></div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="media">
-                                <div class="media-left">
-                                    <div class="text-muted-light">3.</div>
-                                </div>
-                                <div class="media-body">Tính tổng, hiệu, tích, thương của 2 số nguyên</div>
-                                <div class="media-right"><span class="badge badge-success ">Correct</span></div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="media">
-                                <div class="media-left">
-                                    <div class="text-muted-light">4.</div>
-                                </div>
-                                <div class="media-body">Tìm ước chung lớn nhất</div>
+                                <div class="media-body">Bạn A có một quả táo, bạn B có 3 quả táo. Tính tổng thời gian bạn C ăn hết một cái bánh?</div>
                                 <div class="media-right"><span class="badge badge-danger ">Wrong</span></div>
                             </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="media">
-                                <div class="media-left">
-                                    <div class="text-muted-light">5.</div>
+                            <!--Question-->
+                            <div class="card-body form-group">
+                                <div class="custom-controls-stacked">
+                                    <div class="form-group">
+                                        <div class="custom-control custom-radio">
+                                            <input id="radioStacked1"
+                                                   name="radio-stacked"
+                                                   type="radio"
+                                                   class="custom-control-input"
+                                                   checked disabled>
+                                            <label for="radioStacked1"
+                                                   class="custom-control-label">204</label>
+                                            <i class="fas fa-times" style="color: red;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-radio">
+                                            <input id="radioStacked2"
+                                                   name="radio-stacked"
+                                                   type="hidden"
+                                                   class="custom-control-input">
+                                            <label for="radioStacked2"
+                                                   class="custom-control-label">205</label>
+                                            <i class="fas fa-check" style="color: green;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-radio">
+                                            <input id="radioStacked3"
+                                                   name="radio-stacked"
+                                                   type="hidden"
+                                                   class="custom-control-input">
+                                            <label for="radioStacked3"
+                                                   class="custom-control-label">206</label>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="media-body">Máy tính bỏ túi đơn giản</div>
-                                <div class="media-right"><span class="badge badge-success ">Correct</span></div>
                             </div>
                         </li>
                     </ul>
@@ -136,6 +195,9 @@
         </div>
         <%@include file="Footer.jsp" %>
         <%@include file="Boostrap_Header.jsp"%>       
+        <script>
+            $(':radio:not(:checked)').attr('disabled', true);
+        </script>
         <!-- jQuery -->
         <script src="assets/vendor/jquery.min.js"></script>
 
