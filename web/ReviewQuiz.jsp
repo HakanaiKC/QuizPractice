@@ -40,6 +40,10 @@
         <link type="text/css"
               href="assets/css/app.css"
               rel="stylesheet">
+
+        <!-- Sweet Alert -->
+        <link rel="stylesheet"
+              href="assets/css/sweetalert.css">
     </head>
     <body>
         <%@include file="Header_All.jsp" %>
@@ -90,7 +94,7 @@
                                 <div class="media-left">
                                     <div class="text-muted-light">1.</div>
                                 </div>
-                                <div class="media-body">Đá tảng tiếng Anh là gì</div>
+                                <div class="media-body">Đá trong tiếng Anh là gì</div>
                                 <div class="media-right"><span class="badge badge-success ">Correct</span></div>
                             </div>
                             <!--Question Multiple Choice-->
@@ -103,7 +107,7 @@
                                                checked disabled>
                                         <label for="customCheck01"
                                                class="custom-control-label">rock</label>
-                                               <i class="fas fa-times" style="color: red;"></i>
+                                        <i class="fas fa-check" style="color: green;"></i>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -114,7 +118,7 @@
                                                checked disabled>
                                         <label for="customCheck02"
                                                class="custom-control-label">kick</label>
-                                               <i class="fas fa-times" style="color: red;"></i>
+                                        <i class="fas fa-check" style="color: green;"></i>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -122,9 +126,10 @@
                                         <input id="customCheck03"
                                                type="checkbox"
                                                class="custom-control-input"
-                                               disabled>
+                                               checked disabled>
                                         <label for="customCheck03"
                                                class="custom-control-label">ice</label>
+                                        <i class="fas fa-check" style="color: green;"></i>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -132,12 +137,19 @@
                                         <input id="customCheck04"
                                                type="checkbox"
                                                class="custom-control-input"
-                                               disabled>
+                                               checked disabled>
                                         <label for="customCheck04"
                                                class="custom-control-label">stone</label>
-                                               <i class="fas fa-check" style="color: green;"></i>
+                                        <i class="fas fa-check" style="color: green;"></i>
                                     </div>
                                 </div>
+                                <button 
+                                    class="btn btn-info" 
+                                    data-toggle="swal" 
+                                    data-swal-title="A little help for you"
+                                    data-swal-text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam tenetur unde odio nam reiciendis cum maiores dicta vel officiis aliquid nesciunt enim incidunt ab qui, at quis beatae illum, error.">
+                                    Instruction
+                                </button>
                             </div>
                         </li>
 
@@ -187,7 +199,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <button 
+                                    class="btn btn-info" 
+                                    data-toggle="swal" 
+                                    data-swal-title="A little help for you"
+                                    data-swal-text="Do it yourself.">
+                                    Instruction
+                                </button>
+                            </div>                            
                         </li>
                     </ul>
                 </div>
@@ -217,5 +236,12 @@
 
         <!-- Highlight.js -->
         <script src="assets/js/hljs.js"></script>
+
+        <!-- Global Settings -->
+        <script src="assets/js/settings.js"></script>
+
+        <!-- Sweet Alert -->
+        <script src="assets/vendor/sweetalert.min.js"></script>
+        <script src="assets/js/sweetalert.js"></script>
     </body>
 </html>

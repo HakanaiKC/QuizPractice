@@ -44,10 +44,6 @@
         <link type="text/css"
               href="assets/css/app.css"
               rel="stylesheet">
-
-        <!-- Sweet Alert -->
-        <link rel="stylesheet"
-              href="assets/css/sweetalert.css">
     </head>
     <body>
         <%@include file="Header_All.jsp" %>
@@ -295,12 +291,5 @@
 
         <!-- Init -->
         <script src="assets/js/countdown.js"></script>
-
-        <!-- Global Settings -->
-        <script src="assets/js/settings.js"></script>
-
-        <!-- Sweet Alert -->
-        <script src="assets/vendor/sweetalert.min.js"></script>
-        <script src="assets/js/sweetalert.js"></script>
     </body>
 </html>
