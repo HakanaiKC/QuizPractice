@@ -60,8 +60,7 @@
                         <div class="row cardholder">
 
                             <div class="col-4">
-                                <div class="itemname">Recent </div>
-                                <!--<div class="debugg" >Because you learn from quizlearn-user </div>-->
+                                <div class="itemname">Recent </div>                                
                             </div>
                             <div class="col-4 item">
 
@@ -80,7 +79,6 @@
                                     <div class="cardset" onclick="location.href = 'QuizDetailServlet?quizid=${q.quiz_id}';" style="cursor:pointer;">
                                         <div class="card-title">${q.name}</div>
                                         <div class="n-question">${q.questionNum} questions</div>
-        <!--                                <div class="price">${q.price} $</div>-->
                                         <div class="card-creator">${q.creator_name}</div>
                                     </div>
                                 </div>
@@ -130,7 +128,6 @@
                                 <div class="cardset" onclick="location.href = 'QuizEnrollServlet?quizid=${q.quiz_id}';" style="cursor:pointer;">
                                     <div class="card-title">${q.name} </div>
                                     <div class="media-body n-question">${q.questionNum} questions</div>
-                                    <div class="media-body price">${q.price} $</div>
                                     <div class="media-body card-creator">${q.creator_name}</div>
                                 </div>
                             </div>

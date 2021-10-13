@@ -40,7 +40,7 @@
         <link type="text/css" 
               href="assets/css/app.css"
               rel="stylesheet">
-        
+
         <!-- Quill Theme -->
         <link type="text/css"
               href="assets/css/quill.css"
@@ -78,31 +78,33 @@
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Rate the quiz!
                     </button>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Rate the quiz</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <span class="my-rating-2"></span>
-                                    <span class="live-rating"></span>
-                                    <h4>Your feedback</h4>
-                                    <div style="height: 150px;"
-                                         data-toggle="quill"
-                                         data-quill-placeholder="Your message">                                      
+                    <form action="#" method="">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Rate the quiz</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Rate</button>
+                                    <div class="modal-body">
+                                        <span class="my-rating-2"></span>
+                                        <span class="live-rating"></span>
+                                        <h4>Your feedback</h4>
+                                        <input id="feedback" name="feedback"
+                                                               type="text" value=""
+                                                               class="form-control"
+                                                               placeholder="Your message">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Rate</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <!--End User rate-->  
                 </div>
             </div>
@@ -120,32 +122,32 @@
                 </div>
             </div>
             <!--Left box-->
-
+            
+            
             <!--Flash card-->
-            <div class="col-sm-5 center">
-                <div class="cards__single">
-                    <div class="cards__front">
-                        <p class="question-side" id="question-side">
-                            Do you love SWP?
-                        </p>
+                <div class="col-sm-5 center">
+                    <div class="cards__single">
+                        <div class="cards__front">
+                            <p class="question-side" id="question-side">
+                                Do you love SWP?
+                            </p>
+                        </div>
+                        <div class="cards__back">
+                            <p class="answer-side" id="answer-side">Yes, I do</p>
+                        </div>
                     </div>
-                    <div class="cards__back">
-                        <p class="answer-side" id="answer-side">Yes, I do</p>
-                    </div>
-                </div>
 
-                <div class="buttonn">
-                    <button type="button" style="border: none; background-color: white;"><span aria-hidden="true"
-                                                                                               class="material-icons">chevron_left</span></button>
-                    <span id="positionIndex">0/0</span>
-                    <button type="button" style="border: none; background-color: white;"><span aria-hidden="true"
-                                                                                               class="material-icons">chevron_right</span></button>
+                    <div class="buttonn">
+                        <button type="button" style="border: none; background-color: white;"><span aria-hidden="true"
+                                                                                                   class="material-icons">chevron_left</span></button>
+                        <span id="positionIndex">0/0</span>
+                        <button type="button" style="border: none; background-color: white;"><span aria-hidden="true"
+                                                                                                   class="material-icons">chevron_right</span></button>
+                    </div>
                 </div>
-            </div>
             <div class="col-sm-1"></div>
         </div>
     </div>
-
 
 
     <div class="container_home">
@@ -218,11 +220,11 @@
 
     <!-- Highlight.js -->
     <script src="assets/js/hljs.js"></script>
-    
+
     <!-- Quill -->
     <script src="assets/vendor/quill.min.js"></script>
     <script src="assets/js/quill.js"></script>
-    
+
     <script src="assets/vendor/jquery.star-rating-svg_1.js"></script>
 </body>
 <script>
