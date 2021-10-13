@@ -86,7 +86,7 @@ public class Feedback extends HttpServlet {
         if (feedback.equals("")) {
             request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
         } else {
-            dao.Feedback(user_id, quiz_id, feedback);
+            dao.Feedback(quiz_id, user_id, quiz_id);
             request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
         }
     }
