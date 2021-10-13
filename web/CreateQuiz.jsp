@@ -73,7 +73,27 @@
                 </div>
                 <div class="col-sm-3"></div>
                 <!--KET THUC PHAN MO TA QUIZ-->
+            </div> 
+              
+              <!--PHAN MO TA Category-->
+            <div class="container_body row">
+
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6 quiz category-div" style="padding-left: 20px; ">
+                    <h3>Category</h3>
+                    <label class="btn btn-outline-primary btn-sm rounded-pill text-nowrap" >Category 1</label>
+                    <label class="btn btn-outline-primary btn-sm rounded-pill text-nowrap" >Category 2</label>
+                    <label class="btn btn-outline-primary btn-sm rounded-pill text-nowrap" >Category 3</label>
+                    <label class="btn btn-outline-primary btn-sm rounded-pill text-nowrap" >Category 4</label>
+                    <label class="btn btn-outline-primary btn-sm rounded-pill text-nowrap" >Category 5</label>
+                    <label class="btn btn-outline-primary btn-sm rounded-pill text-nowrap" >Category 6</label>
+                    <label class="btn btn-outline-primary btn-sm rounded-pill text-nowrap" >Category 7</label>
+                    <label class="btn btn-outline-primary btn-sm rounded-pill text-nowrap" >Category 8</label>
+                </div>
+                <div class="col-sm-3"></div>
+
             </div>   
+            <!--KET THUC PHAN MO TA CATEGORY-->
 
             <!--PHAN MO TA QUESTION-->
             <div class="create_new_quesiton row" name="quiz" id="createq"  style="width: 100%;">
