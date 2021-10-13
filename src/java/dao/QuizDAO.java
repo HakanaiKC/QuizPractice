@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Question;
 import model.Quiz;
 
@@ -20,6 +22,60 @@ import model.Quiz;
  */
 public class QuizDAO extends DBContext {
 
+     public List<Quiz> getQuizByPage(List<Quiz> list, int start, int end) {
+        List<Quiz> t = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            t.add(list.get(i));
+        }
+        return t;
+    }
+         public int countUserEnrollAQuiz(String quizID) {
+//        List<Quiz> list = new ArrayList<>();
+        try {
+            String query = "select count(user_id) from Enrollment\n"
+                    + "  where quiz_id = ?";
+            PreparedStatement pd = connection.prepareStatement(query);
+            pd.setString(1, quizID);
+            ResultSet rs = pd.executeQuery();
+
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+         public Quiz getQuizByID(String id) {
+        String query = " select * from Quiz where quiz_id = ?";
+        Quiz q = new Quiz();
+        QuizDAO dao = new QuizDAO();
+        PreparedStatement pd;
+        try {
+            pd = connection.prepareStatement(query);
+            pd.setString(1, id);
+            ResultSet rs = pd.executeQuery();
+
+            while (rs.next()) {
+                int quiz_id = rs.getInt("quiz_id");
+                int creator_id = rs.getInt("creator_id");
+                String quiz_name = rs.getString("name");
+                String description = rs.getNString("description");
+//                double price = rs.getDouble("price");
+
+                q.setCreator_id(creator_id);
+                q.setQuiz_id(quiz_id);
+//                q.setQuestionNum(dao.countQuestion(quiz_id));
+                q.setCreator_name(dao.getCreatorName(creator_id));
+                q.setName(quiz_name);
+                q.setDescription(description);
+//                q.setPrice(price);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return q;
+    }
     public List<Quiz> getRecentQuiz(int user_id) {
         List<Quiz> list = new ArrayList<>();
         QuizDAO dao = new QuizDAO();
