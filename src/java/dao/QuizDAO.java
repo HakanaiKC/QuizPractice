@@ -33,7 +33,7 @@ public class QuizDAO extends DBContext {
         QuizDAO dao = new QuizDAO();
         try {
             String query = "select * from ((Quiz q  join Enrollment e on q.quiz_id = e.quiz_id) \n"
-                    + "join Users u on e.user_id = u.user_id) where e.user_id =? order by day_enroll desc";// lay quiz_id, creator_id,..
+                    + "join [User] u on e.user_id = u.user_id) where e.user_id =? order by day_enroll desc";// lay quiz_id, creator_id,..
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setInt(1, user_id);
             ResultSet rs = pd.executeQuery();
@@ -64,7 +64,7 @@ public class QuizDAO extends DBContext {
         QuizDAO dao = new QuizDAO();
         try {
             String query = "select * from ((Quiz q  join Enrollment e on q.quiz_id = e.quiz_id) \n"
-                    + "join Users u on e.user_id = u.user_id) where e.user_id =? and [name] like ? order by day_enroll desc";// lay quiz_id, creator_id,..
+                    + "join [User] u on e.user_id = u.user_id) where e.user_id =? and [name] like ? order by day_enroll desc";// lay quiz_id, creator_id,..
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setInt(1, user_id);
             pd.setString(2, "%" + search + "%");
@@ -234,9 +234,9 @@ public class QuizDAO extends DBContext {
     }
 
     public String getCreatorName(int creator_id) {
-        List<Quiz> list = new ArrayList<>();
+        //List<Quiz> list = new ArrayList<>();
         try {
-            String query = "select top 1 u.username from Users u join Quiz q on u.user_id =q.creator_id\n"
+            String query = "select top 1 u.username from [User] u join Quiz q on u.user_id =q.creator_id\n"
                     + "where q.creator_id = ?";
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setInt(1, creator_id);

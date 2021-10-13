@@ -19,7 +19,7 @@ public class UsersDAO extends DBContext {
 
     public void register(String user_name,
             String password, String email) {
-        String query = "insert into Users(username,password,email,role_id) "
+        String query = "insert into [User](username,password,email,role_id) "
                 + "Values(?,?,?,0)";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
@@ -38,7 +38,7 @@ public class UsersDAO extends DBContext {
     public Register checkAccountExist(String email) {
         Register u = new Register();
         try {
-            String query = "select * from Users where email =?";
+            String query = "select * from [User] where email =?";
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setString(1, email);
 
@@ -58,7 +58,7 @@ public class UsersDAO extends DBContext {
     public Users getUsers(String email, String password) {
         Users u = new Users();
         try {
-            String query = "select * from Users u where \n"
+            String query = "select * from [User] u where \n"
                     + "u.email = ? and password = ?";
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setString(1, email);
@@ -92,10 +92,10 @@ public class UsersDAO extends DBContext {
 
     public Users getUserByID(String id) {
         Users u = new Users();
-        String query = "select * from [Users] where user_id = ?";
+        String query = "select * from [User] where user_id = ?";
         try {
             PreparedStatement pd = connection.prepareStatement(query);
-            pd.setString(1, id);;
+            pd.setString(1, id);
             ResultSet rs = pd.executeQuery();
             while (rs.next()) {
                  u = new Users(rs.getInt("user_id"),
@@ -115,10 +115,10 @@ public class UsersDAO extends DBContext {
     }
     public Users getUserByEmail(String email) {
         Users u = new Users();
-        String query = "select * from [Users] where email = ?";
+        String query = "select * from [User] where email = ?";
         try {
             PreparedStatement pd = connection.prepareStatement(query);
-            pd.setString(1, email);;
+            pd.setString(1, email);
             ResultSet rs = pd.executeQuery();
             while (rs.next()) {
                  u = new Users(rs.getInt("user_id"),
@@ -138,7 +138,7 @@ public class UsersDAO extends DBContext {
     }
 
     public void forgotPass(String password, String email) {
-        String query = "Update Users set password =? "
+        String query = "Update [User] set password =? "
                 + "where email=?";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
@@ -153,7 +153,7 @@ public class UsersDAO extends DBContext {
     }
 
     public void updateAvatar(String id, String avatar) {
-        String query = " update [Users]\n"
+        String query = " update [User]\n"
                 + "  set avatar = ?\n"
                 + "  where user_id =?;";
         try {

@@ -78,7 +78,7 @@
                         </div>
                         <ul class="nav nav-tabs-links flex" style="margin-left: 265px;">
                             <li class="nav-item">
-                                <a href="fixed-student-profile.html" class="nav-link">Quiz</a>
+                                <a href="#" class="nav-link">Quiz</a>
                             </li>
                         </ul>
                     </div>
@@ -129,53 +129,7 @@
             <!-- // END Header Layout Content -->
             <jsp:include page="Footer.jsp"></jsp:include>
             </div>
-            <!-- // END Header Layout 
-            
-            <!-- About me form -->
-            <form action="">
-                <div class="modal fade" id="aboutme" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Edit About Me</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                CONTENT
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-
-            <!-- Contact me form -->
-            <form action="">
-                <div class="modal fade" id="contactme" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Edit Connect</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                CONTENT
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>    
+            <!-- // END Header Layout                         
 
         <%@include file="Boostrap_Header.jsp" %>
 

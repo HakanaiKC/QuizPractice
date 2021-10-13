@@ -10,14 +10,14 @@ package model;
  * @author nxhai
  */
 public class Users {
-    int user_id;
-    String username;
-    String password;
-    String email;
-    String avatar;
-    int role_id;
-    String about_me;
-    String connect;
+    private int user_id;
+    private String username;
+    private String password;
+    private String email;
+    private String avatar;
+    private int role_id;
+    private String about_me;
+    private String connect;
           
     
 

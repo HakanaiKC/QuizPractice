@@ -10,11 +10,11 @@ package model;
  * @author nxhai
  */
 public class Register {
-    String username;
-    String password;
-    String email;
-    int role_id;
-    String code;
+    private String username;
+    private String password;
+    private String email;
+    private int role_id;
+    private String code;
 
     public Register() {
     }
