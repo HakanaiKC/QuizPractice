@@ -61,7 +61,7 @@
                          ${quiz.name}
                     </div>
                     <div>
-                        <span class="rate-total" data-rating="4.8"></span>
+                        <span class="rate-total" data-rating=${avgRate}></span>
                         <div class="text-light">1,993 ratings</div>
                     </div>                    
                     <div class="creator-div">
@@ -79,12 +79,8 @@
                         <div class="creator-name">${quiz.creator_name}</div>
                     </div>
                      <div class="button-enroll-div">
-                        <c:if test="${quiz.price == 0}">
-                        <input type="submit" value="Enroll for free" name="enroll-button" class="button-enroll" style="width: 150px;"/>
-                        </c:if>
-                        <c:if test="${quiz.price != 0}">
-                        <input type="submit" value="Enroll for ${quiz.price}$" name="enroll-button" class="button-enroll" style="width: 150px;"/>
-                        </c:if>
+                        <input type="submit" value="Enroll" name="enroll-button" class="button-enroll" style="width: 150px;"/>
+                        
                     </div>
                     <div class="nums-of-enroll"><p>${numOfEroll} already enrolled</p></div>
 

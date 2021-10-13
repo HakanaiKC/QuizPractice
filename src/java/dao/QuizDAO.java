@@ -22,14 +22,15 @@ import model.Quiz;
  */
 public class QuizDAO extends DBContext {
 
-     public List<Quiz> getQuizByPage(List<Quiz> list, int start, int end) {
+    public List<Quiz> getQuizByPage(List<Quiz> list, int start, int end) {
         List<Quiz> t = new ArrayList<>();
         for (int i = start; i < end; i++) {
             t.add(list.get(i));
         }
         return t;
     }
-         public int countUserEnrollAQuiz(String quizID) {
+
+    public int countUserEnrollAQuiz(String quizID) {
 //        List<Quiz> list = new ArrayList<>();
         try {
             String query = "select count(user_id) from Enrollment\n"
@@ -46,7 +47,8 @@ public class QuizDAO extends DBContext {
         }
         return 0;
     }
-         public Quiz getQuizByID(String id) {
+
+    public Quiz getQuizByID(String id) {
         String query = " select * from Quiz where quiz_id = ?";
         Quiz q = new Quiz();
         QuizDAO dao = new QuizDAO();
@@ -76,6 +78,7 @@ public class QuizDAO extends DBContext {
         }
         return q;
     }
+
     public List<Quiz> getRecentQuiz(int user_id) {
         List<Quiz> list = new ArrayList<>();
         QuizDAO dao = new QuizDAO();
@@ -414,8 +417,8 @@ public class QuizDAO extends DBContext {
             System.out.println(e);
         }
     }
-    
-    public void QuesList(String question, int user_id, String instruction){
+
+    public void QuesList(String question, int user_id, String instruction) {
         Question q = new Question();
         String query = "insert into Question values(?, ?, ?)";
         try {
@@ -428,5 +431,23 @@ public class QuizDAO extends DBContext {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public float avgRateOfQuiz(String quizID) {
+//        List<Quiz> list = new ArrayList<>();
+        try {
+            String query = "select  avg(rate)\n"
+                    + "from Rate where quiz_id = ?";
+            PreparedStatement pd = connection.prepareStatement(query);
+            pd.setString(1, quizID);
+            ResultSet rs = pd.executeQuery();
+
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return 0;
     }
 }
