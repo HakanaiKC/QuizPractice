@@ -350,14 +350,14 @@ public class QuizDAO extends DBContext {
                 int quiz_id = rs.getInt("quiz_id");
                 int creator_id = rs.getInt("creator_id");
                 String quiz_name = rs.getString("name");
-                double price = rs.getDouble("price");
+//                double price = rs.getDouble("price");
 
                 q.setCreator_id(creator_id);
                 q.setQuiz_id(quiz_id);
                 q.setQuestionNum(dao.countQuestion(quiz_id));
                 q.setCreator_name(dao.getCreatorName(creator_id));
                 q.setName(quiz_name);
-                q.setPrice(price);
+//                q.setPrice(price);
                 list.add(q);
             }
         } catch (SQLException e) {
