@@ -78,10 +78,6 @@
                         <div class="media-body">
                             <h4 class="mb-0">9.8</h4>
                         </div>
-                        <div class="media-right">
-                            <a href="TakeExam.jsp"
-                               class="btn btn-primary">Restart <i class="material-icons btn__icon--right">refresh</i></a>
-                        </div>
                     </div>
                 </div>
                 <div class="card">
