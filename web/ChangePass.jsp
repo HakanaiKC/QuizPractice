@@ -145,47 +145,7 @@
                                         };
                                     </script>
                                     <hr> 
-                                    <!--                                    Fullname
-                                                                        <form action="ChangeName?id=${sessionScope.userSeisson.user_id}" method="post">
-                                                                            <div class="form-group row">
-                                                                                <label for="name"
-                                                                                       class="col-sm-3 col-form-label form-label">Full Name</label>
-                                                                                <div class="col-sm-8">
-                                                                                    <div class="row">
-                                                                                        <div class="col-md-6">
-                                                                                            <input id="name" name="fullname"
-                                                                                                   type="text" value="${sessionScope.userSeisson.username}"
-                                                                                                   class="form-control"
-                                                                                                   placeholder="Full Name">
-                                                                                        </div>
-                                                                                        <div class="col-md-2">
-                                                                                            <input type="submit" class="btn btn-success" value="Save">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </form>
-                                                                        Email
-                                                                        <div class="form-group row">
-                                                                            <label for="email"
-                                                                                   class="col-sm-3 col-form-label form-label">Email</label>
-                                                                            <div class="col-sm-6 col-md-6">
-                                                                                <div class="input-group">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <div class="input-group-text">
-                                                                                            <i class="material-icons md-18 text-muted">mail</i>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <input type="text" 
-                                                                                           id="email" value="${sessionScope.userSeisson.email}"
-                                                                                           class="form-control"
-                                                                                           placeholder="Email Address"
-                                                                                           value="contact@mosaicpro.biz"
-                                                                                           disabled>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <hr>                   -->
+
                                     <!--Old pass-->
                                     <form action="ChangePassword?email=${sessionScope.userSeisson.email}" method="post">
                                         <div class="form-group row">

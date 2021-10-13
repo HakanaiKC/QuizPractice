@@ -183,7 +183,7 @@ public class UsersDAO extends DBContext {
     }
     
       public void updateProfile(String id, String name, String aboutme, String connect) {
-        String query = " update [Users]\n"
+        String query = " update [User]\n"
                 + "  set username = ?,\n"
                 + "   about_me = ?,\n"
                 + "   connect = ?\n"

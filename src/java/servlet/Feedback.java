@@ -5,20 +5,21 @@
  */
 package servlet;
 
+import dao.QuizDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Users;
 
 /**
  *
- * @author Dell
+ * @author bekim
  */
-@WebServlet(name = "QuizDetailServlet", urlPatterns = {"/QuizDetailServlet"})
-public class QuizDetailServlet extends HttpServlet {
+public class Feedback extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +38,10 @@ public class QuizDetailServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet QuizDetailsServlet</title>");            
+            out.println("<title>Servlet Feedback</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet QuizDetailsServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Feedback at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,10 +59,7 @@ public class QuizDetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      //  processRequest(request, response);
-      String quiz_id = request.getParameter("quizid");
-      request.setAttribute("quizid", quiz_id);
-      request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
+        //processRequest(request, response);
     }
 
     /**
@@ -75,7 +73,22 @@ public class QuizDetailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        QuizDAO dao = new QuizDAO();
+        String feedback = request.getParameter("feedback");
+        HttpSession session = request.getSession();
+        Users user = (Users) session.getAttribute("userSeisson");
+        int user_id = (user.getUser_id());
+        String quiz_id = request.getParameter("quizid");
+//        PrintWriter out = response.getWriter();
+//        out.print(feedback+""+user_id+""+quiz_id);
+        if (feedback.equals("")) {
+            request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
+        } else {
+            dao.Feedback(user_id, quiz_id, feedback);
+            request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
+        }
     }
 
     /**

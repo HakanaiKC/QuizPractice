@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author bekim
  */
-public class FeedbackAndRate extends HttpServlet {
+public class Rate extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,10 +35,10 @@ public class FeedbackAndRate extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet FeedbackAndRate</title>");            
+            out.println("<title>Servlet Rate</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet FeedbackAndRate at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Rate at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -56,7 +56,7 @@ public class FeedbackAndRate extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        processRequest(request, response);
     }
 
     /**
@@ -70,7 +70,7 @@ public class FeedbackAndRate extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        processRequest(request, response);
     }
 
     /**

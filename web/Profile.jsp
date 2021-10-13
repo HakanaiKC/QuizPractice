@@ -112,7 +112,6 @@
 
                                                 </div>
                                                 <div class="n-question col-sm-2">${q.questionNum} questions</div>
-                                                <div class="card-price col-sm-2">${q.price}$</div>
                                                 <div class="last-update col-sm-2">Last update: ${q.last_Update}</div>
                                             </div>
                                         </div>
@@ -128,10 +127,11 @@
             </div>
             <!-- // END Header Layout Content -->
             <jsp:include page="Footer.jsp"></jsp:include>
+            <%@include file="Boostrap_Header.jsp" %>
             </div>
             <!-- // END Header Layout                         
 
-        <%@include file="Boostrap_Header.jsp" %>
+        
 
         <script type="text/javascript">
 

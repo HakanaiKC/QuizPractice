@@ -10,32 +10,42 @@ package model;
  * @author bekim
  */
 public class Feedback {
-    protected int feedback_id;
-    protected int user_id;
-    protected int quiz_id;
+    protected String feedback_id;
+    protected String user_id;
+    protected String quiz_id;
     protected String feedback;
 
-    public int getFeedback_id() {
+    public Feedback(String feedback_id, String user_id, String quiz_id, String feedback) {
+        this.feedback_id = feedback_id;
+        this.user_id = user_id;
+        this.quiz_id = quiz_id;
+        this.feedback = feedback;
+    }
+
+    public Feedback() {
+    }
+
+    public String getFeedback_id() {
         return feedback_id;
     }
 
-    public void setFeedback_id(int feedback_id) {
+    public void setFeedback_id(String feedback_id) {
         this.feedback_id = feedback_id;
     }
 
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 
-    public int getQuiz_id() {
+    public String getQuiz_id() {
         return quiz_id;
     }
 
-    public void setQuiz_id(int quiz_id) {
+    public void setQuiz_id(String quiz_id) {
         this.quiz_id = quiz_id;
     }
 
@@ -47,10 +57,5 @@ public class Feedback {
         this.feedback = feedback;
     }
 
-    @Override
-    public String toString() {
-        return "Feedback{" + "feedback_id=" + feedback_id + ", user_id=" + user_id + ", quiz_id=" + quiz_id + ", feedback=" + feedback + '}';
-    }
-    
     
 }

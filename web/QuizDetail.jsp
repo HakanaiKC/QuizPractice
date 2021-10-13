@@ -62,7 +62,7 @@
                 </div>
             </div>
             <!--End Loader-->
-            <div class="row border rateting">
+            <div class="row border rateting" style="padding-top: 20px;background-color: white;">
                 <div class="col-sm-2 "></div>
                 <div class="col-sm-2 itemname">SWP123</div>
                 <div class="col-sm-2"></div>
@@ -71,14 +71,14 @@
 
                 <!--Rate-->
                 <div class="col-sm-6">
-                    <span class="rate-total" data-rating="4.8"></span>
+                    <span class="rate-total" data-rating="4.8" id="starrate"></span>
                     <!--Change average rating-->
 
                     <!--User rate-->    
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Rate the quiz!
                     </button>
-                    <form action="#" method="">
+                    <form action="FeedbackAndRate?action=send" method="post">
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -90,12 +90,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <span class="my-rating-2"></span>
-                                        <span class="live-rating"></span>
-                                        <h4>Your feedback</h4>
-                                        <input id="feedback" name="feedback"
-                                                               type="text" value=""
-                                                               class="form-control"
-                                                               placeholder="Your message">
+                                        <span class="live-rating"></span>                                 
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -109,6 +104,14 @@
                 </div>
             </div>
         </div>
+        <h4>Feedback</h4>
+        <form action="Feedback?quizid=${quizid}" method="post">
+            <input id="feedback" name="feedback"
+                   type="text"
+                   class="form-control"
+                   placeholder="Your message">
+            <input type="submit" value="Submit">
+        </form>
         <!--End Rate-->
 
         <div class="row border col-sm-12 cardholder1">
@@ -122,29 +125,29 @@
                 </div>
             </div>
             <!--Left box-->
-            
-            
-            <!--Flash card-->
-                <div class="col-sm-5 center">
-                    <div class="cards__single">
-                        <div class="cards__front">
-                            <p class="question-side" id="question-side">
-                                Do you love SWP?
-                            </p>
-                        </div>
-                        <div class="cards__back">
-                            <p class="answer-side" id="answer-side">Yes, I do</p>
-                        </div>
-                    </div>
 
-                    <div class="buttonn">
-                        <button type="button" style="border: none; background-color: white;"><span aria-hidden="true"
-                                                                                                   class="material-icons">chevron_left</span></button>
-                        <span id="positionIndex">0/0</span>
-                        <button type="button" style="border: none; background-color: white;"><span aria-hidden="true"
-                                                                                                   class="material-icons">chevron_right</span></button>
+
+            <!--Flash card-->
+            <div class="col-sm-5 center">
+                <div class="cards__single">
+                    <div class="cards__front">
+                        <p class="question-side" id="question-side">
+                            Do you love SWP?
+                        </p>
+                    </div>
+                    <div class="cards__back">
+                        <p class="answer-side" id="answer-side">Yes, I do</p>
                     </div>
                 </div>
+
+                <div class="buttonn">
+                    <button type="button" style="border: none; background-color: white;"><span aria-hidden="true"
+                                                                                               class="material-icons">chevron_left</span></button>
+                    <span id="positionIndex">0/0</span>
+                    <button type="button" style="border: none; background-color: white;"><span aria-hidden="true"
+                                                                                               class="material-icons">chevron_right</span></button>
+                </div>
+            </div>
             <div class="col-sm-1"></div>
         </div>
     </div>
