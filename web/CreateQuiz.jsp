@@ -50,7 +50,7 @@
                 <div class="sk-chase-dot"></div>
             </div>
         </div>
-        <div style="min-height: 700px;">
+        <div style="min-height: 800px;">
             <div class="container_body row">
                 <!--PHAN MO TA QUIZ-->
                 <div class="col-sm-3"></div>
@@ -59,11 +59,11 @@
                         <div class="quiz-infor row">
                             <div class="col-sm-9 quiz-title-div">
                                 <input type="text" name="quiz-title" placeholder="Quiz Title" 
-                                       style="border: none; border-bottom: 1px solid gray; width: 100%;" />
+                                       style="border: none; border-bottom: 1px solid gray; width: 100%;" required>
                             </div>
                             <div class="col-sm-2 quiz-price-div">
                                 <input type="number" name="quiz-price" placeholder="Price" 
-                                       style="border: none; border-bottom: 1px solid gray; width: 100%; "  />
+                                       style="border: none; border-bottom: 1px solid gray; width: 100%; "  >
                             </div>
                             <div class="col-sm-11 quiz-description-div" >
                                 <textarea class="quiz-description" rows='2' placeholder='Quiz description'></textarea>
@@ -78,7 +78,7 @@
             <!--PHAN MO TA QUESTION-->
             <div class="create_new_quesiton row" name="quiz" id="createq"  style="width: 100%;">
                 <div class="col-sm-3"></div>
-                <div class="col-sm-6 question"> 
+                <div class="col-sm-6 question" id="1"> 
                     <div class="remove-question-div">
                         <button id="removeRow" type="button" class="" style="float: right; margin-top:20px; margin-right: 20px;">
                             <i class="fas fa-trash-alt"></i>
@@ -87,17 +87,17 @@
                     <div class="question-infor row" >
                         <form id="question-information">
                             <div class="col-sm-11 question-div" id="question">
-                                <textarea class="question-description" rows="2" placeholder="Question"></textarea>
+                                <textarea class="question-description" rows="2" id="ques-des1" placeholder="Question"></textarea>
                             </div>
                             <div class="col-sm-12 row option-div">
-                                <div id="createQue1" style="width: 100%;">
-                                    <div id="innerQue" class="innerQue row">
+                                <div id="createOption1" style="width: 100%;">
+                                    <div id="innerQue" class="innerQue1 row">
                                         <div class="choose-right-option-div col-sm-1">
-                                            <input class="choose-right-option" type="checkbox" name="choose-right-option" value="ON" />
+                                            <input class="choose-right-option1" type="checkbox" name="choose-right-option" value="ON" >
                                         </div>
                                         <div class="option-content col-sm-9" id="option-content">
-                                            <input type="text" id="answer" placeholder="option-content"
-                                                   style="border: none; border-bottom: 1px solid gray; width: 100%;" />                                
+                                            <input type="text" id="answer" class="option-description1" placeholder="option-content"
+                                                   style="border: none; border-bottom: 1px solid gray; width: 100%;" >                                
                                         </div>                         
                                         <div class="remove-option-div col-sm-1">                               
                                             <button class="remove-option btn btn-white btn-sm" type="button" id="removeInnerQue"><i class="fas fa-trash-alt"></i></button>
@@ -105,13 +105,13 @@
                                     </div>
                                 </div>
                                 <div class="add-more-option-div col-sm-3">
-                                    <button class="add-more-option btn-primary" onclick="addInnerQue('createQue1')" type="button">Add option</button>
+                                    <button class="add-more-option btn-primary" onclick="addInnerQue('createOption1')" type="button">Add option</button>
                                     
                                 </div>
                                 <div class="col-sm-10"></div>                            
                             </div>
                             <div class="col-sm-11 question-instruction-div" id="Instruction">
-                                <textarea class="question-instruction" rows="2" placeholder="Instruction"></textarea>
+                                <textarea class="question-instruction" id="ques-instruc1" rows="2" placeholder="Instruction"></textarea>
                             </div>
                             <br>
 
@@ -134,7 +134,7 @@
                     <button class="add-more-question btn btn-success" onclick="addQue()" type="button">Add Question</button>
                 </div>            
                 <div class="col-sm-1 save-quiz-div">
-                    <input class="save-quiz btn btn-white" type="submit" value="Save" />
+                    <input class="save-quiz btn btn-white" type="submit" onclick="getAll()" value="Save" >
                 </div>
                 <div class="col-sm-3"></div>
                 <!--KET THUC 2 BUTTON-->
@@ -166,11 +166,7 @@
         <script src="assets/js/CreateQuiz.js"></script>
         <script>
                         var textarea = document.querySelector(".quiz-description");
-//var textarea1 = document.querySelector(".question-description");
-//var textarea2 = document.querySelector(".question-instruction");
                         textarea.addEventListener('keydown', autosize);
-//textarea1.addEventListener('keydown', autosize);
-//textarea2.addEventListener('keydown', autosize);
                         function autosize() {
                             var el = this;
                             setTimeout(function () {
