@@ -109,7 +109,7 @@
                         <div class="col-xs-6 col-md-8 align-self-center"> 
                             <!--Sua o data-rating-->
                             <span class="rate-total" data-rating="${avgRate}"></span>
-                            <div>255 reviews</div>
+                            <div>${countFeedback} reviews</div>
                         </div>                       
                     </div>
                     <br>

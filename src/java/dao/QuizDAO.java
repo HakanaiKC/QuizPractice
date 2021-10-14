@@ -475,8 +475,26 @@ public class QuizDAO extends DBContext {
             String query = "select count(rate)  from rate\n"
                     + "where rate = ? and quiz_id =?";
             PreparedStatement pd = connection.prepareStatement(query);
-            pd.setInt(1,star);
+            pd.setInt(1, star);
             pd.setString(2, quizID);
+            ResultSet rs = pd.executeQuery();
+
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    public int countFeedback(String quizID) {
+//        List<Quiz> list = new ArrayList<>();
+        try {
+            String query = "select count(feedback_id) from Feedback\n"
+                    + "  where quiz_id = ?";
+            PreparedStatement pd = connection.prepareStatement(query);
+            pd.setString(1, quizID);
             ResultSet rs = pd.executeQuery();
 
             while (rs.next()) {
