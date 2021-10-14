@@ -491,13 +491,14 @@ public class QuizDAO extends DBContext {
         return 0;
     }
 
-    public void Feedback(String quiz_id, int user_id, String comment) {
-        String query = "insert into Feedback(quiz_id,user_id,comment)values(?, ?, ?)";
+    public void Feedback(String quiz_id, int user_id, String comment, String datenow) {
+        String query = "insert into Feedback(quiz_id,user_id,comment,feedback_date) values(?, ?, ?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, quiz_id);
             ps.setInt(2, user_id);
             ps.setString(3, comment);
+            ps.setString(4, datenow);
             ps.executeUpdate();
 
         } catch (Exception e) {

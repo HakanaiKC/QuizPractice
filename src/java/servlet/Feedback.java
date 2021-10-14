@@ -8,6 +8,8 @@ package servlet;
 import dao.QuizDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +42,7 @@ public class Feedback extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Feedback</title>");            
+            out.println("<title>Servlet Feedback</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Feedback at " + request.getContextPath() + "</h1>");
@@ -78,19 +80,37 @@ public class Feedback extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         QuizDAO dao = new QuizDAO();
-        String feedback = request.getParameter("feedback");
-        HttpSession session = request.getSession();
-        Users user = (Users) session.getAttribute("userSeisson");
-        int user_id = (user.getUser_id());
-        String quiz_id = request.getParameter("quizid");
+        String action = request.getParameter("Action");
+        if (action != null) {
+            switch (action) {
+                case "feedback":
+                    String feedback = request.getParameter("feedback");
+                    HttpSession session = request.getSession();
+                    Users user = (Users) session.getAttribute("userSeisson");
+                    int user_id = (user.getUser_id());
+                    String quiz_id = request.getParameter("quizid");
 //        PrintWriter out = response.getWriter();
 //        out.print(feedback+""+user_id+""+quiz_id);
-        if (feedback.equals("")) {
-            request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
-        } else {
-            dao.Feedback(quiz_id, user_id, feedback);
-            request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
+                    if (feedback.equals("")) {
+                        request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
+                    } else {
+                        String datenow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                        dao.Feedback(quiz_id, user_id, feedback,datenow);
+                        request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
+                    }
+                    break;
+                case "rate":
+                    String quiz = request.getParameter("quizid");
+                    String rate = request.getParameter("rate");
+                    PrintWriter out = response.getWriter();
+                    out.println(rate);
+                    out.print(quiz);
+                    break;
+                default:
+                    break;
+            }
         }
+
     }
 
     /**

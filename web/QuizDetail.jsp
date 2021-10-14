@@ -72,16 +72,16 @@
 
                     <!--User rate-->
                     <c:if test="${sessionScope.userSeisson !=null}">
-                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
-                        Rate the quiz!
-                    </button>
+                        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
+                            Rate the quiz!
+                        </button>
 
-                    <button type="button" class="btn btn-link feedback" data-toggle="modal" data-target="#feedback">
-                        Feedback
-                    </button>
+                        <button type="button" class="btn btn-link feedback" data-toggle="modal" data-target="#feedback">
+                            Feedback
+                        </button>
                     </c:if>
-                    <form action="FeedbackAndRate?action=send" method="post">
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <form action="Feedback?Action=rate" method="post">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -92,11 +92,12 @@
                                     </div>
                                     <div class="modal-body">
                                         <span class="my-rating-2"></span>
-                                        <span class="live-rating"></span>                                 
+                                        <span name="rate" id="live-rating" value="" class="live-rating"></span>                                 
                                     </div>
+                                    <input name="quizid" value="${quiz.quiz_id}" hidden>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Rate</button>
+                                        <button type="submit" class="btn btn-primary" onclick="getRate()">Rate</button>
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +108,7 @@
             </div>
         </div>
 
-        <form action="Feedback" method="post">
+        <form action="Feedback?Action=feedback" method="post">
             <div class="modal fade" id="feedback" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -216,7 +217,7 @@
                         </c:forEach>
                         <br>
                     </div>
-                    
+
                     <div class="question">${question.question}  
                         <hr>
                         <c:forEach items="${listOption}"  var="option">
@@ -261,7 +262,18 @@
 
     <!-- Highlight.js -->
     <script src="assets/js/hljs.js"></script>
+    <script src="assets/vendor/jquery.star-rating-svg.js"></script>
+    <script src="assets/vendor/jquery.star-rating-svg.min.js"></script>
+    <script src="assets/vendor/jquery.star-rating-svg_1.js"></script>
 </body>
+<script>
+    function getRate(){
+    var liverating = document.getElementById("live-rating").innerHTML;
+    document.getElementById("live-rating").value = liverating;
+    console.log(liverating);
+    console.log(document.getElementById("live-rating").value);
+    }
+</script>
 <script>
                     const cards = document.querySelectorAll(".cards__single");
 
