@@ -58,7 +58,7 @@
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
                     <div class="quiz-title-div">
-                         ${quiz.name}
+                        ${quiz.name}
                     </div>
                     <div>
                         <span class="rate-total" data-rating=${avgRate}></span>
@@ -67,20 +67,20 @@
                     <div class="creator-div">
                         <div class="avatar"><a href="ProfileServlet?id=${creator.user_id}" role="button">
                                 <c:if test = "${creator.avatar == null}">
-                                <img src="assets/images/unnamed.jpg" alt="Avatar" class="rounded-circle"
-                                    width="48">
+                                    <img src="assets/images/unnamed.jpg" alt="Avatar" class="rounded-circle"
+                                         width="48">
                                 </c:if>
                                 <c:if test = "${creator.avatar != null}">
-                                <img src="uploads/${creator.avatar}" alt="Avatar" class="rounded-circle"
-                                    width="48">
+                                    <img src="uploads/${creator.avatar}" alt="Avatar" class="rounded-circle"
+                                         width="48">
                                 </c:if>
                             </a>
                         </div>
                         <div class="creator-name">${creator.username}</div>
                     </div>
-                     <div class="button-enroll-div">
-                        <input type="submit" value="Enroll" name="enroll-button" class="button-enroll" style="width: 150px;"/>
-                        
+                    <div class="button-enroll-div">
+                        <!--                        <input type="submit" value="Enroll" name="enroll-button" class="button-enroll" style="width: 150px;"/>-->
+                        <a href="QuizDetailServlet?quizid=${quiz.quiz_id}" class="button-enroll" style="width: 150px;" >Enroll</a>
                     </div>
                     <div class="nums-of-enroll"><p>${numOfEroll} already enrolled</p></div>
 
@@ -100,7 +100,7 @@
                     <div class="col-xs-2 col-md-2">
                         <h3 style="font-size: 30px;">Reviews</h3>
                     </div>
-                    
+
                     <!--Total star Rate-->
                     <div class="total-star row">
                         <div class="col-xs-6 col-md-4">
@@ -113,7 +113,7 @@
                         </div>                       
                     </div>
                     <br>
-                    
+
                     <!--Star Rate-->
                     <!--Sua pham tram o style, 5 stars-->
                     <div class="bar-progress row">
@@ -129,7 +129,7 @@
                             ${fiveStar}%
                         </div>
                     </div>
-                    
+
                     <!--Sua pham tram o style, 4 stars-->
                     <div class="bar-progress row">
                         <div class="col-xs-3 col-md-3">
@@ -144,7 +144,7 @@
                             ${fourStar}%
                         </div>
                     </div>
-                    
+
                     <!--Sua pham tram o style, 3 stars-->
                     <div class="bar-progress row">
                         <div class="col-xs-3 col-md-3">
@@ -159,7 +159,7 @@
                             ${threeStar}%
                         </div>
                     </div>
-                    
+
                     <!--Sua pham tram o style, 2 stars-->
                     <div class="bar-progress row">
                         <div class="col-xs-3 col-md-3">
@@ -171,14 +171,14 @@
                             </div>
                         </div>
                         <div class="col-xs-3 col-md-3">
-                           ${twoStar}%
+                            ${twoStar}%
                         </div>
                     </div>
-                    
+
                     <!--Sua pham tram o style, 1 stars-->
                     <div class="bar-progress row">
                         <div class="col-xs-3 col-md-3">
-                           1 stars
+                            1 stars
                         </div>
                         <div class="col-xs-5 col-md-6" style="margin: 5px 0 0 -20px;">
                             <div class="progress" style="height: 10px;">
@@ -189,7 +189,7 @@
                             ${oneStar}%
                         </div>
                     </div>
-                    
+
                 </div>
 
                 <div class="col-sm-6">
