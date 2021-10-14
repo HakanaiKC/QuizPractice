@@ -9,7 +9,7 @@
         <url-pattern>/NewServlet</url-pattern>
     </servlet-mapping>-->
     <welcome-file-list>
-        <welcome-file>Home</welcome-file>
+        <welcome-file>Home.jsp</welcome-file>
     </welcome-file-list>
     <session-config>
         <session-timeout>

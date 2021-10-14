@@ -81,7 +81,7 @@
                         </button>
                     </c:if>
                     <form action="Feedback?Action=rate" method="post">
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -91,8 +91,9 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
+                                        <input type="hidden" name="myField" id="myField" value="">
                                         <span class="my-rating-2"></span>
-                                        <span name="rate" id="live-rating" value="" class="live-rating"></span>                                 
+                                        <span name="rate" id="live-rating" class="live-rating"></span>                                
                                     </div>
                                     <input name="quizid" value="${quiz.quiz_id}" hidden>
                                     <div class="modal-footer">
@@ -267,20 +268,20 @@
     <script src="assets/vendor/jquery.star-rating-svg_1.js"></script>
 </body>
 <script>
-    function getRate(){
-    var liverating = document.getElementById("live-rating").innerHTML;
-    document.getElementById("live-rating").value = liverating;
-    console.log(liverating);
-    console.log(document.getElementById("live-rating").value);
-    }
+                    function getRate() {
+                        var liverating = document.getElementById("live-rating").innerHTML;
+                        document.getElementById("live-rating").value = liverating;
+                        console.log(liverating);
+                        console.log(document.getElementById("live-rating").value);
+                    }
 </script>
 <script>
-                    const cards = document.querySelectorAll(".cards__single");
+    const cards = document.querySelectorAll(".cards__single");
 
-                    function flipCard() {
-                        this.classList.toggle("flip");
-                    }
-                    cards.forEach((card) => card.addEventListener("click", flipCard));
+    function flipCard() {
+        this.classList.toggle("flip");
+    }
+    cards.forEach((card) => card.addEventListener("click", flipCard));
 </script>
 
 <script>
@@ -301,11 +302,8 @@
         useFullStars: true,
         activeColor: 'rgb(242, 208, 73)',
         useGradient: false,
-        onHover: function (currentIndex, currentRating, $el) {
-            $('.live-rating').text(currentIndex);
-        },
-        onLeave: function (currentIndex, currentRating, $el) {
-            $('.live-rating').text(currentRating);
+        callback: function (currentRating, $el) {
+            document.getElementById("myField").value = currentRating;
         }
     });
     $(function () {

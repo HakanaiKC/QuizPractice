@@ -101,7 +101,7 @@ public class Feedback extends HttpServlet {
                     break;
                 case "rate":
                     String quiz = request.getParameter("quizid");
-                    String rate = request.getParameter("rate");
+                    String rate = request.getParameter("myField");
                     PrintWriter out = response.getWriter();
                     out.println(rate);
                     out.print(quiz);
