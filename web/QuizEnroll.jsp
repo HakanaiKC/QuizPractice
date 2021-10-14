@@ -62,7 +62,7 @@
                     </div>
                     <div>
                         <span class="rate-total" data-rating=${avgRate}></span>
-                        <div class="text-light">1,993 ratings</div>
+                        <div class="text-light">${countUserRate} ratings</div>
                     </div>                    
                     <div class="creator-div">
                         <div class="avatar"><a href="ProfileServlet?id=${creator.user_id}" role="button">
@@ -76,7 +76,7 @@
                                 </c:if>
                             </a>
                         </div>
-                        <div class="creator-name">${quiz.creator_name}</div>
+                        <div class="creator-name">${creator.username}</div>
                     </div>
                      <div class="button-enroll-div">
                         <input type="submit" value="Enroll" name="enroll-button" class="button-enroll" style="width: 150px;"/>
@@ -104,11 +104,11 @@
                     <!--Total star Rate-->
                     <div class="total-star row">
                         <div class="col-xs-6 col-md-4">
-                            <span class="display-4 font-weight-bolder">4.8</span><br>
+                            <span class="display-4 font-weight-bolder">${avgRate}</span><br>
                         </div>
                         <div class="col-xs-6 col-md-8 align-self-center"> 
                             <!--Sua o data-rating-->
-                            <span class="rate-total" data-rating="4.8"></span>
+                            <span class="rate-total" data-rating="${avgRate}"></span>
                             <div>255 reviews</div>
                         </div>                       
                     </div>

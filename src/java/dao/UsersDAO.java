@@ -168,7 +168,7 @@ public class UsersDAO extends DBContext {
     }
 
     public void updatePassword(String email, String pass) {
-        String query = " update [Users]\n"
+        String query = " update [User]\n"
                 + "  set password = ?\n"
                 + "  where email = ?";
         try {

@@ -443,7 +443,24 @@ public class QuizDAO extends DBContext {
             ResultSet rs = pd.executeQuery();
 
             while (rs.next()) {
-                return rs.getInt(1);
+                return rs.getFloat(1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+        public int countUserRate(String quizID) {
+//        List<Quiz> list = new ArrayList<>();
+        try {
+            String query = "select count(rate) from Rate\n"
+                    + "where quiz_id=?";
+            PreparedStatement pd = connection.prepareStatement(query);
+            pd.setString(1, quizID);
+            ResultSet rs = pd.executeQuery();
+
+            while (rs.next()) {
+                return rs.getInt(1);     
             }
         } catch (SQLException e) {
             System.out.println(e);

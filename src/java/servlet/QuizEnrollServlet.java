@@ -69,13 +69,14 @@ public class QuizEnrollServlet extends HttpServlet {
         Quiz quiz = dao.getQuizByID(quizId);
         int numOfEroll = dao.countUserEnrollAQuiz(quizId);
         float avgRate = dao.avgRateOfQuiz(quizId);
+        int countUserRate = dao.countUserRate(quizId);
         Users creator = udao.getUserByID(String.valueOf(quiz.getCreator_id()));
         request.setAttribute("quiz", quiz);
         request.setAttribute("creator", creator);
         request.setAttribute("numOfEroll", numOfEroll);
-        request.setAttribute("avgRate", avgRate);
+        request.setAttribute("avgRate", String.format("%.1f", avgRate));
+        request.setAttribute("countUserRate", countUserRate);
         request.getRequestDispatcher("QuizEnroll.jsp").forward(request, response);
-        request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
     }
 
     /**
