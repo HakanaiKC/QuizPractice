@@ -1,0 +1,69 @@
+body {
+    height: 100%;
+    background-color: #f5f7fb;
+    font-weight: bold;
+    font-size: 18px;
+    min-height: 900px;
+}
+
+.container_home {
+    width: 100%;
+    display: block;
+    /*  margin: 40px;*/
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+/*padding: 0;*/
+    /* border: 1px dashed black; */
+    /* height: 26rem; */
+}
+
+.card1 {
+    display: inline-block;
+    /* margin-right: 20px; */
+    background-color: white;
+    border-radius: 10px;
+/*    margin-top: 5px;*/
+    height: 5rem;
+/*    display: flex;*/
+    margin-bottom: 10px;
+    -moz-box-shadow: 3px 3px rgb(153, 153, 153);
+    -webkit-box-shadow: 3px 3px rgb(153, 153, 153);
+    box-shadow: 3px 3px rgb(211, 211, 211);
+    
+    padding: 0;
+    /*background-color: #f5f7fb !important;*/
+    border: none !important;
+}
+.card-title {
+    margin-top: 5px;
+    margin-left: 10px;
+    font-size: 1.3rem;
+    line-height: 1.2rem;
+    font-weight: bold;
+/*     border: 1px dotted gray; */
+}
+.n-question {
+/*    float: left;*/
+    margin-top: 5px;
+    font-weight: normal;
+    margin-left: 10px;
+}
+.card-creator {
+    margin-left: 10px;
+    margin-top: 5px;
+    border-left: 1px solid rgb(211, 211, 211); 
+    font-size: 1rem;
+    font-weight: bold;
+
+/*     border: 1px dotted gray; */
+}
+.itemname {
+    font-weight: bold;
+    padding: 0;
+    float: left;
+    margin-bottom: 15px;
+    font-size: 24px;
+    /* border: 1px dashed goldenrod; */
+}
