@@ -5,15 +5,19 @@
  */
 package servlet;
 
+import dao.QuestionDAO;
 import dao.QuizDAO;
 import dao.UsersDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Option;
+import model.Question;
 import model.Quiz;
 import model.Users;
 
@@ -62,16 +66,21 @@ public class QuizDetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      //  processRequest(request, response);
-      String quiz_id = request.getParameter("quizid");
-      String quizId = request.getParameter("quizid");
+        //  processRequest(request, response);
+        String quiz_id = request.getParameter("quizid");
+        String quizId = request.getParameter("quizid");
         QuizDAO dao = new QuizDAO();
         UsersDAO udao = new UsersDAO();
         Quiz quiz = dao.getQuizByID(quizId);
         Users creator = udao.getUserByID(String.valueOf(quiz.getCreator_id()));
-      request.setAttribute("quizid", quiz_id);
-      request.setAttribute("creator", creator);
-      request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
+        QuestionDAO quesdao = new QuestionDAO();
+        List<Question> listQuestion = quesdao.getAllQuestion(Integer.parseInt(quizId));
+        List<Option> listOption = quesdao.getAllOption(Integer.parseInt(quizId));
+        request.setAttribute("quiz", quiz);
+        request.setAttribute("creator", creator);
+        request.setAttribute("listQuestion", listQuestion);
+        request.setAttribute("listOption", listOption);
+        request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
     }
 
     /**

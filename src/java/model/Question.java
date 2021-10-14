@@ -7,21 +7,22 @@ package model;
 
 /**
  *
- * @author bekim
+ * @author nxhai
  */
 public class Question {
-    private int question_id;
-    public String question;
-    public String instruction;
-
-    public Question(int question_id, String question, String instruction) {
-        this.question_id = question_id;
-        this.question = question;
-        this.instruction = instruction;
-    }
+     int question_id;
+     int quiz_id;
+     String question;
+     String instruction;
 
     public Question() {
-        
+    }
+
+    public Question(int question_id, int quiz_id, String question, String instruction) {
+        this.question_id = question_id;
+        this.quiz_id = quiz_id;
+        this.question = question;
+        this.instruction = instruction;
     }
 
     public int getQuestion_id() {
@@ -30,6 +31,14 @@ public class Question {
 
     public void setQuestion_id(int question_id) {
         this.question_id = question_id;
+    }
+
+    public int getQuiz_id() {
+        return quiz_id;
+    }
+
+    public void setQuiz_id(int quiz_id) {
+        this.quiz_id = quiz_id;
     }
 
     public String getQuestion() {
@@ -50,7 +59,8 @@ public class Question {
 
     @Override
     public String toString() {
-        return "Question{" + "question_id=" + question_id + ", question=" + question + ", instruction=" + instruction + '}';
+        return "Question{" + "question_id=" + question_id + ", quiz_id=" + quiz_id + ", question=" + question + ", instruction=" + instruction + '}';
     }
-        
+     
+     
 }

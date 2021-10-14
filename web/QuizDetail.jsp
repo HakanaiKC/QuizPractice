@@ -65,7 +65,7 @@
             <!--End Loader-->
             <div class="row border rateting" style="padding-top: 20px;background-color: white;">
                 <div class="col-sm-2 "></div>
-                <div class="col-sm-2 itemname">SWP123</div>
+                <div class="col-sm-2 itemname">${quiz.name}</div>
                 <div class="col-sm-2"></div>
                 <div class="col-sm-5"></div>
                 <div class="col-sm-2 "></div>
@@ -106,7 +106,7 @@
             </div>
         </div>
         <h4>Feedback</h4>
-        <form action="Feedback?quizid=${quizid}" method="post">
+        <form action="Feedback?quizid=${quiz.quiz_id}" method="post">
             <input id="feedback" name="feedback"
                    type="text"
                    class="form-control"
@@ -157,7 +157,7 @@
     <div class="container_home">
         <div class="row border cardholder1">
             <div class="col-sm-2 "> </div>
-            <div class="row col-sm-2"><div class="avatar col-sm-0"><a href="#" role="button">
+            <div class="row col-sm-2"><div class="avatar col-sm-0"><a href="ProfileServlet?id=${creator.user_id}" role="button">
                         <c:if test = "${creator.avatar == null}">
                             <img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="rounded-circle"
                                  width="40"></c:if>
@@ -180,30 +180,36 @@
     <!--Study Section-->
     <div class="container_home1">
         <div class="row cardholder">        
+            <c:forEach items="${listQuestion}"  var="question">
             <div class="card-question col-sm-7">
-                <div class="answer">C</div>
-                <div class="question">IoT gateways perform several critical functions such as: (Which one is wrong).
+                <div class="answer">
                     <br>
+                    <c:forEach items="${listOption}"  var="option">
+                        <c:if test="${option.question_id == question.question_id && option.right_option==1}">
                     <p class="option">
-                        A. Device connectivity
+                        ${option.option_content}
                     </p>
-
+                    </c:if>
+                    </c:forEach>
+                    <br>
+                </div>
+                <div class="question">${question.question}  
+                    <br>
+                    <c:forEach items="${listOption}"  var="option">
+                        <c:if test="${option.question_id == question.question_id}">
                     <p class="option">
-                        B. Protocol translation
+                        ${option.option_content}
                     </p>
-                    <p class="option">
-                        C. Improving networks
-                    </p>
-                    <p class="option">
-                        D.Data filtering and processing, security
-                    </p>
+                    </c:if>
+                    </c:forEach>
                     <br>
                 </div> 
             </div>
             <div class="col-sm-7 showinstruction" id="showinstruction" onclick="myFunction()" style="cursor: pointer; color: blue;">Show instruction</div>
             <div class="col-sm-7 instruction" id="instruction" style="display: none;">
-                you just apply the formula and calculate it GLHF.
+                ${question.instruction}
             </div>
+            </c:forEach>
         </div>
 
     </div>
