@@ -122,11 +122,11 @@
                         </div>
                         <div class="col-xs-5 col-md-6" style="margin: 5px 0 0 -20px;">
                             <div class="progress" style="height: 10px;">
-                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 79.79%"></div>                                
+                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: ${fiveStar}%"></div>                                
                             </div>
                         </div>
                         <div class="col-xs-3 col-md-3">
-                            79.79%
+                            ${fiveStar}%
                         </div>
                     </div>
                     
@@ -137,11 +137,11 @@
                         </div>
                         <div class="col-xs-5 col-md-6" style="margin: 5px 0 0 -20px;">
                             <div class="progress" style="height: 10px;">
-                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 18.38%"></div>                                
+                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: ${fourStar}%"></div>                                
                             </div>
                         </div>
                         <div class="col-xs-3 col-md-3">
-                            18.38%
+                            ${fourStar}%
                         </div>
                     </div>
                     
@@ -152,11 +152,11 @@
                         </div>
                         <div class="col-xs-5 col-md-6" style="margin: 5px 0 0 -20px;">
                             <div class="progress" style="height: 10px;">
-                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 1.47%"></div>                                
+                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: ${threeStar}%"></div>                                
                             </div>
                         </div>
                         <div class="col-xs-3 col-md-3">
-                            1.47%
+                            ${threeStar}%
                         </div>
                     </div>
                     
@@ -167,11 +167,11 @@
                         </div>
                         <div class="col-xs-5 col-md-6" style="margin: 5px 0 0 -20px;">
                             <div class="progress" style="height: 10px;">
-                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0.11%"></div>                                
+                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: ${twoStar}%"></div>                                
                             </div>
                         </div>
                         <div class="col-xs-3 col-md-3">
-                            0.11%
+                           ${twoStar}%
                         </div>
                     </div>
                     
@@ -182,11 +182,11 @@
                         </div>
                         <div class="col-xs-5 col-md-6" style="margin: 5px 0 0 -20px;">
                             <div class="progress" style="height: 10px;">
-                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0.22%"></div>                                
+                                <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: ${oneStar}%"></div>                                
                             </div>
                         </div>
                         <div class="col-xs-3 col-md-3">
-                            0.22%
+                            ${oneStar}%
                         </div>
                     </div>
                     

@@ -71,11 +71,22 @@ public class QuizEnrollServlet extends HttpServlet {
         float avgRate = dao.avgRateOfQuiz(quizId);
         int countUserRate = dao.countUserRate(quizId);
         Users creator = udao.getUserByID(String.valueOf(quiz.getCreator_id()));
+        float fiveStar = dao.countRateStars(5, quizId) / (float) countUserRate *100 ;
+        float fourStar = dao.countRateStars(4, quizId) / (float) countUserRate *100;
+        float threeStar = dao.countRateStars(3, quizId)/ (float) countUserRate *100;
+        float twoStar = dao.countRateStars(2, quizId)/ (float) countUserRate *100;
+        float oneStar = 100 - fiveStar - fourStar - threeStar - twoStar;
         request.setAttribute("quiz", quiz);
         request.setAttribute("creator", creator);
         request.setAttribute("numOfEroll", numOfEroll);
         request.setAttribute("avgRate", String.format("%.1f", avgRate));
         request.setAttribute("countUserRate", countUserRate);
+        request.setAttribute("fiveStar", String.format("%.2f", fiveStar));
+        request.setAttribute("fourStar", String.format("%.2f", fourStar));   
+        request.setAttribute("threeStar", String.format("%.2f", threeStar));
+        request.setAttribute("twoStar", String.format("%.2f", twoStar));   
+        request.setAttribute("oneStar",oneStar);
+        
         request.getRequestDispatcher("QuizEnroll.jsp").forward(request, response);
     }
 

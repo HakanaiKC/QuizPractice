@@ -450,7 +450,8 @@ public class QuizDAO extends DBContext {
         }
         return 0;
     }
-        public int countUserRate(String quizID) {
+
+    public int countUserRate(String quizID) {
 //        List<Quiz> list = new ArrayList<>();
         try {
             String query = "select count(rate) from Rate\n"
@@ -460,14 +461,34 @@ public class QuizDAO extends DBContext {
             ResultSet rs = pd.executeQuery();
 
             while (rs.next()) {
-                return rs.getInt(1);     
+                return rs.getInt(1);
             }
         } catch (SQLException e) {
             System.out.println(e);
         }
         return 0;
     }
-    public void Feedback(String quiz_id,int user_id,String comment){
+
+    public int countRateStars(int star, String quizID) {
+//        List<Quiz> list = new ArrayList<>();
+        try {
+            String query = "select count(rate)  from rate\n"
+                    + "where rate = ? and quiz_id =?";
+            PreparedStatement pd = connection.prepareStatement(query);
+            pd.setInt(1,star);
+            pd.setString(2, quizID);
+            ResultSet rs = pd.executeQuery();
+
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    public void Feedback(String quiz_id, int user_id, String comment) {
         String query = "insert into Feedback(quiz_id,user_id,comment)values(?, ?, ?)";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
