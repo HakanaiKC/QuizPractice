@@ -80,7 +80,7 @@
                     </div>
                     <div class="button-enroll-div">
                         <!--                        <input type="submit" value="Enroll" name="enroll-button" class="button-enroll" style="width: 150px;"/>-->
-                        <a href="QuizDetailServlet?quizid=${quiz.quiz_id}" class="button-enroll" style="width: 150px;" >Enroll</a>
+                        <a class="btn btn-white" href="QuizDetailServlet?quizid=${quiz.quiz_id}" class="button-enroll" style="width: 150px;" >Enroll</a>
                     </div>
                     <div class="nums-of-enroll"><p>${numOfEroll} already enrolled</p></div>
 

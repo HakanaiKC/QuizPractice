@@ -41,11 +41,6 @@
         <link type="text/css" 
               href="assets/css/app.css"
               rel="stylesheet">
-
-        <!-- Quill Theme -->
-        <link type="text/css"
-              href="assets/css/quill.css"
-              rel="stylesheet">
     </head>
     <body>
         <%@include file="Header_All.jsp" %>
@@ -75,10 +70,16 @@
                     <span class="rate-total" data-rating="4.8" id="starrate"></span>
                     <!--Change average rating-->
 
-                    <!--User rate-->    
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <!--User rate-->
+                    <c:if test="${sessionScope.userSeisson !=null}">
+                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
                         Rate the quiz!
                     </button>
+
+                    <button type="button" class="btn btn-link feedback" data-toggle="modal" data-target="#feedback">
+                        Feedback
+                    </button>
+                    </c:if>
                     <form action="FeedbackAndRate?action=send" method="post">
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -105,24 +106,44 @@
                 </div>
             </div>
         </div>
-        <h4>Feedback</h4>
-        <form action="Feedback?quizid=${quiz.quiz_id}" method="post">
-            <input id="feedback" name="feedback"
-                   type="text"
-                   class="form-control"
-                   placeholder="Your message">
-            <input type="submit" value="Submit">
-        </form>
+
+        <form action="Feedback" method="post">
+            <div class="modal fade" id="feedback" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Rate the quiz</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Feedback</h4>
+                            <input name="quizid" value="${quiz.quiz_id}" hidden>
+                            <textarea id="feedback" name="feedback"
+                                      type="text"
+                                      class="form-control"
+                                      placeholder="Your message"
+                                      rows="3"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>         
         <!--End Rate-->
 
         <div class="row border col-sm-12 cardholder1">
 
             <!--Left box-->
             <div class="col-sm-1 menu">
-                <div class="cardset">
-                    <div class="learn"><a href="Learn.jsp">Learn</a></div>
-                    <div class="exam"><a href="QuizResult.jsp">Exam</a></div>
-                    <div class="review"><a href="QuizResult.jsp">Review</a></div>
+                <div class="btn-group-vertical mb-2 mr-lg-1" style="padding-top: 2em;">
+                    <a class="btn btn-light learn" href="Learn.jsp">Learn</a>
+                    <a class="btn btn-light exam" href="QuizResult.jsp">Exam</a>
+                    <a class="btn btn-light review" href="QuizResult.jsp">Review</a>
                 </div>
             </div>
             <!--Left box-->
@@ -157,7 +178,9 @@
     <div class="container_home">
         <div class="row border cardholder1">
             <div class="col-sm-2 "> </div>
-            <div class="row col-sm-2"><div class="avatar col-sm-0"><a href="ProfileServlet?id=${creator.user_id}" role="button">
+            <div class="row col-sm-2">
+                <div class="avatar col-sm-0">
+                    <a href="ProfileServlet?id=${creator.user_id}" role="button">
                         <c:if test = "${creator.avatar == null}">
                             <img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="rounded-circle"
                                  width="40"></c:if>
@@ -172,7 +195,7 @@
 
             <div class="col-sm-2"></div>
             <div class="col-sm-5"></div>
-            <div class="col-sm-2 "> </div>
+            <div class="col-sm-2"> </div>
         </div>
     </div>
     <!--End Flashcard-->
@@ -180,35 +203,36 @@
     <!--Study Section-->
     <div class="container_home1">
         <div class="row cardholder">        
-            <c:forEach items="${listQuestion}"  var="question">
-            <div class="card-question col-sm-7">
-                <div class="answer">
-                    <br>
-                    <c:forEach items="${listOption}"  var="option">
-                        <c:if test="${option.question_id == question.question_id && option.right_option==1}">
-                    <p class="option">
-                        ${option.option_content}
-                    </p>
-                    </c:if>
-                    </c:forEach>
-                    <br>
+            <c:forEach items="${listQuestion}"  var="question">                
+                <div class="card-question col-sm-7">
+                    <div class="answer">
+                        <br>
+                        <c:forEach items="${listOption}"  var="option">
+                            <c:if test="${option.question_id == question.question_id && option.right_option==1}">
+                                <p class="option">
+                                    ${option.option_content}
+                                </p>
+                            </c:if>
+                        </c:forEach>
+                        <br>
+                    </div>
+                    
+                    <div class="question">${question.question}  
+                        <hr>
+                        <c:forEach items="${listOption}"  var="option">
+                            <c:if test="${option.question_id == question.question_id}">
+                                <p class="option">
+                                    ${option.option_content}
+                                </p>
+                            </c:if>
+                        </c:forEach>
+                        <br>
+                    </div> 
                 </div>
-                <div class="question">${question.question}  
-                    <br>
-                    <c:forEach items="${listOption}"  var="option">
-                        <c:if test="${option.question_id == question.question_id}">
-                    <p class="option">
-                        ${option.option_content}
-                    </p>
-                    </c:if>
-                    </c:forEach>
-                    <br>
-                </div> 
-            </div>
-            <div class="col-sm-7 showinstruction" id="showinstruction" onclick="myFunction()" style="cursor: pointer; color: blue;">Show instruction</div>
-            <div class="col-sm-7 instruction" id="instruction" style="display: none;">
-                ${question.instruction}
-            </div>
+                <div class="col-sm-7 showinstruction" id="showinstruction" onclick="myFunction()" style="cursor: pointer; color: blue;">Show instruction</div>
+                <div class="col-sm-7 instruction" id="instruction" style="display: none;">
+                    ${question.instruction}
+                </div>
             </c:forEach>
         </div>
 
@@ -237,20 +261,14 @@
 
     <!-- Highlight.js -->
     <script src="assets/js/hljs.js"></script>
-
-    <!-- Quill -->
-    <script src="assets/vendor/quill.min.js"></script>
-    <script src="assets/js/quill.js"></script>
-
-    <script src="assets/vendor/jquery.star-rating-svg_1.js"></script>
 </body>
 <script>
-                const cards = document.querySelectorAll(".cards__single");
+                    const cards = document.querySelectorAll(".cards__single");
 
-                function flipCard() {
-                    this.classList.toggle("flip");
-                }
-                cards.forEach((card) => card.addEventListener("click", flipCard));
+                    function flipCard() {
+                        this.classList.toggle("flip");
+                    }
+                    cards.forEach((card) => card.addEventListener("click", flipCard));
 </script>
 
 <script>
