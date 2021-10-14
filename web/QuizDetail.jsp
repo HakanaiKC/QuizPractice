@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en"
       dir="ltr">
     <head>
@@ -156,10 +157,17 @@
     <div class="container_home">
         <div class="row border cardholder1">
             <div class="col-sm-2 "> </div>
-            <div class="row col-sm-2"><div class="avatar col-sm-0"><a href="#" role="button"><img
-                            src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="rounded-circle"
-                            width="40"></a></div>
-                <div class="card-creator col-sm-8">card-creator</div>
+            <div class="row col-sm-2"><div class="avatar col-sm-0"><a href="#" role="button">
+                        <c:if test = "${creator.avatar == null}">
+                            <img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="rounded-circle"
+                                 width="40"></c:if>
+                        <c:if test = "${creator.avatar != null}">
+                            <img src="uploads/${creator.avatar}" alt="Avatar" class="rounded-circle"
+                                 width="40">
+                        </c:if>
+                    </a>
+                </div>
+                <div class="card-creator col-sm-8">${creator.username}</div>
             </div>
 
             <div class="col-sm-2"></div>
