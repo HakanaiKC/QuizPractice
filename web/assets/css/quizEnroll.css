@@ -15,8 +15,21 @@ body {
     height: auto;
 }
 
-.quiz-title-div{
+
+/*.quiz-category-div{
     margin-top: 30px;
+}*/
+
+/*.category{
+    margin-right: 12px;
+    width: auto;
+    display: inline-block;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+}*/
+.quiz-title-div{
+    /*margin-top: 20px;*/
     color: white;
     font-size: 30px;
     font-weight: bold;

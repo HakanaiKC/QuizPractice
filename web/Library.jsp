@@ -99,7 +99,6 @@
             <!--??n ?Ã¢y-->
         </div>
 
-        <%--<%@include file="Footer.jsp" %>--%>
         <%@include file="Boostrap_Header.jsp" %>
         <!-- jQuery -->
         <script src="assets/vendor/jquery.min.js"></script>

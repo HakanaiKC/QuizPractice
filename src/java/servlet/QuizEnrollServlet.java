@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import dao.CategoryDAO;
 import dao.QuizDAO;
 import dao.UsersDAO;
 import java.io.IOException;
@@ -65,6 +66,7 @@ public class QuizEnrollServlet extends HttpServlet {
         // processRequest(request, response);
         String quizId = request.getParameter("quizid");
         QuizDAO dao = new QuizDAO();
+        CategoryDAO categoryDAO = new CategoryDAO();
         UsersDAO udao = new UsersDAO();
         Quiz quiz = dao.getQuizByID(quizId);
         int numOfEroll = dao.countUserEnrollAQuiz(quizId);
@@ -77,6 +79,7 @@ public class QuizEnrollServlet extends HttpServlet {
         float twoStar = dao.countRateStars(2, quizId)/ (float) countUserRate *100;
         float oneStar = 100 - fiveStar - fourStar - threeStar - twoStar;
         int countFeedback = dao.countFeedback(quizId);
+        request.setAttribute("categoryNameOfQuiz", categoryDAO.getCategoryForQuiz(Integer.parseInt(quizId)));
         request.setAttribute("quiz", quiz);
         request.setAttribute("creator", creator);
         request.setAttribute("numOfEroll", numOfEroll);

@@ -57,6 +57,19 @@
             <div class="row panel_top">
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4">
+
+                    <div style="margin-top: 30px;" class="quiz-category-div">
+                        <c:forEach items="${categoryNameOfQuiz}" var="c">
+                            <div style="margin-right: 12px;
+                                 width: auto;
+                                 display: inline-block;
+                                 color: white;
+                                 font-size: 18px;
+                                 font-weight: 500;"
+                                 class="category">${c.category_name}</div>
+                        </c:forEach>
+                    </div>
+
                     <div class="quiz-title-div">
                         ${quiz.name}
                     </div>
@@ -80,7 +93,12 @@
                     </div>
                     <div class="button-enroll-div">
                         <!--                        <input type="submit" value="Enroll" name="enroll-button" class="button-enroll" style="width: 150px;"/>-->
-                        <a class="btn btn-white" href="QuizDetailServlet?quizid=${quiz.quiz_id}" class="button-enroll" style="width: 150px;" >Enroll</a>
+                        <c:if test="${sessionScope.userSeisson !=null}">
+                            <a class="btn btn-white" href="QuizDetailServlet?quizid=${quiz.quiz_id}" class="button-enroll" style="width: 150px;" >Enroll</a>
+                        </c:if>
+                        <c:if test="${sessionScope.userSeisson ==null}">
+                            <a class="btn btn-white" href="Login" class="button-enroll" style="width: 150px;" >Enroll</a>
+                        </c:if>
                     </div>
                     <div class="nums-of-enroll"><p>${numOfEroll} already enrolled</p></div>
 

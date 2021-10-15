@@ -50,7 +50,7 @@ public class QuestionDAO extends DBContext {
         }
         return list;
     }
-
+    
     public List<Option> getAllOption(int quizId) {
         List<Option> list = new ArrayList<>();
         try {
@@ -78,6 +78,39 @@ public class QuestionDAO extends DBContext {
             System.out.println(e);
         }
         return list;
+    }
+    
+public void addQuestion(int last_ID, int question_id, String question, String instruction) {
+        Question q = new Question();
+        String query = "insert into Question(quiz_id, question_id, question, intruction) values(?, ?, ?, ?)";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, last_ID);
+            ps.setInt(2, question_id); //lay quiz_id ma nguoi dung vua tao
+            ps.setString(3, question);
+            ps.setString(4, instruction);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void addOption(int quiz_id, int question_id, int option_id, int right_option, String option_content) {
+        Option option = new Option();
+        String query = "insert into [Option](quiz_id,question_id, option_id, right_option, option_content)\n"
+                + "values(?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, quiz_id);
+            ps.setInt(2, question_id); //lay quiz_id ma nguoi dung vua tao
+            ps.setInt(3, option_id);
+            ps.setInt(4, right_option);
+            ps.setString(5, option_content);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public static void main(String[] args) {

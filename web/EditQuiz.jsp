@@ -41,6 +41,7 @@
     </head>
     <body>
         <%@include file="Header_All.jsp" %>
+        <h1 style="text-align: center; color: #0996d6">Edit Quiz</h1>
         <div class="preloader">
             <div class="sk-chase">
                 <div class="sk-chase-dot"></div>
@@ -51,7 +52,7 @@
                 <div class="sk-chase-dot"></div>
             </div>
         </div>
-        <form action="CreateQuiz" method="post"  style="min-height: 800px;">
+        <form action="" method="post"  style="min-height: 800px;">
             <div class="container_body row">
                 <!--PHAN MO TA QUIZ-->
                 <div class="col-sm-3"></div>
@@ -202,3 +203,4 @@
         </script>
     </body>
 </html>
+

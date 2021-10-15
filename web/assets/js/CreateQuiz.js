@@ -116,14 +116,12 @@ function getAll() {
         question.questionDescription = document.getElementById("ques-des" + arr[n]).value;
         question.questionInstruction = document.getElementById("ques-instruc" + arr[n]).value;
         listQuestion.push(question);
-        console.log(question);
     }
     
     
     for (var n = 0; n < arr.length; n++) {
         var className = "innerQue" + arr[n];
-
-        console.log("so luong dap an cau hoi "+n+": " + document.getElementsByClassName(className).length);
+        var countCheckbox=0;
         for(var m=0; m<document.getElementsByClassName(className).length; m++){
             
             classCheckbox = "choose-right-option" + arr[n];
@@ -135,13 +133,39 @@ function getAll() {
             option.checkbox = document.getElementsByClassName(classCheckbox)[m].checked;
             option.optionDescription = document.getElementsByClassName(classOptionDescription)[m].value;
             listOption.push(option);
-            console.log(option);
-            
         }
+       for(var m=0; m<document.getElementsByClassName(className).length; m++){
+           if(document.getElementsByClassName(classCheckbox)[m].checked){
+               countCheckbox++;
+           }
+       }
+       if(countCheckbox===0){
+           alert('You must check at least one option');
+       }
+       
     }
     
-//    console.log(JSON.stringify(listQuestion));
+    var questionList = JSON.stringify(listQuestion,null,'@@@##@@@');
+    var optionList = JSON.stringify(listOption,null,'@@@##@@@');
+    document.getElementById("HiddenInput").value += questionList;
+    document.getElementById("HiddenInputOption").value += optionList;
+    
 
 
     
+}
+function changecolor() {
+    console.log(document.getElementsByClassName("cate").length);
+    for (var qwe = 1; qwe <= document.getElementsByClassName("cate").length; qwe++) {
+
+        if (document.getElementsByClassName("choose-category")[qwe-1].checked) {
+            var links = document.getElementById("cate" + qwe);
+            links.style.color = "white";
+            links.style.backgroundColor = "#2196f3";
+        } else {
+            var links = document.getElementById("cate" + qwe);
+            links.style.color = "#2196f3";
+            links.style.backgroundColor = "white";
+        }
+    }
 }

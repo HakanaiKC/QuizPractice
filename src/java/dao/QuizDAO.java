@@ -369,6 +369,7 @@ public class QuizDAO extends DBContext {
         return list;
     }
 
+    
     public int getLastQuizId(int user_id) {
         QuizDAO dao = new QuizDAO();
         try {
@@ -386,31 +387,15 @@ public class QuizDAO extends DBContext {
         return 0;
     }
 
-    public void addQuiz(int creator_id, String quizName, String description, String lastUpdate) {
+    public void addQuiz(int creator_id, String quizName, String description, String create_date) {
         Quiz quiz = new Quiz();
-        String query = "insert into Quiz values(?, ?, ?, ?, ?)";
+        String query = "insert into Quiz (creator_id, name, description, create_date) values(?, ?, ?, ?)";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, creator_id);
             ps.setString(2, quizName);
             ps.setString(3, description);
-//            ps.setFloat(4, price);
-            ps.setString(5, lastUpdate);
-            ps.executeUpdate();
-
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    public void addQuestion(String question, int user_id, String instruction) {
-        Question q = new Question();
-        String query = "insert into Question values(?, ?, ?)";
-        try {
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setString(1, question);
-            ps.setInt(2, getLastQuizId(user_id)); //lay quiz_id
-            ps.setString(3, instruction);
+            ps.setString(4, create_date);
             ps.executeUpdate();
 
         } catch (Exception e) {
@@ -505,4 +490,5 @@ public class QuizDAO extends DBContext {
             System.out.println(e);
         }
     }
+    
 }

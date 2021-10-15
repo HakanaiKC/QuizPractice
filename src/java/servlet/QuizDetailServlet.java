@@ -5,6 +5,7 @@
  */
 package servlet;
 
+import dao.CategoryDAO;
 import dao.QuestionDAO;
 import dao.QuizDAO;
 import dao.UsersDAO;
@@ -66,16 +67,17 @@ public class QuizDetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //  processRequest(request, response);
+//        processRequest(request, response);
         String quiz_id = request.getParameter("quizid");
-        String quizId = request.getParameter("quizid");
         QuizDAO dao = new QuizDAO();
         UsersDAO udao = new UsersDAO();
-        Quiz quiz = dao.getQuizByID(quizId);
+        Quiz quiz = dao.getQuizByID(quiz_id);
         Users creator = udao.getUserByID(String.valueOf(quiz.getCreator_id()));
         QuestionDAO quesdao = new QuestionDAO();
-        List<Question> listQuestion = quesdao.getAllQuestion(Integer.parseInt(quizId));
-        List<Option> listOption = quesdao.getAllOption(Integer.parseInt(quizId));
+        
+        List<Question> listQuestion = quesdao.getAllQuestion(Integer.parseInt(quiz_id));
+        List<Option> listOption = quesdao.getAllOption(Integer.parseInt(quiz_id));
+        
         request.setAttribute("quiz", quiz);
         request.setAttribute("creator", creator);
         request.setAttribute("listQuestion", listQuestion);
