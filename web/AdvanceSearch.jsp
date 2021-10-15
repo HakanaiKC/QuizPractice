@@ -59,13 +59,75 @@
                 <div class="sk-chase-dot"></div>
             </div>
         </div>
-
+        <%@include file="Header_All.jsp" %>
         <div class="mdk-header-layout js-mdk-header-layout">
-            <%@include file="Header_All.jsp" %>
-            
-            
-        </div>
-        <%@include file="Footer.jsp" %>
+            <div class="page ">
+                <div class="container page__container">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="Home.jsp">Home</a></li>
+                            <li class="breadcrumb-item active"
+                                aria-current="page">Advance Search</li>
+                        </ol>
+                    </nav>
+                    
+                    <!--Category List-->
+                    <h1 class="h2">Advance Search</h1>
+
+                    <div class="card bg-white">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <h4>Categories</h4>
+                                </div>
+                                <!--Column 1-->
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input id="customCheck01"
+                                                   type="checkbox"
+                                                   class="custom-control-input">
+                                            <label for="customCheck01"
+                                                   class="custom-control-label">Mathematics</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!--Column 2-->
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input id="customCheck03"
+                                                   type="checkbox"
+                                                   class="custom-control-input">
+                                            <label for="customCheck03"
+                                                   class="custom-control-label">Mathematics</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!--Column 3-->
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input id="customCheck05"
+                                                   type="checkbox"
+                                                   class="custom-control-input">
+                                            <label for="customCheck05"
+                                                   class="custom-control-label">Mathematics</label>
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-info btn-lg"><i class="material-icons mr-1">search</i>Search</button>                                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%@include file="Footer.jsp" %>
+        </div>        
         <%@include file="Boostrap_Header.jsp" %>
         <!-- jQuery -->
         <script src="assets/vendor/jquery.min.js"></script>

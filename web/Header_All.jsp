@@ -36,11 +36,16 @@
                             <button class="btn" type="button"><i
                                     class="material-icons font-size-24pt">search</i></button>
                         </form>
-                            <div name="SearchQuiz" value="${SearchQuiz}" ></div>
+                        <div name="SearchQuiz" value="${SearchQuiz}" ></div>
                         <!-- // END Search -->
                         <c:if test="${sessionScope.userSeisson !=null}">
-                        <div style="padding-left: 10px;"><a class="d-none d-lg-flex btn btn-info" href="CreateQuiz.jsp" role="button">Create</a></div>                        
-                        <div class="flex"></div>
+                            <div style="padding-left: 10px; ">
+                                <a class="d-none d-lg-flex btn btn-info" href="AdvanceSearch.jsp" role="button"><i class="material-icons mr-1">search</i>Advance</a>
+                            </div>
+                            <div style="padding-left: 10px;">
+                                <a class="d-none d-lg-flex btn btn-info" href="CreateQuiz.jsp" role="button">Create</a>
+                            </div>                         
+                            <div class="flex"></div>
                         </c:if>
                         <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
                             <c:if test="${sessionScope.userSeisson.role_id ==0}">

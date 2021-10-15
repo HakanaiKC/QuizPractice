@@ -75,10 +75,6 @@
                         <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
                             Rate the quiz!
                         </button>
-
-                        <button type="button" class="btn btn-link feedback" data-toggle="modal" data-target="#feedback">
-                            Feedback
-                        </button>
                     </c:if>
                     <form action="Feedback?Action=rate" method="post">
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -155,7 +151,6 @@
             <div class="col-sm-1"></div>
         </div>
     </div>
-
 
     <div class="container_home">
         <div class="row border cardholder1">
