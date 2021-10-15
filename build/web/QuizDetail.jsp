@@ -93,12 +93,20 @@
                                     <div class="modal-body">
                                         <input type="hidden" name="myField" id="myField" value="">
                                         <span class="my-rating-2"></span>
-                                        <span name="rate" id="live-rating" class="live-rating"></span>                                
+                                        <span name="rate" id="live-rating" class="live-rating"></span>   
+                                        <hr>
+                                        <h4>Feedback</h4>
+                                        <input name="quizid" value="${quiz.quiz_id}" hidden>
+                                        <textarea id="feedback" name="feedback"
+                                                  type="text"
+                                                  class="form-control"
+                                                  placeholder="Your message"
+                                                  rows="3"></textarea>
                                     </div>
                                     <input name="quizid" value="${quiz.quiz_id}" hidden>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" onclick="getRate()">Rate</button>
+                                        <button type="submit" class="btn btn-primary">Rate</button>
                                     </div>
                                 </div>
                             </div>
@@ -107,35 +115,7 @@
                     <!--End User rate-->  
                 </div>
             </div>
-        </div>
-
-        <form action="Feedback?Action=feedback" method="post">
-            <div class="modal fade" id="feedback" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Rate the quiz</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <h4>Feedback</h4>
-                            <input name="quizid" value="${quiz.quiz_id}" hidden>
-                            <textarea id="feedback" name="feedback"
-                                      type="text"
-                                      class="form-control"
-                                      placeholder="Your message"
-                                      rows="3"></textarea>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>         
+        </div>      
         <!--End Rate-->
 
         <div class="row border col-sm-12 cardholder1">
@@ -267,14 +247,7 @@
     <script src="assets/vendor/jquery.star-rating-svg.min.js"></script>
     <script src="assets/vendor/jquery.star-rating-svg_1.js"></script>
 </body>
-<script>
-                    function getRate() {
-                        var liverating = document.getElementById("live-rating").innerHTML;
-                        document.getElementById("live-rating").value = liverating;
-                        console.log(liverating);
-                        console.log(document.getElementById("live-rating").value);
-                    }
-</script>
+
 <script>
     const cards = document.querySelectorAll(".cards__single");
 
