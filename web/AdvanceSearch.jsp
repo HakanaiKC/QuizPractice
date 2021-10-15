@@ -65,12 +65,12 @@
                 <div class="container page__container">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="Home.jsp">Home</a></li>
+                            <li class="breadcrumb-item"><a href="Home">Home</a></li>
                             <li class="breadcrumb-item active"
                                 aria-current="page">Advance Search</li>
                         </ol>
                     </nav>
-                    
+
                     <!--Category List-->
                     <h1 class="h2">Advance Search</h1>
 
@@ -80,51 +80,42 @@
                                 <div class="col-lg-3">
                                     <h4>Categories</h4>
                                 </div>
-                                <!--Column 1-->
-                                <div class="col-lg-3">
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input id="customCheck01"
-                                                   type="checkbox"
-                                                   class="custom-control-input">
-                                            <label for="customCheck01"
-                                                   class="custom-control-label">Mathematics</label>
+                                <!--Category Type(use code here)-->
+                                <div class="category row">
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox">
+                                                <input id="customCheck01"
+                                                       type="checkbox"
+                                                       class="custom-control-input">
+                                                <label for="customCheck01"
+                                                       class="custom-control-label">Mathematics</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                
-                                <!--Column 2-->
-                                <div class="col-lg-3">
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input id="customCheck03"
-                                                   type="checkbox"
-                                                   class="custom-control-input">
-                                            <label for="customCheck03"
-                                                   class="custom-control-label">Mathematics</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!--Column 3-->
-                                <div class="col-lg-3">
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input id="customCheck05"
-                                                   type="checkbox"
-                                                   class="custom-control-input">
-                                            <label for="customCheck05"
-                                                   class="custom-control-label">Mathematics</label>
-                                        </div>
-                                    </div>
-                                </div>                                
+                                    </div>                                    
+                                </div> 
+                                <!--End Category Type-->
                             </div>
                         </div>
                         <div class="card-footer text-center">
                             <button type="submit" class="btn btn-info btn-lg"><i class="material-icons mr-1">search</i>Search</button>                                             
                         </div>
                     </div>
-                </div>
+
+                    <!--Question List-->
+                    <div class="card bg-white shadow p-3 mb-5 bg-white rounded" style="border-radius: 15px;">
+                        <div class="card-body row">
+                            <div class="card1 col-sm-10">
+                                <div class="content row" onclick="location.href = 'QuizDetailServlet?quizid=${q.quiz_id}';" style="cursor:pointer;">
+                                    <div class="n-question col-sm-4">13 questions</div>
+                                    <div class="card-creator col-sm-6">Dat09</div>
+                                    <div class="card-title col-sm-10">Tuyển tập văn mẫu</div>                                    
+                                </div>                                  
+                            </div>                                  
+                            <div class="col-sm-2"></div>
+                        </div>
+                    </div>
+                </div>                   
             </div>
             <%@include file="Footer.jsp" %>
         </div>        

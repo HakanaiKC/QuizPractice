@@ -91,8 +91,8 @@
                     <div class="n-question col-sm-4">${q.questionNum} questions</div>
                     <div class="card-creator col-sm-6">${q.creator_name}</div>
                     <div class="card-title col-sm-10">${q.name}</div>
-                </div>
-            
+                    <button class="btn btn-link"><i class="fas fa-edit mr-1"></i>Edit</button>
+                </div>            
             </div>
             <div class="col-sm-4"></div>
             </c:forEach>
