@@ -11,7 +11,8 @@
     <head>
         <meta charset="UTF-8" />
         <title>Exam Result</title>
-
+        
+        </style>
         <!-- Custom Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500%7CRoboto:400,500&display=swap"
               rel="stylesheet">
@@ -134,7 +135,7 @@
                         <br>                        
                         <div class="md-form col-md-6">
                             <h4>Set Time Limit</h4>
-                            <input value="#" type="time" id="inputMDEx1" class="form-control">
+                            <input value="#" type="time" id="inputMDEx1" class="form-control" step="1">
                         </div>                 
                     </div>
                     <div class="modal-footer">
@@ -164,7 +165,6 @@
         <script src="assets/js/app.js"></script>
 
         <!-- Highlight.js -->
-        <script src="assets/js/hljs.js"></script>
-        
+        <script src="assets/js/hljs.js"></script>            
     </body>
 </html>

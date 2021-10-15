@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en"
       dir="ltr">
     <head>
@@ -52,8 +53,8 @@
                 <div class="sk-chase-dot"></div>
             </div>
         </div>
-        
-        
+
+
         <div class="container_body row">
             <div class="col-12 top-panel">
                 <div class="homeLogo">learn</div>
@@ -95,6 +96,8 @@
                     <input type="button" value="D" name="option" />
                 </div>
             </div>
+            
+            
             <div class="col-3"></div>
         </div>
         <!-- jQuery -->

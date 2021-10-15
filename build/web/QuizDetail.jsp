@@ -282,6 +282,6 @@
             useGradient: false,
             readOnly: true
         });
-    });
+    });    
 </script>
 </html>
