@@ -105,6 +105,11 @@
                             <ul class="nav navbar-nav flex-nowrap">
                                 <!-- User dropdown -->
                                 <li class="nav-item dropdown ml-1 ml-md-3">
+                                    <ul class="nav navbar-nav navbar-nav-stats d-none d-md-flex flex-nowrap" style="margin-right: 1em;">
+                                        <li class="nav-item">
+                                            <div class="nav-stats">591 <small>RUBY</small></div>
+                                        </li>
+                                    </ul>
                                     <div class="avatar avatar-xxl position-absolute bottom-0 left-0 right-0"></div>
                                     <c:if test = "${sessionScope.userSeisson.avatar == null}">
                                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img
@@ -116,6 +121,7 @@
                                                 src="uploads/${sessionScope.userSeisson.avatar}" alt="Avatar" class="rounded-circle"
                                                 width="40" height="40"></a>
                                         </c:if>
+                                    
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="ChangePass.jsp">
                                             <i class="material-icons">edit</i> Edit Account
