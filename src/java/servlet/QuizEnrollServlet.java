@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Quiz;
 import model.Users;
 
@@ -72,6 +73,8 @@ public class QuizEnrollServlet extends HttpServlet {
         QuizDAO dao = new QuizDAO();
         CategoryDAO categoryDAO = new CategoryDAO();
         UsersDAO udao = new UsersDAO();
+//        HttpSession session = request.getSession();
+//        Users user = (Users) session.getAttribute("userSeisson");
         Quiz quiz = dao.getQuizByID(quizId);
         List<model.Feedback> listFeeback = dao.getAllFeeback(Integer.parseInt(quizId));
 //        float[] typeRate = new float[5];
@@ -116,6 +119,7 @@ public class QuizEnrollServlet extends HttpServlet {
         request.setAttribute("countFeedback", countFeedback);
         request.setAttribute("oneStar", oneStar);
         request.setAttribute("listFeeback", listFeeback);
+//        request.setAttribute("enroll", dao.checkEnrollmentExist(quizId, user.getUser_id()));
 //        request.setAttribute("typeRate", typeRate);
         request.getRequestDispatcher("QuizEnroll.jsp").forward(request, response);
     }

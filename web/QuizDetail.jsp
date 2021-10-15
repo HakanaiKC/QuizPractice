@@ -73,10 +73,10 @@
                     <!--User rate-->
                     <c:if test="${sessionScope.userSeisson !=null}">
                         <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
-                            Rate the quiz!
+                             Rate and feedback ^^
                         </button>
                     </c:if>
-                    <form action="Feedback?Action=rate" method="post">
+                    <form action="Feedback" method="post">
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -102,7 +102,7 @@
                                     <input name="quizid" value="${quiz.quiz_id}" hidden>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Rate</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </div>
                             </div>
@@ -159,7 +159,7 @@
                 <div class="avatar col-sm-0">
                     <a href="ProfileServlet?id=${creator.user_id}" role="button">
                         <c:if test = "${creator.avatar == null}">
-                            <img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="rounded-circle"
+                            <img src="assets/images/unnamed.jpg" alt="Avatar" class="rounded-circle"
                                  width="40"></c:if>
                         <c:if test = "${creator.avatar != null}">
                             <img src="uploads/${creator.avatar}" alt="Avatar" class="rounded-circle"

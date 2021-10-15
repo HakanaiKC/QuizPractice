@@ -11,12 +11,15 @@ import dao.QuizDAO;
 import dao.UsersDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Option;
 import model.Question;
 import model.Quiz;
@@ -74,9 +77,15 @@ public class QuizDetailServlet extends HttpServlet {
         Quiz quiz = dao.getQuizByID(quiz_id);
         Users creator = udao.getUserByID(String.valueOf(quiz.getCreator_id()));
         QuestionDAO quesdao = new QuestionDAO();
-        
+        HttpSession session = request.getSession();
+        Users user = (Users) session.getAttribute("userSeisson");
         List<Question> listQuestion = quesdao.getAllQuestion(Integer.parseInt(quiz_id));
         List<Option> listOption = quesdao.getAllOption(Integer.parseInt(quiz_id));
+//        PrintWriter out = response.getWriter();
+        String dateNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        if (!dao.checkEnrollmentExist(quiz_id, user.getUser_id())) {
+           dao.addEnrollment(quiz_id, user.getUser_id(), dateNow);
+        }
         
         request.setAttribute("quiz", quiz);
         request.setAttribute("creator", creator);

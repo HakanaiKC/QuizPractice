@@ -491,6 +491,72 @@ public class QuizDAO extends DBContext {
         }
     }
     
+    public boolean checkFeedbackExist(String quiz_id, int user_id) {
+        String query = "select *from Feedback\n"
+                + "where quiz_id = ? and user_id = ?";
+        try {
+             PreparedStatement pd = connection.prepareStatement(query);
+            pd.setString(1, quiz_id);
+            pd.setInt(2, user_id);
+            ResultSet rs = pd.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (SQLException e){ 
+             System.out.println(e);
+        }
+        return false;
+    }
+    
+    public boolean checkEnrollmentExist(String quiz_id, int user_id) {
+        String query = "select *from Enrollment\n"
+                + "where quiz_id = ? and user_id = ?";
+        try {
+             PreparedStatement pd = connection.prepareStatement(query);
+            pd.setString(1, quiz_id);
+            pd.setInt(2, user_id);
+            ResultSet rs = pd.executeQuery();
+            while (rs.next()) {
+                return true;
+            }
+        } catch (SQLException e){ 
+             System.out.println(e);
+        }
+        return false;
+    }
+    public void Feedback(String quiz_id, int user_id, String comment, String datenow, String rate) {
+        String query = "insert into Feedback(quiz_id,user_id,comment,feedback_date, rate) values(?, ?, ?,?,?)";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, quiz_id);
+            ps.setInt(2, user_id);
+            ps.setString(3, comment);
+            ps.setString(4, datenow);
+            ps.setString(5, rate);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    public void updateFeedback(String quiz_id, int user_id, String comment, String datenow, String rate) {
+        String query = "update Feedback\n" +
+"		   set comment = ?, feedback_date=?, rate=?\n" +
+"		   where quiz_id = ? and user_id = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, comment);
+            ps.setString(2, datenow);
+            ps.setString(3, rate);
+            ps.setString(4, quiz_id);
+            ps.setInt(5, user_id);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
     public List<Feedback> getAllFeeback(int quizId) {
         List<Feedback> list = new ArrayList<>();
         try {
@@ -524,11 +590,25 @@ public class QuizDAO extends DBContext {
         return list;
     }
 
+    public void addEnrollment(String quiz_id, int user_id, String day_enroll) {
+        String query = "insert into enrollment (quiz_id,user_id,day_enroll) values(?,?,?)";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, quiz_id);
+            ps.setInt(2, user_id);
+            ps.setString(3, day_enroll);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
     public static void main(String[] args) {
         QuizDAO dao = new QuizDAO();
-        List<Feedback> list = dao.getAllFeeback(10);
-        for (Feedback feedback : list) {
-            System.out.println(feedback);
-        }
+        dao.addEnrollment("16",2, "2002-09-08");
+//        List<Feedback> list = dao.getAllFeeback(10);
+//        for (Feedback feedback : list) {
+//            System.out.println(feedback);
+//        }
     }
 }

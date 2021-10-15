@@ -5,17 +5,23 @@
  */
 package servlet;
 
+import dao.QuestionDAO;
 import dao.QuizDAO;
+import dao.UsersDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Option;
+import model.Question;
+import model.Quiz;
 import model.Users;
 
 /**
@@ -77,40 +83,43 @@ public class Feedback extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         QuizDAO dao = new QuizDAO();
-        String action = request.getParameter("Action");
-        if (action != null) {
-            switch (action) {
-                case "feedback":
-                    String feedback = request.getParameter("feedback");
-                    HttpSession session = request.getSession();
-                    Users user = (Users) session.getAttribute("userSeisson");
-                    int user_id = (user.getUser_id());
-                    String quiz_id = request.getParameter("quizid");
-//        PrintWriter out = response.getWriter();
-//        out.print(feedback+""+user_id+""+quiz_id);
-                    if (feedback.equals("")) {
-                        request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
-                    } else {
-                        String datenow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                        dao.Feedback(quiz_id, user_id, feedback,datenow);
-                        request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
-                    }
-                    break;
-                case "rate":
-                    String quiz = request.getParameter("quizid");
-                    String rate = request.getParameter("myField");
-                    PrintWriter out = response.getWriter();
-                    out.println(rate);
-                    out.print(quiz);
-                    break;
-                default:
-                    break;
+        HttpSession session = request.getSession();
+        Users user = (Users) session.getAttribute("userSeisson");
+        int user_id = (user.getUser_id());
+        String quiz_id = request.getParameter("quizid");
+        String rate = request.getParameter("myField");
+        String feedback = request.getParameter("feedback");
+        String datenow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//        int a = Integer.parseInt(rate);
+        if (!rate.equals("")) {
+            if (dao.checkFeedbackExist(quiz_id, user_id)) {
+                dao.updateFeedback(quiz_id, user_id, feedback, datenow, rate);
+            } else {
+                dao.Feedback(quiz_id, user_id, feedback, datenow, rate);
             }
         }
 
+        UsersDAO udao = new UsersDAO();
+        QuestionDAO quesdao = new QuestionDAO();
+        Quiz quiz = dao.getQuizByID(quiz_id);
+        List<Question> listQuestion = quesdao.getAllQuestion(Integer.parseInt(quiz_id));
+        List<Option> listOption = quesdao.getAllOption(Integer.parseInt(quiz_id));
+        float avgRate = dao.avgRateOfQuiz(quiz_id);
+        Users creator = udao.getUserByID(String.valueOf(quiz.getCreator_id()));
+        request.setAttribute("avgRate", avgRate);
+        request.setAttribute("quiz", quiz);
+        request.setAttribute("creator", creator);
+        request.setAttribute("listQuestion", listQuestion);
+        request.setAttribute("listOption", listOption);
+        request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
+//
+//        PrintWriter out = response.getWriter();
+//        out.print(quiz_id);
+//        out.println(rate);
+//        out.println(feedback);
     }
 
     /**

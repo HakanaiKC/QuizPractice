@@ -86,7 +86,7 @@
                         </div>
                         <c:forEach items="${quizList}" var="q" >
                             <div class="col-sm-4 card" >
-                                <div class="cardset" onclick="location.href = 'LearnServlet';" style="cursor:pointer;">
+                                <div class="cardset" onclick="location.href = 'QuizEnrollServlet?quizid=${q.quiz_id}';" style="cursor:pointer;">
                                     <div class="card-title">${q.name}</div>
                                     <div class="media-body n-question">${q.questionNum} questions</div>
                                     <div class="media-body card-creator">${q.creator_name}</div>
