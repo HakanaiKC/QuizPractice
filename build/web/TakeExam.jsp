@@ -197,9 +197,9 @@
                             <div class="sidebar-p-y" style="padding-top: 5em;">
                                 <div class="sidebar-heading">Time left</div>
                                 <div class="countdown sidebar-p-x"
-                                     data-value="13:77:69"></div> <!--hour:minute:second-->                                      
+                                     data-value="13:77"></div> <!--hour:minute:second-->                                      
                                 <!--End Time-->   
-
+                                
                                 <!--Question-->
                                 <ul class="list-group list-group-fit">
                                     <li class="list-group-item active">
@@ -259,10 +259,10 @@
         </div>
         <%@include file="Boostrap_Header.jsp" %>
         <script>
-            function Scroll() {
-                var elmnt = document.getElementById("multique")[0];
-                elmnt.scrollIntoView();
-            }
+//            function Scroll() {
+//                var elmnt = document.getElementById("multique")[0];
+//                elmnt.scrollIntoView();
+//            }
         </script>
         <!-- jQuery -->
         <script src="assets/vendor/jquery.min.js"></script>
