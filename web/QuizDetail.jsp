@@ -115,7 +115,7 @@
         <!--End Rate-->
 
         <div class="row border col-sm-12 cardholder1">
-
+            <div class="col-sm-2"></div>
             <!--Left box-->
             <div class="col-sm-1 menu">
                 <div class="btn-group-vertical mb-2 mr-lg-1" style="padding-top: 2em;">
@@ -128,89 +128,90 @@
 
 
             <!--Flash card-->
-            <div class="col-sm-5 center">
+            <div class="col-sm-4 center">
                 <div class="cards__single">
-                    <div class="cards__front">
-                        <p class="question-side" id="question-side">
-                            Do you love SWP?
-                        </p>
-                    </div>
-                    <div class="cards__back">
-                        <p class="answer-side" id="answer-side">Yes, I do</p>
+                    <div class="flashcard">
+                        <div id="cardButton">
+                            <div id="cardText"></div>
+                        </div>
                     </div>
                 </div>
-
                 <div class="buttonn">
-                    <button type="button" style="border: none; background-color: white;"><span aria-hidden="true"
-                                                                                               class="material-icons">chevron_left</span></button>
+                    <button type="button" id="prevCard" value="previous" onclick="cardsHandle.cardMove(-1);" class="prevbutton"
+                            style="border: none; background-color: white;"><span aria-hidden="true"
+                                                                         class="material-icons">chevron_left</span></button>
                     <span id="positionIndex">0/0</span>
-                    <button type="button" style="border: none; background-color: white;"><span aria-hidden="true"
-                                                                                               class="material-icons">chevron_right</span></button>
+                    <button type="button" id="nextCard" value="next" onclick="cardsHandle.cardMove(1);"
+                            style="border: none; background-color: white;"><span aria-hidden="true"
+                                                                         class="material-icons">chevron_right</span></button>
                 </div>
             </div>
-            <div class="col-sm-1"></div>
         </div>
+
+
     </div>
+
 
     <div class="container_home">
         <div class="row border cardholder1">
-            <div class="col-sm-2 "> </div>
-            <div class="row col-sm-2">
+            <div class="col-sm-2 "></div>
+            <div class="row col-sm-6" style="    margin-left: 20px;">
                 <div class="avatar col-sm-0">
                     <a href="ProfileServlet?id=${creator.user_id}" role="button">
                         <c:if test = "${creator.avatar == null}">
-                            <img src="assets/images/unnamed.jpg" alt="Avatar" class="rounded-circle"
-                                 width="40"></c:if>
+                            <img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="rounded-circle"
+                                 width="50" height="50"></c:if>
                         <c:if test = "${creator.avatar != null}">
                             <img src="uploads/${creator.avatar}" alt="Avatar" class="rounded-circle"
-                                 width="40">
+                                 width="50" height="50">
                         </c:if>
                     </a>
                 </div>
                 <div class="card-creator col-sm-8">${creator.username}</div>
             </div>
 
-            <div class="col-sm-2"></div>
-            <div class="col-sm-5"></div>
             <div class="col-sm-2"> </div>
         </div>
     </div>
     <!--End Flashcard-->
 
     <!--Study Section-->
-    <div class="container_home1">
-        <div class="row cardholder">        
-            <c:forEach items="${listQuestion}"  var="question">                
-                <div class="card-question col-sm-7">
-                    <div class="answer">
+    <div class="container_home1 row">
+        <div class="col-sm-2"></div>
+        <div class="row cardholder col-sm-7">
+
+            <c:forEach items="${listQuestion}"  var="question">
+                
+                <div class="card-question col-sm-12" >
+                    <div class="answer" id="ans${question.question_id}">
                         <br>
                         <c:forEach items="${listOption}"  var="option">
                             <c:if test="${option.question_id == question.question_id && option.right_option==1}">
-                                <p class="option">
                                     ${option.option_content}
-                                </p>
                             </c:if>
                         </c:forEach>
-                        <br>
+                        
                     </div>
 
-                    <div class="question">${question.question}  
-                        <hr>
+                    <div class="question" id="ques${question.question_id}">${question.question} <br> 
                         <c:forEach items="${listOption}"  var="option">
                             <c:if test="${option.question_id == question.question_id}">
-                                <p class="option">
+                                    ${option.option_id +1}.
                                     ${option.option_content}
-                                </p>
+                                    <br>
                             </c:if>
                         </c:forEach>
                         <br>
                     </div> 
                 </div>
-                <div class="col-sm-7 showinstruction" id="showinstruction" onclick="myFunction()" style="cursor: pointer; color: blue;">Show instruction</div>
-                <div class="col-sm-7 instruction" id="instruction" style="display: none;">
+
+                <div class="col-sm-12 showinstruction" id="showinstruction${question.question_id}" onclick="myFunction(${question.question_id})" style="cursor: pointer; color: blue;">Show instruction</div>
+
+                <div class="col-sm-12 instruction" id="instruction${question.question_id}" style="display: none;">
                     ${question.instruction}
                 </div>
             </c:forEach>
+
         </div>
 
     </div>
@@ -242,7 +243,14 @@
     <script src="assets/vendor/jquery.star-rating-svg.min.js"></script>
     <script src="assets/vendor/jquery.star-rating-svg_1.js"></script>
 </body>
-
+<script>
+                    function getRate() {
+                        var liverating = document.getElementById("live-rating").innerHTML;
+                        document.getElementById("live-rating").value = liverating;
+                        console.log(liverating);
+                        console.log(document.getElementById("live-rating").value);
+                    }
+</script>
 <script>
     const cards = document.querySelectorAll(".cards__single");
 
@@ -250,12 +258,89 @@
         this.classList.toggle("flip");
     }
     cards.forEach((card) => card.addEventListener("click", flipCard));
+
+
+    function Card(front, back) {
+        /*A card is just a container that holds a front and back value! 
+         - You can get either back or front by displaying it*/
+        this.frontVal = front;
+        this.backVal = back;
+
+        this.display = function (side) {
+            if (side === 0) {
+                return this.frontVal;
+            } else {
+                return this.backVal;
+            }
+        };
+    }
+
+
+    var count = 1;
+    var cardsHandle = {
+        cards: [],
+        cardInd: 0,
+        cardButton: document.getElementById("cardButton"),
+        cardText: document.getElementById("cardText"),
+        cardTPosition: document.getElementById("positionIndex"),
+        cardSide: 0,
+
+        cardAdd: function (back, front) {
+            this.cards.push(new Card(back, front));
+        },
+        cardUpdate: function () {
+            var curCard = this.cards[this.cardInd];
+            this.cardText.innerHTML = curCard.display(this.cardSide);
+            this.cardTPosition.innerHTML =
+                    this.cardInd + 1 + "/" + this.cards.length;
+        },
+        cardFlip: function () {
+
+            if (count % 2 === 1) {
+                this.cardText.style = "transform: rotatex(180deg)";
+                count++;
+            } else {
+                this.cardText.style.removeProperty('transform');
+                count++;
+            }
+
+            this.cardSide = (this.cardSide + 1) % 2;
+        },
+        cardMove: function (moveBy) {
+            this.cardInd += moveBy;
+            if (this.cardInd < 0) {
+                this.cardInd += this.cards.length;
+            }
+            this.cardInd = this.cardInd % this.cards.length;
+
+            this.cardSide = 0; // Set back to front
+            this.cardUpdate();
+        },
+        cardTap: function () {
+
+            this.cardFlip();
+            this.cardUpdate(); // Display card
+        }
+    };
+    for(var ii =0; ii<document.getElementsByClassName("card-question").length; ii++){
+        cardsHandle.cardAdd(document.getElementById("ques"+ii).innerHTML , document.getElementById("ans"+ii).innerHTML );
+    }
+    
+
+
+    cardsHandle.cardUpdate();
+
+    cardsHandle.cardButton.addEventListener("click", function () {
+
+        //  cardsHandle.cardFlip();
+        cardsHandle.cardTap();
+    });
 </script>
 
 <script>
-    function myFunction() {
-        var y = document.getElementById("showinstruction");
-        var x = document.getElementById("instruction");
+    function myFunction(idques) {
+        var y = document.getElementById("showinstruction" + idques);
+        var x = document.getElementById("instruction" + idques);
         if (x.style.display === "none") {
             y.innerHTML = "Hide Instruction";
             x.style.display = "block";
@@ -282,6 +367,7 @@
             useGradient: false,
             readOnly: true
         });
-    });    
+    });
 </script>
 </html>
+
