@@ -22,7 +22,7 @@ import model.Question;
 import model.Quiz;
 
 public class QuizDAO extends DBContext {
-    
+
     public List<Quiz> getQuizByPage(List<Quiz> list, int start, int end) {
         List<Quiz> t = new ArrayList<>();
         for (int i = start; i < end; i++) {
@@ -30,7 +30,7 @@ public class QuizDAO extends DBContext {
         }
         return t;
     }
-    
+
     public int countUserEnrollAQuiz(String quizID) {
 //        List<Quiz> list = new ArrayList<>();
         try {
@@ -39,7 +39,7 @@ public class QuizDAO extends DBContext {
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setString(1, quizID);
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 return rs.getInt(1);
             }
@@ -48,7 +48,7 @@ public class QuizDAO extends DBContext {
         }
         return 0;
     }
-    
+
     public Quiz getQuizByID(String id) {
         String query = " select * from Quiz where quiz_id = ?";
         Quiz q = new Quiz();
@@ -58,7 +58,7 @@ public class QuizDAO extends DBContext {
             pd = connection.prepareStatement(query);
             pd.setString(1, id);
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 int quiz_id = rs.getInt("quiz_id");
                 int creator_id = rs.getInt("creator_id");
@@ -79,7 +79,7 @@ public class QuizDAO extends DBContext {
         }
         return q;
     }
-    
+
     public List<Quiz> getRecentQuiz(int user_id) {
         List<Quiz> list = new ArrayList<>();
         QuizDAO dao = new QuizDAO();
@@ -89,20 +89,18 @@ public class QuizDAO extends DBContext {
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setInt(1, user_id);
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 Quiz q = new Quiz();
                 int quiz_id = rs.getInt("quiz_id");
                 int creator_id = rs.getInt("creator_id");
                 String quiz_name = rs.getString("name");
-//                double price = rs.getDouble("price");
 
                 q.setCreator_id(creator_id);
                 q.setQuiz_id(quiz_id);
                 q.setQuestionNum(dao.countQuestion(quiz_id));
                 q.setCreator_name(dao.getCreatorName(creator_id));
                 q.setName(quiz_name);
-//                q.setPrice(price);
                 list.add(q);
             }
         } catch (SQLException e) {
@@ -110,7 +108,7 @@ public class QuizDAO extends DBContext {
         }
         return list;
     }
-    
+
     public List<Quiz> getRecentQuizByName(int user_id, String search) {
         List<Quiz> list = new ArrayList<>();
         QuizDAO dao = new QuizDAO();
@@ -121,7 +119,7 @@ public class QuizDAO extends DBContext {
             pd.setInt(1, user_id);
             pd.setString(2, "%" + search + "%");
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 Quiz q = new Quiz();
                 int quiz_id = rs.getInt("quiz_id");
@@ -142,7 +140,7 @@ public class QuizDAO extends DBContext {
         }
         return list;
     }
-    
+
     public List<Quiz> getQuizByCreatorID(String creatorId) {
         List<Quiz> list = new ArrayList<>();
         QuizDAO dao = new QuizDAO();
@@ -152,7 +150,7 @@ public class QuizDAO extends DBContext {
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setString(1, creatorId);
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 Quiz q = new Quiz();
                 int quiz_id = rs.getInt("quiz_id");
@@ -174,7 +172,7 @@ public class QuizDAO extends DBContext {
         }
         return list;
     }
-    
+
     public List<Quiz> searchQuizByCreatorIDandQuizName(String creatorId, String search) {
         List<Quiz> list = new ArrayList<>();
         QuizDAO dao = new QuizDAO();
@@ -185,7 +183,7 @@ public class QuizDAO extends DBContext {
             pd.setString(1, creatorId);
             pd.setString(2, "%" + search + "%");
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 Quiz q = new Quiz();
                 int quiz_id = rs.getInt("quiz_id");
@@ -207,7 +205,7 @@ public class QuizDAO extends DBContext {
         }
         return list;
     }
-    
+
     public List<Quiz> getAllQuiz() {
         List<Quiz> list = new ArrayList<>();
         QuizDAO dao = new QuizDAO();
@@ -215,7 +213,7 @@ public class QuizDAO extends DBContext {
             String query = "select * from Quiz ";// lay quiz_id, 
             PreparedStatement pd = connection.prepareStatement(query);
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 Quiz q = new Quiz();
                 int quiz_id = rs.getInt("quiz_id");
@@ -237,7 +235,7 @@ public class QuizDAO extends DBContext {
         }
         return list;
     }
-    
+
     public List<Quiz> searchByName(String search) {
         List<Quiz> list = new ArrayList<>();
         QuizDAO dao = new QuizDAO();
@@ -267,7 +265,7 @@ public class QuizDAO extends DBContext {
         }
         return list;
     }
-    
+
     public int countQuestion(int quizID) {
 //        List<Quiz> list = new ArrayList<>();
         try {
@@ -275,7 +273,7 @@ public class QuizDAO extends DBContext {
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setInt(1, quizID);
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 return rs.getInt(1);
             }
@@ -284,7 +282,7 @@ public class QuizDAO extends DBContext {
         }
         return 0;
     }
-    
+
     public String getCreatorName(int creator_id) {
         List<Quiz> list = new ArrayList<>();
         try {
@@ -293,46 +291,43 @@ public class QuizDAO extends DBContext {
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setInt(1, creator_id);
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 return rs.getString("username");
             }
-            
+
         } catch (SQLException e) {
             System.out.println(e);
         }
         return null;
     }
-    
-    public List<Quiz> getRandomQuiz(int user_id) {
+
+    public List<Quiz> getTopQuizByUserID(int user_id) {
         List<Quiz> list = new ArrayList<>();
         QuizDAO dao = new QuizDAO();
         try {
-            String query = "SELECT * \n"
-                    + "FROM Quiz q\n"
-                    + "WHERE Not EXISTS (SELECT 1\n"
-                    + "                  FROM Enrollment e where e.quiz_id = q.quiz_id and e.user_id = ?\n"
-                    + "				  )\n"
-                    + "	AND q.creator_id <> ?\n"
-                    + "	order by newid() ";
+            String query = "SELECT Top (100) e.quiz_id, q.name, q.creator_id,Count(*) as countUserEnroll\n"
+                    + "FROM Enrollment e inner join Quiz q on q.quiz_id=e.quiz_id\n"
+                    + "WHERE Not EXISTS (SELECT 1 FROM Enrollment \n"
+                    + "e where e.quiz_id = q.quiz_id and e.user_id = ? ) AND q.creator_id <> ?\n"
+                    + "GROUP BY e.quiz_id, q.name,q.creator_id\n"
+                    + "order by countUserEnroll desc, NEWID() ";
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setInt(1, user_id);
             pd.setInt(2, user_id);
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 Quiz q = new Quiz();
                 int quiz_id = rs.getInt("quiz_id");
                 int creator_id = rs.getInt("creator_id");
                 String quiz_name = rs.getString("name");
-//                double price = rs.getDouble("price");
 
                 q.setCreator_id(creator_id);
                 q.setQuiz_id(quiz_id);
                 q.setQuestionNum(dao.countQuestion(quiz_id));
                 q.setCreator_name(dao.getCreatorName(creator_id));
                 q.setName(quiz_name);
-//                q.setPrice(price);
                 list.add(q);
             }
         } catch (SQLException e) {
@@ -340,28 +335,28 @@ public class QuizDAO extends DBContext {
         }
         return list;
     }
-    
-    public List<Quiz> getRandomQuiz2() {
+
+    public List<Quiz> getTopQuiz() {
         List<Quiz> list = new ArrayList<>();
         QuizDAO dao = new QuizDAO();
         try {
-            String query = "select * from Quiz Order by NEWID()";
+            String query = "select top 100 e.quiz_id, q.name,q.creator_id ,Count(*) as countUserEnroll\n"
+                    + "from Enrollment e inner join quiz q on e.quiz_id=q.quiz_id\n"
+                    + "GROUP BY e.quiz_id, q.name,q.creator_id  order by countUserEnroll desc, NEWID()";
             PreparedStatement pd = connection.prepareStatement(query);
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 Quiz q = new Quiz();
                 int quiz_id = rs.getInt("quiz_id");
                 int creator_id = rs.getInt("creator_id");
                 String quiz_name = rs.getString("name");
-//                double price = rs.getDouble("price");
 
                 q.setCreator_id(creator_id);
                 q.setQuiz_id(quiz_id);
                 q.setQuestionNum(dao.countQuestion(quiz_id));
                 q.setCreator_name(dao.getCreatorName(creator_id));
                 q.setName(quiz_name);
-//                q.setPrice(price);
                 list.add(q);
             }
         } catch (SQLException e) {
@@ -369,7 +364,7 @@ public class QuizDAO extends DBContext {
         }
         return list;
     }
-    
+
     public int getLastQuizId(int user_id) {
         QuizDAO dao = new QuizDAO();
         try {
@@ -386,7 +381,7 @@ public class QuizDAO extends DBContext {
         }
         return 0;
     }
-    
+
     public void addQuiz(int creator_id, String quizName, String description, String create_date) {
         Quiz quiz = new Quiz();
         String query = "insert into Quiz (creator_id, name, description, create_date) values(?, ?, ?, ?)";
@@ -397,12 +392,12 @@ public class QuizDAO extends DBContext {
             ps.setString(3, description);
             ps.setString(4, create_date);
             ps.executeUpdate();
-            
+
         } catch (Exception e) {
             System.out.println(e);
         }
     }
-    
+
     public float avgRateOfQuiz(String quizID) {
 //        List<Quiz> list = new ArrayList<>();
         try {
@@ -411,7 +406,7 @@ public class QuizDAO extends DBContext {
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setString(1, quizID);
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 return rs.getFloat(1);
             }
@@ -420,7 +415,7 @@ public class QuizDAO extends DBContext {
         }
         return 0;
     }
-    
+
     public int countUserRate(String quizID) {
 //        List<Quiz> list = new ArrayList<>();
         try {
@@ -429,7 +424,7 @@ public class QuizDAO extends DBContext {
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setString(1, quizID);
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 return rs.getInt(1);
             }
@@ -438,7 +433,7 @@ public class QuizDAO extends DBContext {
         }
         return 0;
     }
-    
+
     public int countRateStars(int star, String quizID) {
 //        List<Quiz> list = new ArrayList<>();
         try {
@@ -448,7 +443,7 @@ public class QuizDAO extends DBContext {
             pd.setInt(1, star);
             pd.setString(2, quizID);
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 return rs.getInt(1);
             }
@@ -457,7 +452,7 @@ public class QuizDAO extends DBContext {
         }
         return 0;
     }
-    
+
     public int countFeedback(String quizID) {
 //        List<Quiz> list = new ArrayList<>();
         try {
@@ -466,7 +461,7 @@ public class QuizDAO extends DBContext {
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setString(1, quizID);
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 return rs.getInt(1);
             }
@@ -475,7 +470,7 @@ public class QuizDAO extends DBContext {
         }
         return 0;
     }
-    
+
     public void Feedback(String quiz_id, int user_id, String comment, String datenow) {
         String query = "insert into Feedback(quiz_id,user_id,comment,feedback_date) values(?, ?, ?,?)";
         try {
@@ -485,45 +480,46 @@ public class QuizDAO extends DBContext {
             ps.setString(3, comment);
             ps.setString(4, datenow);
             ps.executeUpdate();
-            
+
         } catch (Exception e) {
             System.out.println(e);
         }
     }
-    
+
     public boolean checkFeedbackExist(String quiz_id, int user_id) {
         String query = "select *from Feedback\n"
                 + "where quiz_id = ? and user_id = ?";
         try {
-             PreparedStatement pd = connection.prepareStatement(query);
+            PreparedStatement pd = connection.prepareStatement(query);
             pd.setString(1, quiz_id);
             pd.setInt(2, user_id);
             ResultSet rs = pd.executeQuery();
             while (rs.next()) {
                 return true;
             }
-        } catch (SQLException e){ 
-             System.out.println(e);
+        } catch (SQLException e) {
+            System.out.println(e);
         }
         return false;
     }
-    
+
     public boolean checkEnrollmentExist(String quiz_id, int user_id) {
         String query = "select *from Enrollment\n"
                 + "where quiz_id = ? and user_id = ?";
         try {
-             PreparedStatement pd = connection.prepareStatement(query);
+            PreparedStatement pd = connection.prepareStatement(query);
             pd.setString(1, quiz_id);
             pd.setInt(2, user_id);
             ResultSet rs = pd.executeQuery();
             while (rs.next()) {
                 return true;
             }
-        } catch (SQLException e){ 
-             System.out.println(e);
+        } catch (SQLException e) {
+            System.out.println(e);
         }
         return false;
     }
+
     public void Feedback(String quiz_id, int user_id, String comment, String datenow, String rate) {
         String query = "insert into Feedback(quiz_id,user_id,comment,feedback_date, rate) values(?, ?, ?,?,?)";
         try {
@@ -539,10 +535,11 @@ public class QuizDAO extends DBContext {
             System.out.println(e);
         }
     }
+
     public void updateFeedback(String quiz_id, int user_id, String comment, String datenow, String rate) {
-        String query = "update Feedback\n" +
-"		   set comment = ?, feedback_date=?, rate=?\n" +
-"		   where quiz_id = ? and user_id = ?";
+        String query = "update Feedback\n"
+                + "set comment = ?, feedback_date=?, rate=?\n"
+                + "where quiz_id = ? and user_id = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, comment);
@@ -566,7 +563,7 @@ public class QuizDAO extends DBContext {
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setInt(1, quizId);
             ResultSet rs = pd.executeQuery();
-            
+
             while (rs.next()) {
                 Feedback feedback = new Feedback();
                 int fbId = rs.getInt("feedback_id");
@@ -603,12 +600,92 @@ public class QuizDAO extends DBContext {
             System.out.println(e);
         }
     }
+
+    public void updateQuiz(String quiz_name, String description, String last_update, int quiz_id) {
+        String query = "Update Quiz set name=?, description=?,last_update = ?\n"
+                + "where quiz_id = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, quiz_name);
+            ps.setString(2, description);
+            ps.setString(3, last_update);
+            ps.setInt(4, quiz_id);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public Quiz getQuizByCreatorIDAndQuizID(int creator_id, int quiz_id) {
+        String query = "select * from quiz where creator_id = ? and quiz_id=?";
+        Quiz q = new Quiz();
+        QuizDAO dao = new QuizDAO();
+        PreparedStatement pd;
+        try {
+            pd = connection.prepareStatement(query);
+            pd.setInt(1, creator_id);
+            pd.setInt(2, quiz_id);
+            ResultSet rs = pd.executeQuery();
+
+            while (rs.next()) {
+                String quiz_name = rs.getString("name");
+                String description = rs.getNString("description");
+
+                q.setCreator_id(creator_id);
+                q.setQuiz_id(quiz_id);
+                q.setName(quiz_name);
+                q.setDescription(description);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return q;
+    }
+
+    public List<Quiz> getQuizByCategories(String[] search) {
+        List<Quiz> list = new ArrayList<>();
+        QuizDAO dao = new QuizDAO();
+        try {
+            String query1 = "select COUNT(cq.quiz_id) as COUNT_QUIZ,cq.quiz_id, q.name,q.creator_id from Category_quiz cq \n"
+                    + "join Quiz q on (cq.quiz_id=q.quiz_id)\n"
+                    + "where cq.category_id in (";
+            String ss = "";
+            for (int i = 0; i < search.length - 1; i++) {
+                ss += "?,";
+            }
+            ss += "?";
+            String query2 = query1 + ss + ") GROUP BY cq.quiz_id,q.name,q.creator_id";
+            PreparedStatement pd = connection.prepareStatement(query2);
+            for (int i = 0; i < search.length; i++) {
+                pd.setString(i + 1, search[i]);
+            }
+            ResultSet rs = pd.executeQuery();
+            while (rs.next()) {
+                Quiz q = new Quiz();
+                int quiz_id = rs.getInt("quiz_id");
+                int count = rs.getInt("COUNT_QUIZ");
+                int creator_id = rs.getInt("creator_id");
+                String quiz_name = rs.getString("name");
+                if (count == search.length) {
+                    q.setQuiz_id(quiz_id);
+                    q.setCount(count);
+                    q.setCreator_id(creator_id);
+                    q.setQuestionNum(dao.countQuestion(quiz_id));
+                    q.setCreator_name(dao.getCreatorName(creator_id));
+                    q.setName(quiz_name);
+                    list.add(q);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         QuizDAO dao = new QuizDAO();
-        dao.addEnrollment("16",2, "2002-09-08");
-//        List<Feedback> list = dao.getAllFeeback(10);
-//        for (Feedback feedback : list) {
-//            System.out.println(feedback);
-//        }
+        System.out.println();
+
     }
 }

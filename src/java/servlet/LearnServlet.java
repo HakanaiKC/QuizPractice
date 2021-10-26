@@ -5,13 +5,19 @@
  */
 package servlet;
 
+import dao.QuestionDAO;
+import dao.QuizDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Option;
+import model.Question;
 
 /**
  *
@@ -37,7 +43,7 @@ public class LearnServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LearnServlet</title>");            
+            out.println("<title>Servlet LearnServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LearnServlet at " + request.getContextPath() + "</h1>");
@@ -58,8 +64,6 @@ public class LearnServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      //  processRequest(request, response);
-      request.getRequestDispatcher("Learn.jsp").forward(request, response);
     }
 
     /**
@@ -73,7 +77,26 @@ public class LearnServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String quiz_id = request.getParameter("quiz_id");         
+        QuestionDAO questiondao = new QuestionDAO();
+        
+        List<Question> question = questiondao.getRandomQuestion(Integer.parseInt(quiz_id));
+        List<Option> option = new ArrayList<>();
+
+//        int queid = Integer.parseInt(request.getParameter("question_id"));
+        for (int i = 0; i < question.size(); i++) {
+            option = questiondao.getOptionByID(Integer.parseInt(quiz_id), question.get(0).getQuestion_id());
+        }
+
+        PrintWriter out = response.getWriter();
+//        out.print(que.get(0).getQuestion_id());
+
+        request.setAttribute("question", question);
+        request.setAttribute("listOption", option);
+        request.setAttribute("quizid", quiz_id);
+        request.getRequestDispatcher("Learn.jsp").forward(request, response);
     }
 
     /**

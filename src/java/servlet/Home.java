@@ -45,15 +45,15 @@ public class Home extends HttpServlet {
             List<Quiz> quiz = qDAO.getRecentQuiz(user.getUser_id());
             request.setAttribute("quizList", quiz);
             if (user != null) { //neu user lay ve co gia tri
-                if (qDAO.getRandomQuiz(user.getUser_id()).isEmpty()) {
-                    List<Quiz> listRandomQuiz2 = qDAO.getRandomQuiz2(); // neu getRandomQuiz trong thi sang GRQ2
+                if (qDAO.getTopQuizByUserID(user.getUser_id()).isEmpty()) {
+                    List<Quiz> listRandomQuiz2 = qDAO.getTopQuiz(); // neu getRandomQuiz trong thi sang GRQ2
                     request.setAttribute("randomQuiz", listRandomQuiz2);
                 } else {
-                    List<Quiz> listRandomQuiz = qDAO.getRandomQuiz(user.getUser_id()); //neu getRandomQuiz co du lieeu thi tra ve nó
+                    List<Quiz> listRandomQuiz = qDAO.getTopQuizByUserID(user.getUser_id()); //neu getRandomQuiz co du lieeu thi tra ve nó
                     request.setAttribute("randomQuiz", listRandomQuiz);
                 }
             } else { // neu user lay ve bi trong
-                List<Quiz> listRandomQuiz = qDAO.getRandomQuiz2();
+                List<Quiz> listRandomQuiz = qDAO.getTopQuiz();
                 request.setAttribute("randomQuiz", listRandomQuiz);
             }
             request.getRequestDispatcher("Home.jsp").forward(request, response);
@@ -75,18 +75,21 @@ public class Home extends HttpServlet {
         Quiz q = new Quiz();
         HttpSession session = request.getSession();
         Users user = (Users) session.getAttribute("userSeisson");
+//        List<Quiz> quiz = qDAO.getRecentQuiz(user.getUser_id());
+//         request.setAttribute("quizList", quiz);
+        
         if (user != null) {
-            if (qDAO.getRandomQuiz(user.getUser_id()).isEmpty()) {
-                List<Quiz> listRandomQuiz2 = qDAO.getRandomQuiz2();
+             List<Quiz> quiz = qDAO.getRecentQuiz(user.getUser_id());
+                request.setAttribute("quizList", quiz);
+            if (qDAO.getTopQuizByUserID(user.getUser_id()).isEmpty()) {
+                List<Quiz> listRandomQuiz2 = qDAO.getTopQuiz();
                 request.setAttribute("randomQuiz", listRandomQuiz2);
             } else {
-                List<Quiz> quiz = qDAO.getRecentQuiz(user.getUser_id());
-                request.setAttribute("quizList", quiz);
-                List<Quiz> listRandomQuiz = qDAO.getRandomQuiz(user.getUser_id());
+                List<Quiz> listRandomQuiz = qDAO.getTopQuizByUserID(user.getUser_id());
                 request.setAttribute("randomQuiz", listRandomQuiz);
             }
         } else {
-            List<Quiz> listRandomQuiz = qDAO.getRandomQuiz2();
+            List<Quiz> listRandomQuiz = qDAO.getTopQuiz();
             request.setAttribute("randomQuiz", listRandomQuiz);
         }
         request.getRequestDispatcher("Home.jsp").forward(request, response);

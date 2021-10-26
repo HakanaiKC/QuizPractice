@@ -66,17 +66,33 @@
                 </ol>
                 <div class="media mb-headings align-items-center">
                     <div class="media-body">
-                        <h1 class="h2">300 Bài code thiếu nhi</h1>
-                        <p class="text-muted">submited on 3rd Mar 2021</p>
+                        <h1 class="h2">${examReview.quiz_name}</h1>
+                        <p class="text-muted">Submited on ${examReview.date}</p>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Result</h4>
+                <div class="card-group">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Result</h4>
+                            <h4 class="mb-0">${examReview.mark}</h4>
+                        </div>
                     </div>
-                    <div class="card-body media align-items-center">
-                        <div class="media-body">
-                            <h4 class="mb-0">9.8</h4>
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h4 class="text-success mb-0"><strong>${examReview.correct_answers}</strong></h4>
+                            <small class="text-muted-light">CORECT</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h4 class="text-danger mb-0"><strong>${examReview.num_of_question - examReview.correct_answers}</strong></h4>
+                            <small class="text-muted-light">WRONG</small>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h4 class="text-primary mb-0"><strong>${examReview.num_of_question}</strong></h4>
+                            <small class="text-muted-light">TOTAL QUESTION</small>
                         </div>
                     </div>
                 </div>
@@ -86,124 +102,59 @@
                     </div>
                     <ul class="list-group list-group-fit mb-0">
                         <li class="list-group-item">
-                            <div class="media">
-                                <div class="media-left">
-                                    <div class="text-muted-light">1.</div>
-                                </div>
-                                <div class="media-body">Đá trong tiếng Anh là gì</div>
-                                <div class="media-right"><span class="badge badge-success ">Correct</span></div>
-                            </div>
-                            <!--Question Multiple Choice-->
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox">
-                                        <input id="customCheck01"
-                                               type="checkbox"
-                                               class="custom-control-input"
-                                               checked disabled>
-                                        <label for="customCheck01"
-                                               class="custom-control-label">rock</label>
-                                        <i class="fas fa-check" style="color: green;"></i>
+                            <c:forEach items="${listQues}" var="ques" varStatus="loop">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <div class="text-muted-light">${loop.index+1}: </div>
                                     </div>
+                                    <div class="media-body">${ques.question}</div>
+                                    <c:if test="${ques.checkQuestion == 1}">
+                                        <div class="media-right"><span class="badge badge-success ">Correct</span></div>
+                                    </c:if>
+                                    <c:if test="${ques.checkQuestion !=1}">
+                                        <div class="media-right"><span class="badge badge-danger ">Wrong</span></div>
+                                    </c:if>
                                 </div>
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox">
-                                        <input id="customCheck02"
-                                               type="checkbox"
-                                               class="custom-control-input"
-                                               checked disabled>
-                                        <label for="customCheck02"
-                                               class="custom-control-label">kick</label>
-                                        <i class="fas fa-check" style="color: green;"></i>
-                                    </div>
+                                <!--Question Multiple Choice-->
+                                <div class="card-body">
+                                    <c:forEach items="${ques.listOption}" var="listOp">
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox">
+                                                <c:if test="${listOp.option_status == 1}">
+                                                    <input id="customCheck${ques.question_id}-${listOp.option_id}"
+                                                           type="checkbox"
+                                                           class="custom-control-input"
+                                                           checked disabled>
+                                                </c:if>
+                                                <c:if test="${listOp.option_status != 1}">
+                                                    <input id="customCheck${ques.question_id}-${listOp.option_id}"
+                                                           type="checkbox"
+                                                           class="custom-control-input"
+                                                           disabled>
+                                                </c:if>
+                                                <label for="customCheck${ques.question_id}-${listOp.option_id}"
+                                                       class="custom-control-label">${listOp.option_content}</label>
+                                                <c:if test="${listOp.right_option == 1}" >  
+                                                    <i class="fas fa-check" style="color: green;"></i>
+                                                </c:if>     
+                                                 <c:if test="${listOp.right_option != 1 && listOp.option_status == 1}" >  
+                                                <i class="fas fa-times" style="color: red;"></i>
+                                                </c:if>     
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+<!--                                    <button 
+                                        class="btn btn-info" 
+                                        data-toggle="swal" 
+                                        data-swal-title="Instruction"
+                                        data-swal-text="${ques.instruction}">
+                                        Instruction
+                                    </button>-->
                                 </div>
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox">
-                                        <input id="customCheck03"
-                                               type="checkbox"
-                                               class="custom-control-input"
-                                               checked disabled>
-                                        <label for="customCheck03"
-                                               class="custom-control-label">ice</label>
-                                        <i class="fas fa-check" style="color: green;"></i>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox">
-                                        <input id="customCheck04"
-                                               type="checkbox"
-                                               class="custom-control-input"
-                                               checked disabled>
-                                        <label for="customCheck04"
-                                               class="custom-control-label">stone</label>
-                                        <i class="fas fa-check" style="color: green;"></i>
-                                    </div>
-                                </div>
-                                <button 
-                                    class="btn btn-info" 
-                                    data-toggle="swal" 
-                                    data-swal-title="A little help for you"
-                                    data-swal-text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam tenetur unde odio nam reiciendis cum maiores dicta vel officiis aliquid nesciunt enim incidunt ab qui, at quis beatae illum, error.">
-                                    Instruction
-                                </button>
-                            </div>
+                            </c:forEach>
                         </li>
 
                         <!--Wrong Answer-->
-                        <li class="list-group-item">
-                            <div class="media">
-                                <div class="media-left">
-                                    <div class="text-muted-light">2.</div>
-                                </div>
-                                <div class="media-body">Bạn A có một quả táo, bạn B có 3 quả táo. Tính tổng thời gian bạn C ăn hết một cái bánh?</div>
-                                <div class="media-right"><span class="badge badge-danger ">Wrong</span></div>
-                            </div>
-                            <!--Question-->
-                            <div class="card-body form-group">
-                                <div class="custom-controls-stacked">
-                                    <div class="form-group">
-                                        <div class="custom-control custom-radio">
-                                            <input id="radioStacked1"
-                                                   name="radio-stacked"
-                                                   type="radio"
-                                                   class="custom-control-input"
-                                                   checked disabled>
-                                            <label for="radioStacked1"
-                                                   class="custom-control-label">204</label>
-                                            <i class="fas fa-times" style="color: red;"></i>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-radio">
-                                            <input id="radioStacked2"
-                                                   name="radio-stacked"
-                                                   type="hidden"
-                                                   class="custom-control-input">
-                                            <label for="radioStacked2"
-                                                   class="custom-control-label">205</label>
-                                            <i class="fas fa-check" style="color: green;"></i>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-control custom-radio">
-                                            <input id="radioStacked3"
-                                                   name="radio-stacked"
-                                                   type="hidden"
-                                                   class="custom-control-input">
-                                            <label for="radioStacked3"
-                                                   class="custom-control-label">206</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button 
-                                    class="btn btn-info" 
-                                    data-toggle="swal" 
-                                    data-swal-title="A little help for you"
-                                    data-swal-text="Do it yourself.">
-                                    Instruction
-                                </button>
-                            </div>                            
-                        </li>
                     </ul>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en"
       dir="ltr">
     <head>
@@ -54,52 +55,65 @@
             </div>
         </div>
 
-
         <div class="container_body row">
             <div class="col-12 top-panel">
                 <div class="homeLogo">learn</div>
-                <div class="quizTitle">Quiz Title</div>
-                <div class="exitLearn"><a href="QuizDetail.jsp">X</a></div>
+                <c:forEach items="${question}" var="question">
+                    <p class="question-side" id="question-side">
+                        ${question.question} 
+                    </p>
+                </c:forEach>
+                <div class="exitLearn"><a href="QuizDetailServlet?quizid=${quizid}">X</a></div>
             </div>
             <div class="col-3"></div>
-            <div class="col-6 row flashcard">
+
+            <input name="quizid" value="${quizid}" hidden>
+            <div class="col-6 row flashcard">               
                 <div class="cards__single">
                     <div class="cards__front">
                         <p class="question-side" id="question-side">
-                            Do you love Programming?
-
+                            ${question.question} 
                         </p>
-                        <div class="option-side" id="option-side">A. YES</div>
-                        <div class="option-side" id="option-side">B. Of course</div>
-                        <div class="option-side" id="option-side">C. Why not?</div>
-                        <div class="option-side" id="option-side">D. Fuck yeah</div>
-
-
+                        <c:forEach items="${listOption}"  var="option">                                
+                            <div class="option-side" id="option-side">${option.option_content}</div>
+                        </c:forEach>
                     </div>
                     <div class="cards__back">
                         <p class="instruction-side" id="instruction-side">
-                            because Programming is love <3
+                            ${question.instruction}
                         </p>
                     </div>
                 </div>
                 <div class="col-11" style="margin-top: 20px; font-size: 20px;" > Choose right option</div>
-                <div class="col-5 option" >
-                    <input type="button" value="A" name="option" />
+
+                <c:forEach items="${listOption}"  var="option" varStatus="loop">
+                    <div class="col-5 option">
+                        <input id="buton-${option.option_id}" type="button" value="${option.option_content}" name="option" onclick="RightChoice('${loop.index}')"/>                                                
+                        <input id="option-${loop.index}" type="button"
+                               value="${option.right_option}" hidden>
+                    </div>           
+                </c:forEach>
+
+                <div class="col-10" >
+                    <form method="get" action="LearnServlet?queid=${question.question_id}">
+                        <input id="buton-" type="button" value="submit" name="option" />
+                    </form>
                 </div>
-                <div class="col-5 option" >
-                    <input type="button" value="B" name="option" />
-                </div>
-                <div class="col-5 option" >
-                    <input type="button" value="C" name="option" />
-                </div>
-                <div class="col-5 option" >
-                    <input type="button" value="D" name="option" />
-                </div>
-            </div>
-            
-            
+            </div>  
             <div class="col-3"></div>
         </div>
+
+        <script>
+            function RightChoice(index) {
+                var right = $("#option-" + index).val();
+
+                if (right == 1) {
+                    document.getElementById('buton-' + index).style.backgroundColor = "green";
+                } else {
+                    document.getElementById('buton-' + index).style.backgroundColor = "red";
+                }
+            }
+        </script>
         <!-- jQuery -->
         <script src="assets/vendor/jquery.min.js"></script>
 

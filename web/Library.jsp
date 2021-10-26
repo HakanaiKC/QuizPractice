@@ -83,7 +83,6 @@
             </div>
             <div class="col-sm-4"></div>
 
-            <!--dÃ¹ng foreach thÃ¬ copy h?t ?o?n nÃ y, cÃ¡i nÃ y lÃ  1 card-->
              <c:forEach  items="${quizList}" var="q">
             <div class="col-sm-2"></div>
             <div class="card1 col-sm-6">
@@ -91,12 +90,13 @@
                     <div class="n-question col-sm-4">${q.questionNum} questions</div>
                     <div class="card-creator col-sm-6">${q.creator_name}</div>
                     <div class="card-title col-sm-10">${q.name}</div>
-                    <button class="btn btn-link"><i class="fas fa-edit mr-1"></i>Edit</button>
+                    <c:if test="${Action=='Created'}">
+                        <a href="EditQuiz?quiz_id=${q.quiz_id}"><button class="btn btn-link"><i class="fas fa-edit mr-1"></i>Edit</button></a>
+                    </c:if>
                 </div>            
             </div>
             <div class="col-sm-4"></div>
             </c:forEach>
-            <!--??n ?Ã¢y-->
         </div>
 
         <%@include file="Boostrap_Header.jsp" %>

@@ -65,13 +65,13 @@ public class HomeMoreServlet extends HttpServlet {
             switch (action) {
                 case "Recommend":
                     if (user != null) {
-                        if (qDAO.getRandomQuiz(user.getUser_id()).isEmpty()) {
-                            list = qDAO.getRandomQuiz2();
+                        if (qDAO.getTopQuizByUserID(user.getUser_id()).isEmpty()) {
+                            list = qDAO.getTopQuiz();
                         } else {
-                            list = qDAO.getRandomQuiz(user.getUser_id());
+                            list = qDAO.getTopQuizByUserID(user.getUser_id());
                         }
                     } else {
-                        list = qDAO.getRandomQuiz2();
+                        list = qDAO.getTopQuiz();
                     }
                     break;
                 case "All Quiz":

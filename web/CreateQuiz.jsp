@@ -5,41 +5,41 @@
       dir="ltr">
     <head>
         <jsp:useBean id="cDAO" class="dao.CategoryDAO" scope="request"></jsp:useBean>
-        <meta charset="UTF-8" />
-        <title>Create Quiz</title>
+            <meta charset="UTF-8" />
+            <title>Create Quiz</title>
 
-        <link rel="stylesheet" href="assets/css/createQuiz.css" type="text/css" />
+            <link rel="stylesheet" href="assets/css/createQuiz.css" type="text/css" />
 
-        <!-- Custom Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500%7CRoboto:400,500&display=swap"
-              rel="stylesheet">
+            <!-- Custom Fonts -->
+            <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500%7CRoboto:400,500&display=swap"
+                  rel="stylesheet">
 
-        <!-- Perfect Scrollbar -->
-        <link type="text/css"
-              href="assets/vendor/perfect-scrollbar.css"
-              rel="stylesheet">
+            <!-- Perfect Scrollbar -->
+            <link type="text/css"
+                  href="assets/vendor/perfect-scrollbar.css"
+                  rel="stylesheet">
 
-        <!-- Material Design Icons -->
-        <link type="text/css"
-              href="assets/css/material-icons.css"
-              rel="stylesheet">
+            <!-- Material Design Icons -->
+            <link type="text/css"
+                  href="assets/css/material-icons.css"
+                  rel="stylesheet">
 
-        <!-- Font Awesome Icons -->
-        <link type="text/css"
-              href="assets/css/fontawesome.css"
-              rel="stylesheet">
+            <!-- Font Awesome Icons -->
+            <link type="text/css"
+                  href="assets/css/fontawesome.css"
+                  rel="stylesheet">
 
-        <!-- Preloader -->
-        <link type="text/css"
-              href="assets/vendor/spinkit.css"
-              rel="stylesheet">
+            <!-- Preloader -->
+            <link type="text/css"
+                  href="assets/vendor/spinkit.css"
+                  rel="stylesheet">
 
-        <!-- App CSS -->
-        <link type="text/css"
-              href="assets/css/app.css"
-              rel="stylesheet">
-    </head>
-    <body>
+            <!-- App CSS -->
+            <link type="text/css"
+                  href="assets/css/app.css"
+                  rel="stylesheet">
+        </head>
+        <body>
         <%@include file="Header_All.jsp" %>
         <div class="preloader">
             <div class="sk-chase">
@@ -62,10 +62,10 @@
                                 <input type="text" name="quiz_title" placeholder="Quiz Title" 
                                        style="border: none; border-bottom: 1px solid gray; width: 100%;" required>
                             </div>
-<!--                            <div class="col-sm-2 quiz-price-div">
-                                <input type="number" name="quiz-price" placeholder="Price" 
-                                       style="border: none; border-bottom: 1px solid gray; width: 100%; "  >
-                            </div>-->
+                            <!--                            <div class="col-sm-2 quiz-price-div">
+                                                            <input type="number" name="quiz-price" placeholder="Price" 
+                                                                   style="border: none; border-bottom: 1px solid gray; width: 100%; "  >
+                                                        </div>-->
                             <div class="col-sm-11 quiz-description-div" >
                                 <textarea name="quiz_description" class="quiz-description" rows='2' placeholder='Quiz description'></textarea>
                             </div>
@@ -75,19 +75,19 @@
                 <div class="col-sm-3"></div>
                 <!--KET THUC PHAN MO TA QUIZ-->
             </div> 
-              
-              <!--PHAN MO TA Category-->
+
+            <!--PHAN MO TA Category-->
             <div class="container_body row">
 
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6 quiz category-div" style="padding-left: 20px; ">
                     <h3>Category</h3>
                     <c:forEach var="c" items="${cDAO.category}">
-                    <label name="" class="btn cate btncategory btn-outline-primary btn-sm rounded-pill text-nowrap" id="cate${c.category_id}"  type="button" onclick="changecolor()">
-                       ${c.category_name}
-                        <input class="choose-category check-right-option" type="checkbox" name="chooseCategory" value="${c.category_id}" style="display: none;" >
-                    </label>
-                   </c:forEach>
+                        <label name="" class="btn cate btncategory btn-outline-primary btn-sm rounded-pill text-nowrap" id="cate${c.category_id}"  type="button" onclick="changecolor()">
+                            ${c.category_name}
+                            <input class="choose-category check-right-option" type="checkbox" name="chooseCategory" value="${c.category_id}" style="display: none;" >
+                        </label>
+                    </c:forEach>
                 </div>
                 <div class="col-sm-3"></div>
 
@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="add-more-option-div col-sm-3">
                                     <button class="add-more-option btn-primary" onclick="addInnerQue('createOption1')" type="button">Add option</button>
-                                    
+
                                 </div>
                                 <div class="col-sm-10"></div>                            
                             </div>
@@ -162,9 +162,9 @@
                 <input id="HiddenInput" name="ListQuestion" value="" type="hidden">
                 <input id="HiddenInputOption" name="ListOption" value="" type="hidden">
             </div>
-           
+
         </form>
-        
+
         <%@include file="Footer.jsp" %>
         <%@include file="Boostrap_Header.jsp" %>
         <!-- jQuery -->

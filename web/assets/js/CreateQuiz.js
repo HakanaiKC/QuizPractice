@@ -63,7 +63,9 @@ $(document).on('click', '#removeRow', function () {
 
 function addInnerQue(asdf) {
 //    console.log(asdf);
-    var id = asdf.charAt(asdf.length-1);
+    var asdf1 = "";
+    asdf1 += asdf;
+    var id = asdf1.substring(12, asdf1.length);
     var html1 = '';
     html1 += `<div id="innerQue" class="innerQue${id} row">`;
     html1 += '<div class="choose-right-option-div col-sm-1">';

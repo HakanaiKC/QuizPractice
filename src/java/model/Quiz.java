@@ -20,6 +20,9 @@ public class Quiz {
     protected Date last_Update;
     protected String creator_name;
     protected int questionNum;
+    protected int count;
+
+  
 
     public Quiz() {
     }
@@ -91,6 +94,10 @@ public class Quiz {
         this.creator_name = creator_name;
     }
 
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     public int getQuestionNum() {
         return questionNum;
     }
@@ -99,10 +106,20 @@ public class Quiz {
         this.questionNum = questionNum;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+//    @Override
+//    public String toString() {
+//        return "Quiz{" + "quiz_id=" + quiz_id + ", creator_id=" + creator_id + ", name=" + name + ", description=" + description + ", price=" + price + ", last_Update=" + last_Update + ", creator_name=" + creator_name + ", questionNum=" + questionNum + '}';
+//    }
+
     @Override
     public String toString() {
-        return "Quiz{" + "quiz_id=" + quiz_id + ", creator_id=" + creator_id + ", name=" + name + ", description=" + description + ", price=" + price + ", last_Update=" + last_Update + ", creator_name=" + creator_name + ", questionNum=" + questionNum + '}';
+        return "Quiz{" + "quiz_id=" + quiz_id + ", creator_id=" + creator_id + ", name=" + name + ", creator_name=" + creator_name + ", questionNum=" + questionNum + ", count=" + count + '}';
     }
+
 
     
 

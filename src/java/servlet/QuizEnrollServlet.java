@@ -106,7 +106,7 @@ public class QuizEnrollServlet extends HttpServlet {
 ////             Double a = typeRate.get(i);
 ////            out.println(i+ " "+ a.doubleValue());
 //        }
-        request.setAttribute("categoryNameOfQuiz", categoryDAO.getCategoryForQuiz(Integer.parseInt(quizId)));
+        request.setAttribute("categoryNameOfQuiz", categoryDAO.getCategoryNameForQuiz(Integer.parseInt(quizId)));
         request.setAttribute("quiz", quiz);
         request.setAttribute("creator", creator);
         request.setAttribute("numOfEroll", numOfEroll);
