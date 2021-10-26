@@ -247,6 +247,7 @@
                     Instruction
                 </button> 
             </c:forEach>
+
         </div>
 
     </div>
