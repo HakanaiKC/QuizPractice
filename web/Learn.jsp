@@ -59,10 +59,8 @@
             <div class="col-12 top-panel">
                 <div class="homeLogo">learn</div>
                 <c:forEach items="${question}" var="question">
-                    <p class="question-side" id="question-side">
-                        ${question.question} 
-                    </p>
-                </c:forEach>
+                    <div class="quizTitle">${question.name}</div>
+                </c:forEach>  
                 <div class="exitLearn"><a href="QuizDetailServlet?quizid=${quizid}">X</a></div>
             </div>
             <div class="col-3"></div>
@@ -71,17 +69,14 @@
             <div class="col-6 row flashcard">               
                 <div class="cards__single">
                     <div class="cards__front">
-                        <p class="question-side" id="question-side">
-                            ${question.question} 
-                        </p>
+                        <c:forEach items="${question}" var="question">
+                            <p class="question-side" id="question-side">
+                                ${question.question} 
+                            </p>
+                        </c:forEach>
                         <c:forEach items="${listOption}"  var="option">                                
                             <div class="option-side" id="option-side">${option.option_content}</div>
                         </c:forEach>
-                    </div>
-                    <div class="cards__back">
-                        <p class="instruction-side" id="instruction-side">
-                            ${question.instruction}
-                        </p>
                     </div>
                 </div>
                 <div class="col-11" style="margin-top: 20px; font-size: 20px;" > Choose right option</div>
@@ -94,9 +89,9 @@
                     </div>           
                 </c:forEach>
 
-                <div class="col-10" >
-                    <form method="get" action="LearnServlet?queid=${question.question_id}">
-                        <input id="buton-" type="button" value="submit" name="option" />
+                <div class="col-md-10">
+                    <form method="post" action="LearnServlet?quiz_id=${quizid}">
+                        <input type="submit" value="Submit"/>
                     </form>
                 </div>
             </div>  
@@ -133,16 +128,5 @@
 
         <!-- Highlight.js -->
         <script src="assets/js/hljs.js"></script>
-
-        <script src="assets/vendor/jquery.star-rating-svg_1.js"></script>
-        <script>
-            const cards = document.querySelectorAll(".cards__single");
-
-            function flipCard() {
-                this.classList.toggle("flip");
-            }
-            cards.forEach((card) => card.addEventListener("click", flipCard));
-        </script>
     </body>
-
 </html>
