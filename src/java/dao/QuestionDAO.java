@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Option;
 import model.Question;
-import model.Quiz;
 
 /**
  *
@@ -104,7 +103,7 @@ public class QuestionDAO extends DBContext {
                 list.add(option);
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            System.err.println(e);
         }
         return list;
     }
@@ -249,15 +248,15 @@ public class QuestionDAO extends DBContext {
         return list;
     }
     
-    public String getQueID(String quizId){        
-        String list = "";
+    public StringBuilder getQueID(String quizId){        
+        StringBuilder list = new StringBuilder();
         try {
             String query = "select question_id from Question where quiz_id= ?";
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setString(1, quizId);
             ResultSet rs = pd.executeQuery();
             while(rs.next()){
-                list += rs.getInt("question_id") + " ";                
+                list.append(rs.getInt("question_id")).append(" ");                
             }
         } catch (Exception e) {
             System.out.println(e);

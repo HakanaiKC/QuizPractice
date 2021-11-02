@@ -72,7 +72,8 @@ public class UsersDAO extends DBContext {
                 int role_id = rs.getInt("role_id");
                 String connect = rs.getString("connect");
                 String aboutMe = rs.getString("about_me");
-
+                double ruby = rs.getDouble("ruby");
+                
                 u.setEmail(email);
                 u.setPassword(password);
                 u.setUser_id(id);
@@ -81,6 +82,7 @@ public class UsersDAO extends DBContext {
                 u.setRole_id(role_id);
                 u.setConnect(connect);
                 u.setAbout_me(aboutMe);
+                u.setRuby(ruby);
                return u;
             }
 
@@ -105,7 +107,8 @@ public class UsersDAO extends DBContext {
                         rs.getString("avatar"),
                         rs.getInt("role_id"),
                         rs.getString("about_me"),
-                        rs.getString("connect")
+                        rs.getString("connect"),
+                        rs.getInt("ruby")
                                 );
             }
         } catch (SQLException e) {
@@ -128,7 +131,8 @@ public class UsersDAO extends DBContext {
                         rs.getString("avatar"),
                         rs.getInt("role_id"),
                         rs.getString("about_me"),
-                        rs.getString("connect")
+                        rs.getString("connect"),
+                        rs.getInt("ruby")
                                 );
             }
         } catch (SQLException e) {

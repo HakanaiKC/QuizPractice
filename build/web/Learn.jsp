@@ -103,9 +103,9 @@
                 var right = $("#option-" + index).val();
 
                 if (right == 1) {
-                    document.getElementById('buton-' + index).style.backgroundColor = "green";
+                    document.getElementById('buton-' + index).style.borderColor = "green";
                 } else {
-                    document.getElementById('buton-' + index).style.backgroundColor = "red";
+                    document.getElementById('buton-' + index).style.borderColor = "red";
                 }
             }
         </script>

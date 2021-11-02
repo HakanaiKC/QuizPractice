@@ -107,7 +107,7 @@
                                 <li class="nav-item dropdown ml-1 ml-md-3">
                                     <ul class="nav navbar-nav navbar-nav-stats d-none d-md-flex flex-nowrap" style="margin-right: 1em;">
                                         <li class="nav-item">
-                                            <div class="nav-stats">591 <small>RUBY</small></div>
+                                            <div class="nav-stats" name="ruby">${sessionScope.userSeisson.ruby} <small>RUBY</small></div>
                                         </li>
                                     </ul>
                                     <div class="avatar avatar-xxl position-absolute bottom-0 left-0 right-0"></div>

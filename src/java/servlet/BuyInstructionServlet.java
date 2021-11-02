@@ -5,27 +5,20 @@
  */
 package servlet;
 
-import dao.CategoryDAO;
-import dao.QuestionDAO;
-import dao.QuizDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Quiz;
-import model.Users;
 
 /**
  *
- * @author Admin
+ * @author bekim
  */
-@WebServlet(name = "AdvanceSearch", urlPatterns = {"/AdvanceSearch"})
-public class AdvanceSearch extends HttpServlet {
+@WebServlet(name = "BuyInstructionServlet", urlPatterns = {"/BuyInstructionServlet"})
+public class BuyInstructionServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,22 +32,17 @@ public class AdvanceSearch extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession();
-            Users user = (Users) session.getAttribute("userSeisson");
-            QuestionDAO qDAO = new QuestionDAO();
-            QuizDAO dao = new QuizDAO();
-            CategoryDAO cDAO = new CategoryDAO();
-
-            String[] Category = request.getParameterValues("chooseCategory");
-            List<Quiz> quiz = dao.getQuizByCategories(Category);
-//            for (Quiz quiz1 : quiz) {
-//                out.print(quiz1);
-//            }
-            request.setAttribute("quizList", quiz);
-
-            request.getRequestDispatcher("AdvanceSearch.jsp").forward(request, response);
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet BuyInstructionServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet BuyInstructionServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -70,7 +58,10 @@ public class AdvanceSearch extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        
     }
 
     /**
@@ -84,7 +75,7 @@ public class AdvanceSearch extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     /**

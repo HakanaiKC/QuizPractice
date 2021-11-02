@@ -181,10 +181,7 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-
 
     <div class="container_home">
         <div class="row border cardholder1">
@@ -239,13 +236,63 @@
                     </div> 
                 </div>
                 <br>
+
+                <c:if test="${sessionScope.userSeisson !=null}">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#instructionModal">
+                        Instruction
+                    </button>
+                </c:if>
+
+                <c:if test="${sessionScope.userSeisson.ruby} < 1.0">
+                    <div class="modal fade" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="instructionModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="instructionModalLabel">You don't have enough Ruby</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <label>Purchase more Ruby to unlock this instruction</label>
+                                </div>
+                                <div class="modal-footer">
+                                    <input value="${sessionScope.userSeisson.ruby}" name='ruby' hidden/>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <form action="CheckRubyServlet" method="post">
+                                        <button type="submit" class="btn btn-primary">Buy Ruby</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </c:if>
+                
+                <c:if test="${sessionScope.userSeisson.ruby} < 1.0">
+                    <div class="modal fade" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="instructionModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="instructionModalLabel">You don't have enough Ruby</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <label>Purchase Ruby to unlock this instruction</label>
+                                </div>
+                                <div class="modal-footer">
+                                    <input value="${sessionScope.userSeisson.ruby}" name='ruby' hidden/>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <form action="CheckRubyServlet" method="post">
+                                        <button type="submit" class="btn btn-primary">Buy Ruby</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </c:if>
                 <button 
                     class="btn btn-info col-sm-3" 
                     data-toggle="swal" 
                     data-swal-title="A little help for you"
                     data-swal-text="${question.instruction}">
                     Instruction
-                </button> 
+                </button>
             </c:forEach>
 
         </div>
@@ -286,97 +333,89 @@
     <script src="assets/js/sweetalert.js"></script>
 </body>
 <script>
-                        function getRate() {
-                            var liverating = document.getElementById("live-rating").innerHTML;
-                            document.getElementById("live-rating").value = liverating;
-                            console.log(liverating);
-                            console.log(document.getElementById("live-rating").value);
+                        const cards = document.querySelectorAll(".cards__single");
+
+                        function flipCard() {
+                            this.classList.toggle("flip");
                         }
-</script>
-<script>
-    const cards = document.querySelectorAll(".cards__single");
-
-    function flipCard() {
-        this.classList.toggle("flip");
-    }
-    cards.forEach((card) => card.addEventListener("click", flipCard));
+                        cards.forEach((card) => card.addEventListener("click", flipCard));
 
 
-    function Card(front, back) {
-        /*A card is just a container that holds a front and back value! 
-         - You can get either back or front by displaying it*/
-        this.frontVal = front;
-        this.backVal = back;
+                        function Card(front, back) {
+                            /*A card is just a container that holds a front and back value! 
+                             - You can get either back or front by displaying it*/
+                            this.frontVal = front;
+                            this.backVal = back;
 
-        this.display = function (side) {
-            if (side === 0) {
-                return this.frontVal;
-            } else {
-                return this.backVal;
-            }
-        };
-    }
+                            this.display = function (side) {
+                                if (side === 0) {
+                                    return this.frontVal;
+                                } else {
+                                    return this.backVal;
+                                }
+                            };
+                        }
 
 
-    var count = 1;
-    var cardsHandle = {
-        cards: [],
-        cardInd: 0,
-        cardButton: document.getElementById("cardButton"),
-        cardText: document.getElementById("cardText"),
-        cardTPosition: document.getElementById("positionIndex"),
-        cardSide: 0,
+                        var count = 1;
+                        var cardsHandle = {
+                            cards: [],
+                            cardInd: 0,
+                            cardButton: document.getElementById("cardButton"),
+                            cardText: document.getElementById("cardText"),
+                            cardTPosition: document.getElementById("positionIndex"),
+                            cardSide: 0,
 
-        cardAdd: function (back, front) {
-            this.cards.push(new Card(back, front));
-        },
-        cardUpdate: function () {
-            var curCard = this.cards[this.cardInd];
-            this.cardText.innerHTML = curCard.display(this.cardSide);
-            this.cardTPosition.innerHTML =
-                    this.cardInd + 1 + "/" + this.cards.length;
-        },
-        cardFlip: function () {
+                            cardAdd: function (back, front) {
+                                this.cards.push(new Card(back, front));
+                            },
+                            cardUpdate: function () {
+                                var curCard = this.cards[this.cardInd];
+                                this.cardText.innerHTML = curCard.display(this.cardSide);
+                                this.cardTPosition.innerHTML =
+                                        this.cardInd + 1 + "/" + this.cards.length;
+                            },
+                            cardFlip: function () {
 
-            if (count % 2 === 1) {
-                this.cardText.style = "transform: rotatex(180deg)";
-                count++;
-            } else {
-                this.cardText.style.removeProperty('transform');
-                count++;
-            }
+                                if (count % 2 === 1) {
+                                    this.cardText.style = "transform: rotatex(180deg)";
+                                    count++;
+                                } else {
+                                    this.cardText.style.removeProperty('transform');
+                                    count++;
+                                }
 
-            this.cardSide = (this.cardSide + 1) % 2;
-        },
-        cardMove: function (moveBy) {
-            this.cardInd += moveBy;
-            if (this.cardInd < 0) {
-                this.cardInd += this.cards.length;
-            }
-            this.cardInd = this.cardInd % this.cards.length;
+                                this.cardSide = (this.cardSide + 1) % 2;
+                            },
+                            cardMove: function (moveBy) {
+                                this.cardInd += moveBy;
+                                if (this.cardInd < 0) {
+                                    this.cardInd += this.cards.length;
+                                }
+                                this.cardInd = this.cardInd % this.cards.length;
 
-            this.cardSide = 0; // Set back to front
-            this.cardUpdate();
-        },
-        cardTap: function () {
+                                this.cardSide = 0; // Set back to front
+                                this.cardUpdate();
+                            },
+                            cardTap: function () {
 
-            this.cardFlip();
-            this.cardUpdate(); // Display card
-        }
-    };
-    for (var ii = 0; ii < document.getElementsByClassName("card-question").length; ii++) {
-        cardsHandle.cardAdd(document.getElementById("ques" + ii).innerHTML, document.getElementById("ans" + ii).innerHTML);
-    }
+                                this.cardFlip();
+                                this.cardUpdate(); // Display card
+                            }
+                        };
+                        for (var ii = 0; ii < document.getElementsByClassName("card-question").length; ii++) {
+                            cardsHandle.cardAdd(document.getElementById("ques" + ii).innerHTML, document.getElementById("ans" + ii).innerHTML);
+                        }
 
 
 
-    cardsHandle.cardUpdate();
+                        cardsHandle.cardUpdate();
 
-    cardsHandle.cardButton.addEventListener("click", function () {
+                        cardsHandle.cardButton.addEventListener("click", function () {
 
-        //  cardsHandle.cardFlip();
-        cardsHandle.cardTap();
-    });
+                            //  cardsHandle.cardFlip();
+                            cardsHandle.cardTap();
+                        });
 </script>
 
 <script>

@@ -103,7 +103,6 @@ public class ExamResultServlet extends HttpServlet {
             String[] listQues = request.getParameterValues("listQues");
             String[] listOption = request.getParameterValues("listOption");
             String[] listChoose = request.getParameterValues("listChoose");
-            PrintWriter out = response.getWriter();
             if (listChoose == null) {
                 for (int i = 0; i < listOption.length; i++) {
                     listOption[i] += "-0";

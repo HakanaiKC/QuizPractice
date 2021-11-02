@@ -91,8 +91,8 @@ public class ExamDAO extends DBContext {
             ps.setString(7, time);
             ps.executeUpdate();
 
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (SQLException e) {
+            System.err.println(e);
         }
     }
 

@@ -18,9 +18,21 @@ public class Users {
     private int role_id;
     private String about_me;
     private String connect;
-          
-    
+    private double ruby;      
 
+    public Users(int user_id, String username, String password, String email, String avatar, int role_id, String about_me, String connect, double ruby) {
+        this.user_id = user_id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.avatar = avatar;
+        this.role_id = role_id;
+        this.about_me = about_me;
+        this.connect = connect;
+        this.ruby = ruby;
+    }
+
+    
     public Users() {
     }
 
@@ -97,6 +109,14 @@ public class Users {
 
     public void setConnect(String connect) {
         this.connect = connect;
+    }
+    
+    public double getRuby() {
+        return ruby;
+    }
+
+    public void setRuby(double ruby) {
+        this.ruby = ruby;
     }
 
     @Override

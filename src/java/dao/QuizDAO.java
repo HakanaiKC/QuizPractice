@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Feedback;
-import model.Question;
 import model.Quiz;
 
 public class QuizDAO extends DBContext {
@@ -550,7 +549,7 @@ public class QuizDAO extends DBContext {
             ps.executeUpdate();
 
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println(e);
         }
     }
 

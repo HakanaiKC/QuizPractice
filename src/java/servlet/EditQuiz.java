@@ -83,7 +83,7 @@ public class EditQuiz extends HttpServlet {
                         check = true;
                     }
                 }
-                if (check == true) {
+                if (check) {
                     category = new Category(listAllCategory.get(i).getCategory_id(), listAllCategory.get(i).getCategory_name(), 1);
                 } else {
                     category = new Category(listAllCategory.get(i).getCategory_id(), listAllCategory.get(i).getCategory_name(), 0);
