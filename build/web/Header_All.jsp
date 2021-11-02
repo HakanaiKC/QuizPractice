@@ -41,9 +41,15 @@
                         <div style="padding-left: 10px; ">
                             <a class="d-none d-lg-flex btn btn-info" href="AdvanceSearch.jsp" role="button"><i class="material-icons mr-1">search</i>Advance</a>
                         </div>
-                        <c:if test="${sessionScope.userSeisson !=null}">
+                        <c:if test="${sessionScope.userSeisson !=null && sessionScope.userSeisson.role_id ==0}">
                             <div style="padding-left: 10px;">
                                 <a class="d-none d-lg-flex btn btn-info" href="CreateQuiz.jsp" role="button">Create</a>
+                            </div>                         
+                            <div class="flex"></div>
+                        </c:if>
+                        <c:if test="${sessionScope.userSeisson !=null && sessionScope.userSeisson.role_id ==2}">
+                            <div style="padding-left: 10px;">
+                                <a class="d-none d-lg-flex btn btn-info" href="AdminDashboardOverview.jsp" role="button">Overview</a>
                             </div>                         
                             <div class="flex"></div>
                         </c:if>
@@ -54,7 +60,7 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="Home">Home</a>
                                         <a class="dropdown-item" href="LibraryServlet?Action=Recent">My Quiz</a>
-                                        <!--<a class="dropdown-item" href="QuizResultServlet">Take a Exam</a>-->
+                                        <a class="dropdown-item" href="BoughtInstruction.jsp">Bought Instructions</a>
                                         <a class="dropdown-item" href="ListExamServlet">Exam Results</a>               
                                         <a class="dropdown-item" href="Payment.jsp">Payment Method</a>
                                     </div>
@@ -121,7 +127,7 @@
                                                 src="uploads/${sessionScope.userSeisson.avatar}" alt="Avatar" class="rounded-circle"
                                                 width="40" height="40"></a>
                                         </c:if>
-                                    
+
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="ChangePass.jsp">
                                             <i class="material-icons">edit</i> Edit Account
