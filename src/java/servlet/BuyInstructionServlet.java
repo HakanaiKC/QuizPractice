@@ -5,13 +5,19 @@
  */
 package servlet;
 
+import dao.PaymentDAO;
+import dao.UsersDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.BuyInstruction;
+import model.Users;
 
 /**
  *
@@ -37,7 +43,7 @@ public class BuyInstructionServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet BuyInstructionServlet</title>");            
+            out.println("<title>Servlet BuyInstructionServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet BuyInstructionServlet at " + request.getContextPath() + "</h1>");
@@ -58,10 +64,7 @@ public class BuyInstructionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
-        
+
     }
 
     /**
@@ -75,7 +78,25 @@ public class BuyInstructionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        //PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
+        Users user = (Users) session.getAttribute("userSeisson");
+        int user_id = Integer.parseInt(request.getParameter("user_id"));
+        int creator_id = Integer.parseInt(request.getParameter("creator_id"));
+        PaymentDAO dao = new PaymentDAO();
+        UsersDAO user_dao = new UsersDAO();
+        double rubyUser = dao.getRuby(user_id);
+        double rubyCreator = dao.getRuby(creator_id);
+        double updateRubyUser = rubyUser - 1.0;
+        double updateRubyCreator = rubyCreator + 1.0;
+        dao.updateRuby(updateRubyUser, user_id);
+        dao.updateRuby(updateRubyCreator, creator_id);
         
+        Users student = user_dao.getUsers(user.getEmail(), user.getPassword());
+        session.setAttribute("userSeisson", student);
+        request.getRequestDispatcher("BoughtInstruction.jsp").forward(request, response);
     }
 
     /**

@@ -600,7 +600,7 @@ public class QuizDAO extends DBContext {
         }
     }
 
-    public void updateQuiz(String quiz_name, String description, String last_update, int quiz_id) {
+    public double updateQuiz(String quiz_name, String description, String last_update, int quiz_id) {
         String query = "Update Quiz set name=?, description=?,last_update = ?\n"
                 + "where quiz_id = ?";
         try {
@@ -614,6 +614,7 @@ public class QuizDAO extends DBContext {
         } catch (Exception e) {
             System.out.println(e);
         }
+        return 0;
     }
 
     public Quiz getQuizByCreatorIDAndQuizID(int creator_id, int quiz_id) {

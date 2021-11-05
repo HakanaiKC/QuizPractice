@@ -126,7 +126,7 @@ public class ExamDAO extends DBContext {
                 ps.setInt(4, question.getCheckQuestion());
                 ps.executeUpdate();
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
         }
     }
 

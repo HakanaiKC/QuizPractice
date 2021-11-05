@@ -186,8 +186,9 @@
     <div class="container_home">
         <div class="row border cardholder1">
             <div class="col-sm-2 "></div>
-            <div class="row col-sm-6" style="    margin-left: 20px;">
+            <div class="row col-sm-6" style="margin-left: 20px;">
                 <div class="avatar col-sm-0">
+
                     <a href="ProfileServlet?id=${creator.user_id}" role="button">
                         <c:if test = "${creator.avatar == null}">
                             <img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="rounded-circle"
@@ -211,9 +212,9 @@
         <div class="col-sm-2"></div>
         <div class="row cardholder col-sm-7">
 
-            <c:forEach items="${listQuestion}"  var="question">
-
+            <c:forEach items="${listQuestion}"  var="question" >                   
                 <div class="card-question col-sm-12" >
+
                     <div class="answer" id="ans${question.question_id}">
                         <br>
                         <c:forEach items="${listOption}"  var="option">
@@ -237,62 +238,50 @@
                 </div>
                 <br>
 
-                <c:if test="${sessionScope.userSeisson !=null}">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#instructionModal">
-                        Instruction
-                    </button>
-                </c:if>
+                <button type="button" class="btn btn-primary buton" data-toggle="modal" data-target="#instructionModal">
+                    Instruction
+                </button>
 
-                <c:if test="${sessionScope.userSeisson.ruby} < 1.0">
-                    <div class="modal fade" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="instructionModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="instructionModalLabel">You don't have enough Ruby</h5>
-                                </div>
-                                <div class="modal-body">
-                                    <label>Purchase more Ruby to unlock this instruction</label>
-                                </div>
-                                <div class="modal-footer">
-                                    <input value="${sessionScope.userSeisson.ruby}" name='ruby' hidden/>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <form action="CheckRubyServlet" method="post">
-                                        <button type="submit" class="btn btn-primary">Buy Ruby</button>
-                                    </form>
-                                </div>
+                <div class="modal fade" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="instructionModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">    
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="instructionModalLabel">Buy Instruction</h5>
                             </div>
-                        </div>
-                    </div>
-                </c:if>
-                
-                <c:if test="${sessionScope.userSeisson.ruby} < 1.0">
-                    <div class="modal fade" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="instructionModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="instructionModalLabel">You don't have enough Ruby</h5>
-                                </div>
+
+                            <c:if test="${sessionScope.userSeisson.ruby > 1.0}">                      
                                 <div class="modal-body">
                                     <label>Purchase Ruby to unlock this instruction</label>
                                 </div>
                                 <div class="modal-footer">
-                                    <input value="${sessionScope.userSeisson.ruby}" name='ruby' hidden/>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                    <form action="CheckRubyServlet" method="post">
-                                        <button type="submit" class="btn btn-primary">Buy Ruby</button>
-                                    </form>
+                                    <form action="BuyInstructionServlet" method="post">
+                                        <input value="${sessionScope.userSeisson.user_id}" name="user_id" hidden/>
+                                        <input value="${creator.user_id}" name="creator_id" hidden/>
+                                        <button type="submit" class="btn btn-primary">Purchase</button>
+                                    </form>                                
+                                </div>     
+                            </c:if>
+
+                            <c:if test="${sessionScope.userSeisson.ruby < 1.0}">                                                    
+                                <div class="modal-body">
+                                    <label>You don't have enough Ruby to unlock this instruction</label>
                                 </div>
-                            </div>
+                                <div class="modal-footer">                                    
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <a href="access_success.html" class="btn btn-primary">Buy Ruby</a>
+                                </div>
+                            </c:if>
                         </div>
                     </div>
-                </c:if>
-                <button 
-                    class="btn btn-info col-sm-3" 
-                    data-toggle="swal" 
-                    data-swal-title="A little help for you"
-                    data-swal-text="${question.instruction}">
-                    Instruction
-                </button>
+                </div>
+                <!--                <button 
+                                    class="btn btn-info col-sm-3" 
+                                    data-toggle="swal" 
+                                    data-swal-title="A little help for you"
+                                    data-swal-text="${question.instruction}">
+                                    Instruction
+                                </button>-->
             </c:forEach>
 
         </div>
