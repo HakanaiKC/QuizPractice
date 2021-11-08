@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.NewPassword;
 import model.Register;
 import model.SendEmail;
 import model.Users;
@@ -38,25 +37,25 @@ public class ForgotPassword extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+       try (PrintWriter out = response.getWriter()) {
             UsersDAO dao = new UsersDAO();
             String email = request.getParameter("email_SendNewPass");
             Register emailRegistered = dao.checkAccountExist(email);
 
             if (emailRegistered != null) {
-                SendEmail sm = new SendEmail();
-                String newPass = sm.getRandom();
-                NewPassword newPassword = new NewPassword(email, newPass);
-                boolean test = sm.sendNewPass(newPassword);
+                SendEmail sendEmail = new SendEmail();
+                String newPass = sendEmail.getRandom();
+                boolean test = sendEmail.sendNewPass(email, newPass);
                 if (test == true) {
                     dao.forgotPass(newPass, email);
-                    request.getRequestDispatcher("ForgotPass.jsp").forward(request, response);
+                    request.setAttribute("messageSuccessfully", "Change Password successfullt, please login again!");
+                    request.getRequestDispatcher("Login.jsp").forward(request, response);
                 } else {
-                    out.println("Failed to send verification email");
+                    request.setAttribute("messageFailSendEmail", "Failed to send verification email");
                     request.getRequestDispatcher("ForgotPass.jsp").forward(request, response);
                 }
             } else {
-                request.setAttribute("messagePass", "Email is not registered");
+                request.setAttribute("messageEmailNotRegistered", "Email is not registered");
                 request.getRequestDispatcher("ForgotPass.jsp").forward(request, response);
 
             }
