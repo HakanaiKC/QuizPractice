@@ -127,7 +127,7 @@
                     <div class="d-flex">
                       <p class="d-flex flex-column">
                         <span class="text-bold text-lg">1200000 vnd</span>
-                        <span>Total</span>
+                        <span>Profit this month</span>
                       </p>
                       <p class="ml-auto d-flex flex-column text-right">
                         <span class="text-success">
@@ -147,9 +147,9 @@
                         <i class="fas fa-square text-primary"></i> This year
                       </span>
 
-                      <!-- <span>
+                      <span>
                         <i class="fas fa-square text-gray"></i> Last year
-                      </span> -->
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -184,9 +184,9 @@
                         <i class="fas fa-square text-primary"></i> This year
                       </span>
 
-                      <!-- <span>
+                      <span>
                         <i class="fas fa-square text-gray"></i> Last year
-                      </span> -->
+                      </span>
                     </div>
                   </div>
                 </div>
