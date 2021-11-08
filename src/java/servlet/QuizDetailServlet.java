@@ -84,7 +84,7 @@ public class QuizDetailServlet extends HttpServlet {
         List<Option> listOption = quesdao.getAllOption(Integer.parseInt(quiz_id));
 //        PrintWriter out = response.getWriter();
         String dateNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        if (!dao.checkEnrollmentExist(quiz_id, user.getUser_id())) {
+        if (!dao.checkEnrollmentExist(quiz_id, user.getUser_id()) && user.getRole_id()!=2) {
            dao.addEnrollment(quiz_id, user.getUser_id(), dateNow);
         }
         float avgRate = dao.avgRateOfQuiz(quiz_id);

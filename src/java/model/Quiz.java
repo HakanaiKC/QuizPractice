@@ -21,7 +21,8 @@ public class Quiz {
     protected String creator_name;
     protected int questionNum;
     protected int count;
-
+   protected int numberEnroll;
+    protected float rate;
   
 
     public Quiz() {
@@ -109,6 +110,23 @@ public class Quiz {
     public int getCount() {
         return count;
     }
+
+    public int getNumberEnroll() {
+        return numberEnroll;
+    }
+
+    public void setNumberEnroll(int numberEnroll) {
+        this.numberEnroll = numberEnroll;
+    }
+
+    public float getRate() {
+        return rate;
+    }
+
+    public void setRate(float rate) {
+        this.rate = rate;
+    }
+    
 
 //    @Override
 //    public String toString() {

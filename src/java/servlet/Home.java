@@ -5,9 +5,12 @@
  */
 package servlet;
 
+import dao.AdminDAO;
 import dao.QuizDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -74,10 +77,18 @@ public class Home extends HttpServlet {
         QuizDAO qDAO = new QuizDAO();
         Quiz q = new Quiz();
         HttpSession session = request.getSession();
-        Users user = (Users) session.getAttribute("userSeisson");
 //        List<Quiz> quiz = qDAO.getRecentQuiz(user.getUser_id());
 //         request.setAttribute("quizList", quiz);
-        
+        if (session.isNew()) {
+            AdminDAO adminDAO = new AdminDAO();
+            String dateNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                if (adminDAO.checkVisit(dateNow)) {
+                    adminDAO.updateVisitor(dateNow);
+                }else{
+                adminDAO.insertVisitor();
+                }
+            }
+        Users user = (Users) session.getAttribute("userSeisson");
         if (user != null) {
              List<Quiz> quiz = qDAO.getRecentQuiz(user.getUser_id());
                 request.setAttribute("quizList", quiz);

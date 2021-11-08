@@ -87,7 +87,7 @@ public class QuizEnrollServlet extends HttpServlet {
         float fourStar = dao.countRateStars(4, quizId) / (float) countUserRate * 100;
         float threeStar = dao.countRateStars(3, quizId) / (float) countUserRate * 100;
         float twoStar = dao.countRateStars(2, quizId) / (float) countUserRate * 100;
-        float oneStar = 100 - fiveStar - fourStar - threeStar - twoStar;
+        float oneStar = dao.countRateStars(1, quizId) / (float) countUserRate * 100;
         int countFeedback = dao.countFeedback(quizId);
         if (isNaN(fiveStar)) fiveStar = 0;
         if (isNaN(fourStar)) fourStar = 0;

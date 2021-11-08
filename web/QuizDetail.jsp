@@ -74,7 +74,7 @@
                     <!--Change average rating-->
 
                     <!--User rate-->
-                    <c:if test="${sessionScope.userSeisson !=null}">
+                    <c:if test="${sessionScope.userSeisson !=null  && sessionScope.userSeisson.role_id != 2}">
                         <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
                             Rate and feedback ^^
                         </button>
@@ -144,11 +144,12 @@
         </form>         
         <!--End Rate-->
 
-        <div class="row border col-sm-12 cardholder1">
+         <div class="row border col-sm-12 cardholder1">
             <div class="col-sm-2"></div>
             <!--Left box-->
             <div class="col-sm-1 menu">
                 <div class="btn-group-vertical mb-2 mr-lg-1" style="padding-top: 2em;">
+                    <c:if test="${sessionScope.userSeisson !=null && sessionScope.userSeisson.role_id != 2}">
                     <form method="post" action="LearnServlet?quiz_id=${quiz.quiz_id}">
                         <button style="width: 100px;" type="submit" class="btn btn-white">
                             Learn
@@ -156,6 +157,12 @@
                     </form>    
                     <a class="btn btn-light exam" href="ListExamServlet?quiz_id=${quiz.quiz_id}">Exam</a>
                     <a class="btn btn-light review" href="ListExamServlet?quiz_id=${quiz.quiz_id}">Review</a>
+                    </c:if>
+                    <c:if test="${sessionScope.userSeisson.role_id == 2}">
+                    <a class="btn btn-light exam" href="#">Learn</a>
+                    <a class="btn btn-light exam" href="#">Exam</a>
+                    <a class="btn btn-light review" href="#">Review</a>    
+                    </c:if>
                 </div>
             </div>
             <!--Left box-->

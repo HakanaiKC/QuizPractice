@@ -49,7 +49,7 @@
                         </c:if>
                         <c:if test="${sessionScope.userSeisson !=null && sessionScope.userSeisson.role_id ==2}">
                             <div style="padding-left: 10px;">
-                                <a class="d-none d-lg-flex btn btn-info" href="AdminDashboardOverview.jsp" role="button">Overview</a>
+                                <a class="d-none d-lg-flex btn btn-info" href="AdminServlet?Action=Overview" role="button">Overview</a>
                             </div>                         
                             <div class="flex"></div>
                         </c:if>

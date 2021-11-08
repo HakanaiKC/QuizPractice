@@ -93,8 +93,11 @@
                     </div>
                     <div class="button-enroll-div">
                         <!--                        <input type="submit" value="Enroll" name="enroll-button" class="button-enroll" style="width: 150px;"/>-->
-                        <c:if test="${sessionScope.userSeisson !=null}">
+                        <c:if test="${sessionScope.userSeisson !=null && sessionScope.userSeisson.role_id != 2}">
                             <a class="btn btn-white" href="QuizDetailServlet?quizid=${quiz.quiz_id}" class="button-enroll" style="width: 150px;" >Enroll</a>
+                        </c:if>
+                        <c:if test="${sessionScope.userSeisson.role_id == 2}">
+                            <a class="btn btn-white" href="QuizDetailServlet?quizid=${quiz.quiz_id}" class="button-enroll" style="width: 150px;" >View Content</a>
                         </c:if>
                         <c:if test="${sessionScope.userSeisson ==null}">
                             <a class="btn btn-white" href="Login" class="button-enroll" style="width: 150px;" >Enroll</a>
