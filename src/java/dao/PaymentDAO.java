@@ -47,20 +47,17 @@ public class PaymentDAO extends DBContext {
         return 0;
     }
 
-    public void insertInstruction(int user_id, List<Question> questionSave) {
+    public void insertInstruction(int user_id, int quiz_id, String question, String instruction) {
         try {
             String query = "SET IDENTITY_INSERT Bought_instruction ON\n"
-                    + "insert into Bought_instruction(user_id,quiz_id,question_id,question,instruction) values(?,?,?,?,?)\n"
+                    + "insert into Bought_instruction(user_id,quiz_id,question,instruction) values(?,?,?,?)\n"
                     + "SET IDENTITY_INSERT Bought_instruction OFF";
             PreparedStatement ps = connection.prepareStatement(query);
-            for (Question question : questionSave) {
                 ps.setInt(1, user_id);
-                ps.setInt(2, question.getQuiz_id());
-                ps.setInt(3, question.getQuestion_id());
-                ps.setString(4, question.getQuestion());
-                ps.setInt(5, question.getCheckQuestion());
+                ps.setInt(2, quiz_id);
+                ps.setString(3, question);
+                ps.setString(4, instruction);
                 ps.executeUpdate();
-            }
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -81,7 +78,11 @@ public class PaymentDAO extends DBContext {
             System.out.println(e);
         }
     }
-
+    
+    public void getLastID(){
+        
+    }
+    
     public static void main(String[] args) {
         PaymentDAO p = new PaymentDAO();
         System.out.println(p.updateRuby(910, 3));
