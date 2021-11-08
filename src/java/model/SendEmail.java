@@ -64,10 +64,10 @@ public class SendEmail {
         return test;
     }
     
-    public boolean sendNewPass(NewPassword newPass) {
+    public boolean sendNewPass(String email, String newPassword) {
         boolean test = false;
 
-        String toEmail = newPass.getEmail();
+        String toEmail = email;
         String fromEmail = "hakanai2020@gmail.com";
         String password = "binhbe1223";
 
@@ -89,7 +89,7 @@ public class SendEmail {
             mess.setFrom(new InternetAddress(fromEmail));
             mess.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
             mess.setSubject("User Email Verification");
-            mess.setText("Hello, new password is: " + newPass.getPassword());
+            mess.setText("Hello, new password is: " + newPassword);
             Transport.send(mess);
             test = true;
 

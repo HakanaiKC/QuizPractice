@@ -118,6 +118,7 @@
                             </div>
                             <br/>
                             <div style="color: red">${requestScope.messageInvalidEmail_Pass}</div>
+                            <div style="color: blue">${requestScope.messageSuccessfully}</div>
                             
                             
                             <!--Submit-->

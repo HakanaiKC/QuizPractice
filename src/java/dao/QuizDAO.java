@@ -682,6 +682,23 @@ public class QuizDAO extends DBContext {
         }
         return list;
     }
+    
+    public String getQuizNameByID(String id) {
+        String query = " select q.name from Quiz q where q.quiz_id = ?";
+        String name = "";
+        PreparedStatement pd;
+        try {
+            pd = connection.prepareStatement(query);
+            pd.setString(1, id);
+            ResultSet rs = pd.executeQuery();
+            while (rs.next()) {
+                name = rs.getString("name");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(QuizDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return name;
+    }
 
     public static void main(String[] args) {
         QuizDAO dao = new QuizDAO();

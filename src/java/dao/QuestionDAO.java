@@ -272,6 +272,118 @@ public class QuestionDAO extends DBContext {
         }
         return list;
     }
+    
+    public List<Question> getBoughtInstruction(int userId) {
+        List<Question> list = new ArrayList<>();
+        try {
+            String query = "select bi.user_id,q.name,bi.question_id, bi.question, bi.instruction \n"
+                    + "from Bought_instruction bi join Quiz q ON bi.quiz_id = q.quiz_id\n"
+                    + "where bi.user_id = ? ";
+            PreparedStatement pd = connection.prepareStatement(query);
+            pd.setInt(1, userId);
+            ResultSet rs = pd.executeQuery();
+
+            while (rs.next()) {
+                Question q = new Question();
+                int questionId = rs.getInt("question_id");
+                String question = rs.getString("question");
+                String instruction = rs.getString("instruction");
+                String quizName = rs.getString("name");
+                q.setQuestion_id(questionId);
+                q.setQuestion(question);
+                q.setName(quizName);
+                q.setInstruction(instruction);
+                list.add(q);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public List<Question> getQuizOfBoughtInstruction(int userId) {
+        List<Question> list = new ArrayList<>();
+        try {
+            String query = "select distinct bi.user_id,q.name,q.quiz_id \n"
+                    + "from Bought_instruction bi join Quiz q ON bi.quiz_id = q.quiz_id\n"
+                    + "where bi.user_id = ?";
+            PreparedStatement pd = connection.prepareStatement(query);
+            pd.setInt(1, userId);
+            ResultSet rs = pd.executeQuery();
+            while (rs.next()) {
+
+                Question q = new Question();
+                int quizId = rs.getInt("quiz_id");
+                String quizName = rs.getString("name");
+                q.setName(quizName);
+                q.setQuiz_id(quizId);
+                list.add(q);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public List<Question> getQuestionOfQuizOfBoughtInstruction(int userId, String quiz_id) {
+        List<Question> list = new ArrayList<>();
+        try {
+            String query = "select q.name,q.quiz_id,bi.question,bi.instruction,bi.question_id \n"
+                    + "from Bought_instruction bi join Quiz q ON bi.quiz_id = q.quiz_id\n"
+                    + "where bi.user_id = ? and bi.quiz_id = ?";
+            PreparedStatement pd = connection.prepareStatement(query);
+            pd.setInt(1, userId);
+            pd.setString(2, quiz_id);
+            ResultSet rs = pd.executeQuery();
+
+            while (rs.next()) {
+                Question q = new Question();
+                int questionId = rs.getInt("question_id");
+                String question = rs.getString("question");
+                String instruction = rs.getString("instruction");
+                String quizName = rs.getString("name");
+                q.setQuestion_id(questionId);
+                q.setQuestion(question);
+                q.setName(quizName);
+                q.setInstruction(instruction);
+                list.add(q);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+
+    public List<Option> getBoughtOption(int user_id) {
+        List<Option> list = new ArrayList<>();
+        try {
+            String query = "select bi.quiz_id,bi.user_id,bo.question_id,bo.option_id,bo.option_content,bo.right_option\n"
+                    + "from Bought_option bo join Bought_instruction bi\n"
+                    + "on bo.question_id = bi.question_id where bi.user_id = ?";
+            PreparedStatement pd = connection.prepareStatement(query);
+            pd.setInt(1, user_id);
+            ResultSet rs = pd.executeQuery();
+
+            while (rs.next()) {
+                Option option = new Option();
+                int quizId = rs.getInt("quiz_id");
+                int question_id = rs.getInt("question_id");
+                int option_id = rs.getInt("option_id");
+                int right_option = rs.getInt("right_option");
+                String Option_content = rs.getString("Option_content");
+
+                option.setQuiz_id(quizId);
+                option.setQuestion_id(question_id);
+                option.setOption_id(option_id);
+                option.setRight_option(right_option);
+                option.setOption_content(Option_content);
+                list.add(option);
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return list;
+    }
 
     public static void main(String[] args) {
         QuestionDAO dao = new QuestionDAO();

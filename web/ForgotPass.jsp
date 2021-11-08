@@ -95,6 +95,8 @@
                             <button type="submit"
                                     class="btn btn-primary btn-block">Send instructions</button>
                         </form>
+                        <p style="color: red;">${requestScope.messageEmailNotRegistered}</p>
+                        <p style="color: red;">${requestScope.messagemessageFailSendEmail}</p>
                     </div>
                     
                     <!--Login-->

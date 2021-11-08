@@ -40,7 +40,11 @@
               rel="stylesheet">
     </head>
     <body>
-
+        <c:if test="${sessionScope.userSeisson == null}" >
+            <% {
+                    response.sendRedirect("Home");
+                }%>
+        </c:if>
         <%@include file="Header_All.jsp" %>
         <div class="preloader">
             <div class="sk-chase">
@@ -58,45 +62,57 @@
             <div class="itemname col-sm-4">
                 <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle font-size-24pt" data-toggle="dropdown">tên môn</a>
+                        <a href="#" class="nav-link dropdown-toggle font-size-24pt" data-toggle="dropdown">${Action}                          
+                        </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="LibraryServlet?Action=Recent">Vật lí đại cương</a>
-                            <a class="dropdown-item" href="LibraryServlet?Action=Created">Toán học đại cương</a>  
-<!--                            <a class="dropdown-item" href="LibraryServlet?Action=All">All Quiz</a>-->
+                            <a class="dropdown-item" href="BoughtInstruction?Action=All">All Bought Instruction</a>
+                            <c:forEach  items="${AllQuizOfBoughtInstruction}" var="quiz">
+                                <a class="dropdown-item" href="BoughtInstruction?Action=${quiz.quiz_id}">${quiz.name}</a>
+                            </c:forEach>
+
                         </div>
                     </li>
                 </ul>
             </div>
-            
+
             <div class="col-sm-2">
                 <!-- Search -->
-<!--                <form class="search-form d-none d-md-flex" >
-                    <input type="text" name="SearchQues" class="form-control" placeholder="Search">
-                    <button class="btn" type="button"><i
-                            class="material-icons font-size-24pt">search</i></button>
-                </form>-->
+                <!--                <form class="search-form d-none d-md-flex" >
+                                    <input type="text" name="SearchQues" class="form-control" placeholder="Search">
+                                    <button class="btn" type="button"><i
+                                            class="material-icons font-size-24pt">search</i></button>
+                                </form>-->
                 <!-- // END Search -->
             </div>
             <div class="col-sm-4"></div>
 
-
-            <div class="col-sm-2"></div>
-            <div class="card1 col-sm-6">
-                <div class="content row" >
-                    <div class="card-title col-sm-12">SWP123</div>
-                    <div class="answer-div col-sm-3">2</div>
-                    <div class="question-div col-sm-8">
-                        1+1=?<br>
-                        1. 1<br>
-                        2. 2<br>
-                        3. 3<br>
-                        4. 4<br>
-                    </div>
-
-                    <div class="instruction-div col-sm-12">1 + 1 =2</div>
-                </div>            
-            </div>
-            <div class="col-sm-4"></div>
+            <c:forEach  items="${AllBoughtInstruction}" var="q">
+                <div class="col-sm-2"></div>
+                <div class="card1 col-sm-6">
+                    <div class="content row" >
+                        <div class="card-title col-sm-12">${q.name}</div>
+                        <div class="answer-div col-sm-3">
+                            <c:forEach items="${listOp}"  var="option">
+                                <c:if test="${option.question_id == q.question_id && option.right_option==1}">
+                                    ${option.option_content}
+                                </c:if>
+                            </c:forEach>
+                        </div>
+                        <div class="question-div col-sm-8">
+                            ${q.question}<br>
+                            <c:forEach items="${listOp}"  var="option">
+                                <c:if test="${option.question_id == q.question_id}">
+                                    ${option.option_id +1}.
+                                    ${option.option_content}
+                                    <br>
+                                </c:if>
+                            </c:forEach>
+                        </div>
+                        <div class="instruction-div col-sm-12">${q.instruction}</div>
+                    </div>            
+                </div>
+                <div class="col-sm-4"></div>
+            </c:forEach>
 
         </div>
 
