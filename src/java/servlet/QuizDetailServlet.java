@@ -112,7 +112,22 @@ public class QuizDetailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+        HttpSession session = request.getSession();
+        Users user = (Users) session.getAttribute("userSeisson");
+        if(user != null){
+        String quiz_id = request.getParameter("quizid");
+        QuizDAO dao = new QuizDAO();
+        UsersDAO udao = new UsersDAO();
+        Quiz quiz = dao.getQuizByID(quiz_id);
+        Users creator = udao.getUserByID(String.valueOf(quiz.getCreator_id()));
+        QuestionDAO quesdao = new QuestionDAO();
+        List<Question> listQuestion = quesdao.getAllQuestion(Integer.parseInt(quiz_id));
+        List<Option> listOption = quesdao.getAllOption(Integer.parseInt(quiz_id));
+//        PrintWriter out = response.getWriter();
+        String dateNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        if (!dao.checkEnrollmentExist(quiz_id, user.getUser_id())) {
+           dao.addEnrollment(quiz_id, user.getUser_id(), dateNow);
+        }
         float avgRate = dao.avgRateOfQuiz(quiz_id);
         request.setAttribute("quiz", quiz);
         request.setAttribute("creator", creator);

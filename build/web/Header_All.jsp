@@ -60,7 +60,7 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="Home">Home</a>
                                         <a class="dropdown-item" href="LibraryServlet?Action=Recent">My Quiz</a>
-                                        <a class="dropdown-item" href="BoughtInstruction.jsp">Bought Instructions</a>
+                                        <a class="dropdown-item" href="BoughtInstruction?Action=All">Bought Instructions</a>
                                         <a class="dropdown-item" href="ListExamServlet">Exam Results</a>               
                                         <a class="dropdown-item" href="Payment.jsp">Payment Method</a>
                                     </div>
