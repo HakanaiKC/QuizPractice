@@ -6,6 +6,7 @@
 package servlet;
 
 import dao.PaymentDAO;
+import dao.QuestionDAO;
 import dao.UsersDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,7 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.BuyInstruction;
+import model.Option;
+import model.Question;
 import model.Users;
 
 /**
@@ -83,20 +85,33 @@ public class BuyInstructionServlet extends HttpServlet {
         //PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         Users user = (Users) session.getAttribute("userSeisson");
-        int user_id = Integer.parseInt(request.getParameter("user_id"));
-        int creator_id = Integer.parseInt(request.getParameter("creator_id"));
+        //int user_id = Integer.parseInt(request.getParameter("user_id"));
+        int user_id = user.getUser_id();
+        int creator_id = Integer.parseInt(request.getParameter("creatorId"));
+        int quiz_id = Integer.parseInt(request.getParameter("quizId"));
+        int question_id = Integer.parseInt(request.getParameter("opId"));
+        
         PaymentDAO dao = new PaymentDAO();
         UsersDAO user_dao = new UsersDAO();
+        QuestionDAO ques_dao = new QuestionDAO();
+        Question questions = ques_dao.getQuestionByID(quiz_id,question_id);
+        List<Option> optionSave = ques_dao.getOptionByID(quiz_id, question_id);
+        
         double rubyUser = dao.getRuby(user_id);
         double rubyCreator = dao.getRuby(creator_id);
         double updateRubyUser = rubyUser - 1.0;
         double updateRubyCreator = rubyCreator + 1.0;
         dao.updateRuby(updateRubyUser, user_id);
         dao.updateRuby(updateRubyCreator, creator_id);
+    
+        dao.insertInstruction(user_id, quiz_id, questions.getQuestion(), questions.getInstruction());
+        int lastID = dao.getLastID(user_id);
+        dao.insertOption(lastID, optionSave);
         
         Users student = user_dao.getUsers(user.getEmail(), user.getPassword());
         session.setAttribute("userSeisson", student);
-        request.getRequestDispatcher("BoughtInstruction.jsp").forward(request, response);
+        request.getRequestDispatcher("QuizDetailServlet?quizid="+quiz_id).forward(request, response);
+        //response.sendRedirect("QuizDetailServlet?quizid="+quiz_id);
     }
 
     /**

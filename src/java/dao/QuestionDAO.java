@@ -248,22 +248,6 @@ public class QuestionDAO extends DBContext {
         return list;
     }
     
-    public StringBuilder getQueID(String quizId){        
-        StringBuilder list = new StringBuilder();
-        try {
-            String query = "select question_id from Question where quiz_id= ?";
-            PreparedStatement pd = connection.prepareStatement(query);
-            pd.setString(1, quizId);
-            ResultSet rs = pd.executeQuery();
-            while(rs.next()){
-                list.append(rs.getInt("question_id")).append(" ");                
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return list;
-    }
-    
     public List<Question> getRandomQuestion(int quizId) {
         List<Question> list = new ArrayList<>();
         try {

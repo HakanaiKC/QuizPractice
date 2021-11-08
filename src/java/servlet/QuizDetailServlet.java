@@ -112,6 +112,18 @@ public class QuizDetailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        float avgRate = dao.avgRateOfQuiz(quiz_id);
+        request.setAttribute("quiz", quiz);
+        request.setAttribute("creator", creator);
+        request.setAttribute("listQuestion", listQuestion);
+        request.setAttribute("listOption", listOption);
+         request.setAttribute("avgRate",  avgRate);
+        request.getRequestDispatcher("QuizDetail.jsp").forward(request, response);
+        }
+        else{
+            response.sendRedirect("Home");
+        }
     }
 
     /**

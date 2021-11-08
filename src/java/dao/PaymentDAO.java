@@ -49,15 +49,13 @@ public class PaymentDAO extends DBContext {
 
     public void insertInstruction(int user_id, int quiz_id, String question, String instruction) {
         try {
-            String query = "SET IDENTITY_INSERT Bought_instruction ON\n"
-                    + "insert into Bought_instruction(user_id,quiz_id,question,instruction) values(?,?,?,?)\n"
-                    + "SET IDENTITY_INSERT Bought_instruction OFF";
+            String query = "insert into Bought_instruction(user_id,quiz_id,question,instruction) values(?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(query);
-                ps.setInt(1, user_id);
-                ps.setInt(2, quiz_id);
-                ps.setString(3, question);
-                ps.setString(4, instruction);
-                ps.executeUpdate();
+            ps.setInt(1, user_id);
+            ps.setInt(2, quiz_id);
+            ps.setString(3, question);
+            ps.setString(4, instruction);
+            ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -78,14 +76,24 @@ public class PaymentDAO extends DBContext {
             System.out.println(e);
         }
     }
-    
-    public void getLastID(){
-        
+
+    public int getLastID(int user_id) {
+        try {
+            String query = "select top 1 question_id from bought_instruction where user_id = ? order by question_id desc";
+            PreparedStatement pd = connection.prepareStatement(query);
+            pd.setInt(1, user_id);
+            ResultSet rs = pd.executeQuery();
+
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return 0;
     }
     
     public static void main(String[] args) {
         PaymentDAO p = new PaymentDAO();
-        System.out.println(p.updateRuby(910, 3));
-        System.out.println(p.getRuby(3));
     }
 }

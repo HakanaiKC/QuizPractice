@@ -222,7 +222,6 @@
                                 ${option.option_content}
                             </c:if>
                         </c:forEach>
-
                     </div>
 
                     <div class="question" id="ques${question.question_id}">${question.question} <br> 
@@ -238,7 +237,7 @@
                 </div>
                 <br>
 
-                <button type="button" class="btn btn-primary buton" data-toggle="modal" data-target="#instructionModal">
+                <button data-id="${question.question_id}" type="button" class="btn btn-primary buton" data-toggle="modal" data-target="#instructionModal">
                     Instruction
                 </button>
 
@@ -256,8 +255,9 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                     <form action="BuyInstructionServlet" method="post">
-                                        <input value="${sessionScope.userSeisson.user_id}" name="user_id" hidden/>
-                                        <input value="${creator.user_id}" name="creator_id" hidden/>
+                                        <input type="text" value="${creator.user_id}" name="creatorId" hidden/>
+                                        <input type="text" value="${quiz.quiz_id}" name="quizId" hidden/>
+                                        <input type="text" value="${question.question_id}" name="opId" id="opId" hidden/>
                                         <button type="submit" class="btn btn-primary">Purchase</button>
                                     </form>                                
                                 </div>     
@@ -437,6 +437,11 @@
             useGradient: false,
             readOnly: true
         });
+    });
+
+    $(document).on("click", ".buton", function () {
+        var myId = $(this).data('id');
+        $(".modal-footer #opId").val(myId);
     });
 </script>
 </html>
