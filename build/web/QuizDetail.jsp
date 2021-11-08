@@ -237,9 +237,11 @@
                 </div>
                 <br>
 
-                <button data-id="${question.question_id}" type="button" class="btn btn-primary buton" data-toggle="modal" data-target="#instructionModal">
-                    Instruction
-                </button>
+                <c:if test="${question.instruction ne ''}">
+                    <button data-id="${question.question_id}" type="button" class="btn btn-primary buton" data-toggle="modal" data-target="#instructionModal">
+                        Instruction
+                    </button>
+                </c:if>
 
                 <div class="modal fade" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="instructionModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">

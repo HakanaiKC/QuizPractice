@@ -111,7 +111,7 @@ public class QuizDetailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
         HttpSession session = request.getSession();
         Users user = (Users) session.getAttribute("userSeisson");
         if(user != null){
