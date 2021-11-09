@@ -256,7 +256,7 @@
                             <div class="modal-header">
                                 <h5 class="modal-title" id="instructionModalLabel">Buy Instruction</h5>
                             </div>
-
+                                
                             <c:if test="${sessionScope.userSeisson.ruby > 1.0}">                      
                                 <div class="modal-body">
                                     <label>Purchase Ruby to unlock this instruction</label>

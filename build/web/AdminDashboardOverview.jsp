@@ -201,10 +201,10 @@
                                                                 </a>
                                                             </td>
                                                             <td>
-                                                                <a href="#banmodal" class="buton" data-id="${user.user_id}" data-toggle="modal" data-target="#banmodal">
+                                                                <a href="#banmodal" class="buton" data-id="${user.user_id}" data-toggle="modal" data-target="#banmodal-${user.user_id}">
                                                                     Ban this user
                                                                 </a>
-                                                                <div class="modal fade banmodal" tabindex="-1" role="dialog" aria-labelledby="banmodal" aria-hidden="true" id="banmodal">
+                                                                <div class="modal fade banmodal" tabindex="-1" role="dialog" aria-labelledby="banmodal" aria-hidden="true" id="banmodal-${user.user_id}">
                                                                     <div class="modal-dialog modal-sm">
                                                                         <div class="modal-content">
                                                                             <div class="modal-content">
@@ -226,8 +226,6 @@
                                                                     </div>
                                                                 </div>
                                                             </td>
-
-
                                                         </tr>
                                                     </c:forEach>
 
