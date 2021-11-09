@@ -60,10 +60,11 @@
                                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Student</a>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="Home">Home</a>
-                                            <a class="dropdown-item" href="LibraryServlet?Action=Recent">My Quiz</a>
+                                            <a class="dropdown-item" href="LibraryServlet?Action=Recent">Library</a>
+                                            <a class="dropdown-item" href="CreateQuiz">Create Quiz</a>
+                                            <a class="dropdown-item" href="ListExamServlet">Exam Results</a> 
                                             <a class="dropdown-item" href="BoughtInstruction?Action=All">Bought Instructions</a>
-                                            <a class="dropdown-item" href="ListExamServlet">Exam Results</a>               
-
+                                                       
                                         </div>
                                     </li>
                                 </c:if>
@@ -114,7 +115,7 @@
                                     <li class="nav-item dropdown ml-1 ml-md-3">
                                         <ul class="nav navbar-nav navbar-nav-stats d-none d-md-flex flex-nowrap" style="margin-right: 1em;">
                                             <li class="nav-item">
-                                                <div class="nav-stats" name="ruby">${sessionScope.userSeisson.ruby} <small>RUBY</small></div>
+                                                <div class="nav-stats" name="ruby" >${sessionScope.userSeisson.getRuby2()} <small>RUBY</small></div>
                                             </li>
                                         </ul>
                                         <div class="avatar avatar-xxl position-absolute bottom-0 left-0 right-0"></div>
@@ -137,8 +138,8 @@
                                                 <i class="material-icons">person</i> Public Profile
                                             </a>          
 
-                                            <a class="dropdown-item" href="Payment.jsp"><i class="material-icons">receipt</i>Purchase ruby</a>
-                                            <a class="dropdown-item" href="PurchaseHistory.jsp">
+                                            <a class="dropdown-item" href="PurchaseRuby"><i class="material-icons">receipt</i>Purchase ruby</a>
+                                            <a class="dropdown-item" href="PaymentHistory">
                                                 <i class="material-icons">history</i> Purchase History
                                             </a>
                                             <a class="dropdown-item" href="LogOut">
@@ -217,11 +218,8 @@
                                             <a class="dropdown-item" href="AdminServlet?Action=Statistics">
                                                 Statistics
                                             </a>
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="ConfirmPurchase">
                                                 Payment Information
-                                            </a>
-                                            <a class="dropdown-item" href="#">
-                                                Payment History
                                             </a>
                                             <a class="dropdown-item" href="LogOut">
                                                 Logout

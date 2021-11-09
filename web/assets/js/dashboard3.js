@@ -41,7 +41,7 @@ $(function () {
     var mly12 = moneyLastYear[11];
     const d = new Date();
     let month = d.getMonth();
-    document.getElementById("moneyThisMonth").innerHTML = moneyLastYear[month] + " vnđ";
+    document.getElementById("moneyThisMonth").innerHTML = moneyThisYear[month] + " vnđ";
   //SALE CHART
   var $salesChart = $('#sales-chart')
   var salesChart = new Chart($salesChart, {
@@ -276,7 +276,13 @@ $(function () {
           },
           ticks: $.extend({
             beginAtZero: true,
-            suggestedMax: 200
+            callback: function (value) {
+              if (value >= 1000) {
+                value /= 1000
+                value += 'k'
+              }
+              return  value
+            }
           }, ticksStyle)
         }],
         xAxes: [{

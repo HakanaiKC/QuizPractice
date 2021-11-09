@@ -198,7 +198,7 @@
 
                     <a href="ProfileServlet?id=${creator.user_id}" role="button">
                         <c:if test = "${creator.avatar == null}">
-                            <img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="rounded-circle"
+                            <img src="assets/images/unnamed.jpg" alt="Avatar" class="rounded-circle"
                                  width="50" height="50"></c:if>
                         <c:if test = "${creator.avatar != null}">
                             <img src="uploads/${creator.avatar}" alt="Avatar" class="rounded-circle"
@@ -257,7 +257,7 @@
                                 <h5 class="modal-title" id="instructionModalLabel">Buy Instruction</h5>
                             </div>
 
-                            <c:if test="${sessionScope.userSeisson.ruby > 1.0}">                      
+                            <c:if test="${sessionScope.userSeisson.ruby >= 1.0}">                      
                                 <div class="modal-body">
                                     <label>Purchase Ruby to unlock this instruction</label>
                                 </div>
@@ -278,7 +278,7 @@
                                 </div>
                                 <div class="modal-footer">                                    
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                    <a href="access_success.html" class="btn btn-primary">Buy Ruby</a>
+                                    <a href="PurchaseRuby" class="btn btn-primary">Buy Ruby</a>
                                 </div>
                             </c:if>
                         </div>

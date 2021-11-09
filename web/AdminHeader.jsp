@@ -75,7 +75,7 @@
                                         <a class="dropdown-item" href="AdminServlet?Action=Statistics">
                                             Statistics
                                         </a>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="ConfirmPurchase">
                                             Payment Information
                                         </a>
                                         <a class="dropdown-item" href="LogOut">

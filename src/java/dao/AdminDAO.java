@@ -229,7 +229,7 @@ public class AdminDAO extends DBContext {
         int num = 0;
         try {
             String query = "select sum([money]) from Payment\n"
-                    + "where month([date_of_payment]) = ? and YEAR([date_of_payment]) = ?";
+                    + "where month([date_of_payment]) = ? and YEAR([date_of_payment]) = ? and status=1";
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setInt(1, month);
             pd.setInt(2, year);

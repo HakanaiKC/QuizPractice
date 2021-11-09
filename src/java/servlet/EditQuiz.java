@@ -130,8 +130,8 @@ public class EditQuiz extends HttpServlet {
         
         try {
             String[] listQuestion = Question.split("@@@##@@@");
-        qDAO.deleteQuestion(quizId);
         qDAO.deleteOption(quizId);
+        qDAO.deleteQuestion(quizId);
         cDAO.deleteCategory(quizId);
         for (int i = 0; i < Category.length; i++) {
             cDAO.addCategoryForQuiz(quizId, Category[i]);

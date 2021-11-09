@@ -1,3 +1,8 @@
+<%-- 
+    Document   : Payment
+    Created on : Oct 10, 2021, 10:04:57 PM
+    Author     : bekim
+--%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -61,10 +66,10 @@
                         <div class="col-lg">
                             <div class="card row" style="display: flex; flex-direction: row;">
                                 <div class="col-md-7">
-                                    <form action="#"
+                                    <form action="PurchaseRuby" method="post"
                                           class="form-horizontal">
                                         <div class="card-body">
-                                            <p style="color: #27376B; text-decoration: underline; font-size: 24px;">Step 1: Please input amount of ruby you want purchase</p>
+                                            <p style="color: #27376B; font-size: 24px;">Step 1: Please input amount of ruby you want purchase</p>
                                             <div class="form-group">
                                                 <label class="form-label">MOMO Acount:</label>
                                                 <input type="text"
@@ -73,30 +78,34 @@
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label">Amount of Ruby:</label>
-                                                <input type="number" min="10" max="1000"
+                                                <input type="number" min="10" max="10000"
                                                        class="form-control" id="input-money"
-                                                       placeholder="Amount of ruby (1 Ruby = 1000 vnđ, discount 10%)" onchange="calculateMoney(this.value)">
+                                                       name="rubyInput"
+                                                       placeholder="Amount of ruby (1 Ruby = 1000 vnđ)" onchange="calculateMoney(this.value)">
                                                 <p id="total-money" style="font-size: 20px;"></p>
                                             </div>
-                                            <p style="color: #27376B; text-decoration: underline; font-size: 24px;">Step 2: Please fill in deposit information to confirm</p>
+                                            <p style="color: #27376B; font-size: 24px;">Step 2: Please fill in deposit information to confirm</p>
                                             <div class="form-group">
                                                 <label class="form-label">Phone number:</label>
                                                 <input type="text"
                                                        class="form-control"
+                                                       name="phoneNumberInput"
                                                        placeholder="phone number used to pay">
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-label">Trading code:</label>
                                                 <input type="text"
+                                                       name="tradingCodeInput"
                                                        class="form-control"
                                                        placeholder="Trading code">
                                             </div>
                                             <p style="color: #27376B; font-size: 16px;">(ruby will be sent to your account no later than 8 hours after payment)</p>
                                         </div>
                                         <div class="card-footer text-center">
-                                            <button type="button"
+                                            <button type="submit"
                                                     class="btn btn-success">Make Payment</button>
                                         </div>
+                                        <p style="color: blue;">${requestScope.SentSuccessfully}</p>
                                     </form>
                                 </div>
                                 <div class="col-md-5">
@@ -132,7 +141,7 @@
         <script>
             function calculateMoney(val) {
                 var input = document.getElementById("input-money").value;
-                document.getElementById("total-money").innerHTML = "= " + (val * 10000/9).toFixed(0) + " vnd";
+                document.getElementById("total-money").innerHTML = "= " + val*1000 + " vnđ";
             }
         </script>
     </body>

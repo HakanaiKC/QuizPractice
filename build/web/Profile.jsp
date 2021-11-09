@@ -104,7 +104,7 @@
 
                             <div class="col-sm">
                                 <c:forEach items="${quizList}" var="q">
-                                    <div class="card" onclick="location.href = 'LearnServlet';" style="cursor:pointer;">
+                                    <div class="card" onclick="location.href = 'QuizEnrollServlet?quizid=${q.quiz_id}';" style="cursor:pointer;">
                                         <div class="card-header">
                                             <div class="d-flex row align-items-center">
                                                 <div class="card-title col-sm-11" style="font-size: 18px; font-weight: bold; margin: 0;">${q.name}</div>
@@ -112,7 +112,7 @@
 
                                                 </div>
                                                 <div class="n-question col-sm-2">${q.questionNum} questions</div>
-                                                <div class="last-update col-sm-2">Last update: ${q.last_Update}</div>
+                                                <div class="last-update col-sm-8">Last update: ${q.last_Update}</div>
                                             </div>
                                         </div>
                                     </div>

@@ -92,10 +92,7 @@
                         <span>Total visitors this week</span>
                       </p>
                       <p class="ml-auto d-flex flex-column text-right">
-                        <span class="text-success">
-                          <i class="fas fa-arrow-up"></i> 12.5%
-                        </span>
-                        <span class="text-muted">Since last week</span>
+                        
                       </p>
                     </div>
                     <!-- /.d-flex -->
@@ -135,10 +132,7 @@
                         <span>Profit this month</span>
                       </p>
                       <p class="ml-auto d-flex flex-column text-right">
-                        <span class="text-success">
-                          <i class="fas fa-arrow-up"></i> 33.1%
-                        </span>
-                        <span class="text-muted">Since last month</span>
+                      
                       </p>
                     </div>
                     <!-- /.d-flex -->
@@ -172,10 +166,6 @@
                         <span>Quiz created this month</span>
                       </p>
                       <p class="ml-auto d-flex flex-column text-right">
-                        <span class="text-success">
-                          <i class="fas fa-arrow-up"></i> 33.1%
-                        </span>
-                        <span class="text-muted">Since last month</span>
                       </p>
                     </div>
                     <!-- /.d-flex -->

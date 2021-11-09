@@ -19,8 +19,8 @@ public class UsersDAO extends DBContext {
 
     public void register(String user_name,
             String password, String email) {
-        String query = "insert into [User](username,password,email,role_id) "
-                + "Values(?,?,?,0)";
+        String query = "insert into [User](username,password,email,role_id, ruby) "
+                + "Values(?,?,?,0,20)";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, user_name);

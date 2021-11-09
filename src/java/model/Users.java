@@ -58,6 +58,7 @@ public class Users {
     public String getUsername() {
         return username;
     }
+    
 
     public void setUsername(String username) {
         this.username = username;
@@ -113,6 +114,10 @@ public class Users {
     
     public double getRuby() {
         return ruby;
+    }
+    
+    public int getRuby2() {
+        return (int)ruby;
     }
 
     public void setRuby(double ruby) {

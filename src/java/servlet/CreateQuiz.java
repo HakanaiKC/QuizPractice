@@ -6,8 +6,10 @@
 package servlet;
 
 import dao.CategoryDAO;
+import dao.PaymentDAO;
 import dao.QuestionDAO;
 import dao.QuizDAO;
+import dao.UsersDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -46,6 +48,8 @@ public class CreateQuiz extends HttpServlet {
             QuestionDAO qDAO = new QuestionDAO();
             QuizDAO dao = new QuizDAO();
             CategoryDAO cDAO = new CategoryDAO();
+            PaymentDAO paymentDao = new PaymentDAO();
+            UsersDAO userDao = new UsersDAO();
 
             String quizTitle = request.getParameter("quiz_title");
             String dateNow = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -91,6 +95,10 @@ public class CreateQuiz extends HttpServlet {
             for (int i=0; i<Category.length;i++) {
                  cDAO.addCategoryForQuiz(lastQuizID, Category[i]);
             }
+            paymentDao.updateRubyAfterConfirm(-5, user.getUser_id());
+            dao.addEnrollment(String.valueOf(lastQuizID), user.getUser_id(), dateNow);
+            Users updateUserSession = userDao.getUsers(user.getEmail(), user.getPassword());
+            session.setAttribute("userSeisson", updateUserSession);
             request.setAttribute("success", "Create quiz successfully!");
             request.getRequestDispatcher("CreateQuiz.jsp").forward(request, response);
     }
@@ -108,7 +116,9 @@ public class CreateQuiz extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.getRequestDispatcher("CreateQuiz.jsp").forward(request, response);
         processRequest(request, response);
+        
     }
 
     /**
