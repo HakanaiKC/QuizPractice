@@ -177,6 +177,83 @@
                     <!-- /.d-flex -->
                   </div>
                 </div>
+                  <div class="card">
+                  <div class="card-header border-0">
+                    <h3 class="card-title">User</h3>
+                    <div class="card-tools"></div>
+                  </div>
+                  <div class="card-body table-responsive p-0">
+                    <table class="table table-striped table-valign-middle">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Quiz Created</th>
+                          <th>Public Profile</th>
+                          <th>Ban user</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="max-width: 120px">Lich King</td>
+                          <td>4</td>
+                          <td><a href="#" class="">
+                              <i class="fas fa-search"></i>
+                              Detail
+                            </a>
+                          </td>
+                          <td>
+                            <a href="#" class="">
+                              Ban this user
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="max-width: 120px">Lich King</td>
+                          <td>4</td>
+                          <td><a href="#" class="">
+                              <i class="fas fa-search"></i>
+                              Detail
+                            </a>
+                          </td>
+                          <td>
+                            <a href="#" class="">
+                              Ban this user
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="max-width: 120px">Lich King</td>
+                          <td>4</td>
+                          <td><a href="#" class="">
+                              <i class="fas fa-search"></i>
+                              Detail
+                            </a>
+                          </td>
+                          <td>
+                            <a href="#" class="">
+                              Ban this user
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="max-width: 120px">Lich King</td>
+                          <td>4</td>
+                          <td><a href="#" class="">
+                              <i class="fas fa-search"></i>
+                              Detail
+                            </a>
+                          </td>
+                          <td>
+                            <a href="#" class="">
+                              Ban this user
+                            </a>
+                          </td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
               <!-- /.col-md-6 -->
             </div>
