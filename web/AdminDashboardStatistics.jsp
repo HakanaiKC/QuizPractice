@@ -22,6 +22,16 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="assets/css/adminlte.min.css" />
   </head>
+  <style>
+        .bg-primary{
+            background-color: #2196f3!important;
+        }
+        
+        .btn-info{
+            background-color: #29b6f6;
+            border-color: #29b6f6;
+        }
+    </style>
   <!--
 `body` tag options:
 
@@ -32,7 +42,7 @@
   * sidebar-mini
 -->
 <body>
-    <%@include file="Header_All.jsp" %>
+    <%@include file="AdminHeader.jsp" %>
       <div class="hold-transition sidebar-mini" style="display: flex;
   height: auto;
   justify-content: center;
@@ -62,12 +72,7 @@
           <!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-        <h5>Visitor in This week: ${thisweekVisit}</h5>
-        <h5>Visitor in Last week: ${lastweekVisit}</h5>
-        <h5>Number of quiz created in this year :${thisyearQuizCreated}</h5>
-        <h5>Number of quiz created in last year :${lastyearQuizCreated}</h5>
-        <h5>Money in this year: ${moneyInThisYear}</h5>
-        <h5>Money in last year: ${moneyInLastYear}</h5>
+        
         <!-- Main content -->
         <div class="content">
           <div class="container-fluid">
@@ -83,8 +88,8 @@
                   <div class="card-body">
                     <div class="d-flex">
                       <p class="d-flex flex-column">
-                        <span class="text-bold text-lg">820</span>
-                        <span>Visitors Over Time</span>
+                          <span class="text-bold text-lg" id="totalVisitorThisWeek"></span>
+                        <span>Total visitors this week</span>
                       </p>
                       <p class="ml-auto d-flex flex-column text-right">
                         <span class="text-success">
@@ -126,7 +131,7 @@
                   <div class="card-body">
                     <div class="d-flex">
                       <p class="d-flex flex-column">
-                        <span class="text-bold text-lg">1200000 vnd</span>
+                          <span class="text-bold text-lg" id="moneyThisMonth"></span>
                         <span>Profit this month</span>
                       </p>
                       <p class="ml-auto d-flex flex-column text-right">
@@ -163,8 +168,8 @@
                   <div class="card-body">
                     <div class="d-flex">
                       <p class="d-flex flex-column">
-                        <span class="text-bold text-lg">102</span>
-                        <span>Quiz Created Over Time</span>
+                          <span class="text-bold text-lg" id="quizThisMonth"></span>
+                        <span>Quiz created this month</span>
                       </p>
                       <p class="ml-auto d-flex flex-column text-right">
                         <span class="text-success">
@@ -198,10 +203,16 @@
           </div>
           <!-- /.container-fluid -->
         </div>
+        <input id="visitorThisWeek" value="${thisweekVisit}" hidden>
+        <input id="visitorLastWeek" value="${lastweekVisit}" hidden>
+        <input id="thisyearQuizCreated" value="${thisyearQuizCreated}" hidden>
+        <input id="lastyearQuizCreated" value="${lastyearQuizCreated}" hidden>
+        <input id="moneyInThisYear" value="${moneyInThisYear}" hidden>
+        <input id="moneyInLastYear" value="${moneyInLastYear}" hidden>
         <!-- /.content -->
       </div>
       <!-- /.content-wrapper -->
-
+      
       <!-- Control Sidebar -->
       <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
