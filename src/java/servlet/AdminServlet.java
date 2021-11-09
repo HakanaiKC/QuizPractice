@@ -78,10 +78,12 @@ public class AdminServlet extends HttpServlet {
                 case "Overview":
                    
                     List<Quiz> list = dao.getAllQuiz();
+                    List<Users> listUser = dao.getUser();
                     request.setAttribute("listQuiz", list);
                     request.setAttribute("numQuiz", dao.countQuiz());
                     request.setAttribute("numUser", dao.countUser());
                     request.setAttribute("numRuby", dao.countRuby());
+                    request.setAttribute("listUser", listUser);
                     request.getRequestDispatcher("AdminDashboardOverview.jsp").forward(request, response);
                     break;
                 case "Statistics":
@@ -117,7 +119,8 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+//        processRequest(request, response);
     }
 
     /**

@@ -19,7 +19,7 @@ public class Users {
     private String about_me;
     private String connect;
     private double ruby;      
-
+    private int countQuizCreated;
     public Users(int user_id, String username, String password, String email, String avatar, int role_id, String about_me, String connect, double ruby) {
         this.user_id = user_id;
         this.username = username;
@@ -117,6 +117,14 @@ public class Users {
 
     public void setRuby(double ruby) {
         this.ruby = ruby;
+    }
+
+    public int getCountQuizCreated() {
+        return countQuizCreated;
+    }
+
+    public void setCountQuizCreated(int countQuizCreated) {
+        this.countQuizCreated = countQuizCreated;
     }
 
     @Override

@@ -100,6 +100,10 @@ public class Login extends HttpServlet {
             request.getRequestDispatcher("Login.jsp").forward(request, response);
 
         } else {
+            if (u.getRole_id() ==10) {
+            request.setAttribute("messageInvalidEmail_Pass", "Your account has been banned. Please contact us via email: hakanai2020@gmail.com for support");
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
+            }
             HttpSession session = request.getSession();
             session.setAttribute("userSeisson", u);
 

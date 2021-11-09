@@ -23,6 +23,7 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Quiz;
+import model.Users;
 
 /**
  *
@@ -227,7 +228,7 @@ public class AdminDAO extends DBContext {
         }
         return num;
     }
-    
+
     public String MoneyInYear(int year) {
         String string = "";
         AdminDAO admin = new AdminDAO();
@@ -237,9 +238,63 @@ public class AdminDAO extends DBContext {
         return string;
     }
 
+    public int getNumQuizOfUser(int userId) {
+        int num = 0;
+        try {
+            String query = "select count(quiz_id) from Quiz\n"
+                    + "where creator_id = ?";
+            PreparedStatement pd = connection.prepareStatement(query);
+            pd.setInt(1, userId);
+            ResultSet rs = pd.executeQuery();
+            while (rs.next()) {
+                num = rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return num;
+    }
+
+    public List<Users> getUser() {
+        List<Users> list = new ArrayList<>();
+//        QuizDAO dao = new QuizDAO();
+        AdminDAO dao = new AdminDAO();
+        try {
+            String query = "select * from [User]\n"
+                    + "where [role_id] != 2\n"
+                    + "order by username asc";// lay quiz_id, creator_id,..
+            PreparedStatement pd = connection.prepareStatement(query);
+            ResultSet rs = pd.executeQuery();
+            while (rs.next()) {
+                Users u = new Users();
+                int id = rs.getInt("user_id");
+                String user_name = rs.getString("username");
+                u.setUser_id(id);
+                u.setUsername(user_name);
+                u.setCountQuizCreated(dao.getNumQuizOfUser(id));
+                list.add(u);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+
+    }
+
+    public void banUser(String user_id) {
+        try {
+            String query = "   update [User]\n"
+                    + "  set role_id = 10\n"
+                    + "  where user_id = ?";
+            PreparedStatement pd = connection.prepareStatement(query);
+            pd.setString(1, user_id);
+            pd.execute();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) throws ParseException {
         AdminDAO admin = new AdminDAO();
-        System.out.println(admin.checkVisit("2021-11-08"));
+        System.out.println(admin.getUser().get(1).getCountQuizCreated());
 //        System.out.println(admin.numVisitorInWeek(LocalDate.now().minusDays(0)));
 //        System.err.println(admin.getQuizCreateEachMonth(10, 2020));
 //        admin.insertVisitor();
