@@ -201,9 +201,16 @@
                                                                 </a>
                                                             </td>
                                                             <td>
+                                                                <c:if test="${user.role_id == 0}">
                                                                 <a href="#banmodal" class="buton" data-id="${user.user_id}" data-toggle="modal" data-target="#banmodal-${user.user_id}">
-                                                                    Ban this user
+                                                                    Ban
                                                                 </a>
+                                                                </c:if>
+                                                                 <c:if test="${user.role_id == 10}">
+                                                                <a href="#unbanmodal" class="buton" data-id="${user.user_id}" data-toggle="modal" data-target="#unbanmodal-${user.user_id}">
+                                                                    Unban
+                                                                </a>  
+                                                                </c:if>
                                                                 <div class="modal fade banmodal" tabindex="-1" role="dialog" aria-labelledby="banmodal" aria-hidden="true" id="banmodal-${user.user_id}">
                                                                     <div class="modal-dialog modal-sm">
                                                                         <div class="modal-content">
@@ -216,8 +223,29 @@
                                                                                 </div>
                                                                                 <div class="modal-footer">
                                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                                    <form id="requestacallform" action="AdminServlet" method="POST" name="">
-                                                                                        <input type="text" value="${user.user_id}" name="userId" id="opId" />
+                                                                                    <form id="requestacallform" action="AdminServlet?Action=Ban" method="POST" name="">
+                                                                                        <input type="text" value="${user.user_id}" name="userId" id="opId" hidden />
+                                                                                        <button type="submit" class="btn btn-success">Submit</button>
+                                                                                    </form>                                    
+                                                                                </div>          
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                               <div class="modal fade banmodal" tabindex="-1" role="dialog" aria-labelledby="unbanmodal" aria-hidden="true" id="unbanmodal-${user.user_id}">
+                                                                    <div class="modal-dialog modal-sm">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="banModalLabel">Warning</h5>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <p>Do you want to unban this user?</p>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                                                    <form id="requestacallform" action="AdminServlet?Action=Unban" method="POST" name="">
+                                                                                        <input type="text" value="${user.user_id}" name="userId" id="opId" hidden=""/>
                                                                                         <button type="submit" class="btn btn-success">Submit</button>
                                                                                     </form>                                    
                                                                                 </div>          

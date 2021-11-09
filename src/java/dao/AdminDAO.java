@@ -268,6 +268,8 @@ public class AdminDAO extends DBContext {
                 Users u = new Users();
                 int id = rs.getInt("user_id");
                 String user_name = rs.getString("username");
+                int role = rs.getInt("role_id");
+                u.setRole_id(role);
                 u.setUser_id(id);
                 u.setUsername(user_name);
                 u.setCountQuizCreated(dao.getNumQuizOfUser(id));
@@ -284,6 +286,17 @@ public class AdminDAO extends DBContext {
         try {
             String query = "   update [User]\n"
                     + "  set role_id = 10\n"
+                    + "  where user_id = ?";
+            PreparedStatement pd = connection.prepareStatement(query);
+            pd.setString(1, user_id);
+            pd.execute();
+        } catch (Exception e) {
+        }
+    }
+     public void unBanUser(String user_id) {
+        try {
+            String query = "   update [User]\n"
+                    + "  set role_id = 0\n"
                     + "  where user_id = ?";
             PreparedStatement pd = connection.prepareStatement(query);
             pd.setString(1, user_id);

@@ -119,8 +119,22 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-//        processRequest(request, response);
+            String user_id = request.getParameter("userId");
+            String action = request.getParameter("Action");
+            AdminDAO adminDAO = new AdminDAO();
+            if (action != null) {
+            switch (action) {
+                case "Ban":
+                       adminDAO.banUser(user_id);
+                        break;
+                case "Unban":
+                        adminDAO.unBanUser(user_id);
+                        break;
+                default:
+                    break;
+            }
+            }
+            response.sendRedirect("AdminServlet?Action=Overview");
     }
 
     /**
