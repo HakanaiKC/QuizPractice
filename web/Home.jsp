@@ -55,7 +55,7 @@
             <!-- </div> -->
 
             <div class="container_body">
-                <c:if test="${sessionScope.userSeisson !=null}">
+                <c:if test="${sessionScope.userSeisson !=null && sessionScope.userSeisson.role_id !=2}">
                     <div class="container_home">
                         <div class="row cardholder">
 

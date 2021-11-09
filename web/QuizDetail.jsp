@@ -244,7 +244,7 @@
                 </div>
                 <br>
 
-                <c:if test="${question.instruction ne ''}">
+                <c:if test="${question.instruction ne '' && sessionScope.userSeisson.role_id !=2}">
                     <button data-id="${question.question_id}" type="button" class="btn btn-primary buton" data-toggle="modal" data-target="#instructionModal">
                         Instruction
                     </button>

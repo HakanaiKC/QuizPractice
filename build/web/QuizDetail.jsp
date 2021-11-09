@@ -244,7 +244,7 @@
                 </div>
                 <br>
 
-                <c:if test="${question.instruction ne ''}">
+                <c:if test="${question.instruction ne '' && sessionScope.userSeisson.role_id !=2}">
                     <button data-id="${question.question_id}" type="button" class="btn btn-primary buton" data-toggle="modal" data-target="#instructionModal">
                         Instruction
                     </button>
@@ -256,7 +256,7 @@
                             <div class="modal-header">
                                 <h5 class="modal-title" id="instructionModalLabel">Buy Instruction</h5>
                             </div>
-                                
+
                             <c:if test="${sessionScope.userSeisson.ruby > 1.0}">                      
                                 <div class="modal-body">
                                     <label>Purchase Ruby to unlock this instruction</label>

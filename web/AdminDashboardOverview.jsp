@@ -35,7 +35,7 @@
     * sidebar-mini
     -->
     <body>
-        <%@include file="Header_All.jsp" %>
+         <%@include file="AdminHeader.jsp" %>
         <div  class="hold-transition sidebar-mini"
               style="
               display: flex;
