@@ -178,11 +178,18 @@ public class AdminDAO extends DBContext {
             tempday = temp.getDayOfWeek();
         }
         Collections.sort(list);
+        int asdf = 1;
         for (LocalDate localDate : list) {
             String dateNow = localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            numOfEachDay += admin.getNumVisitorOfday(dateNow) + " ";
+            asdf += 1;
+            if (asdf <= 7) {
+                numOfEachDay += admin.getNumVisitorOfday(dateNow) + " ,";
+            } else {
+                numOfEachDay += admin.getNumVisitorOfday(dateNow);
+            }
 //            System.out.println(dateNow+ " "+ admin.getNumVisitorOfday(dateNow) );
         }
+
         return numOfEachDay;
     }
 
@@ -203,11 +210,17 @@ public class AdminDAO extends DBContext {
         return num;
     }
 
-    public String QuizCreateInYear(int year) {
+     public String QuizCreateInYear(int year) {
         String string = "";
         AdminDAO admin = new AdminDAO();
+
         for (int i = 1; i <= 12; i++) {
-            string += admin.getQuizCreateEachMonth(i, year) + " ";
+            if (i < 12) {
+                string += admin.getQuizCreateEachMonth(i, year) + " ,";
+            } else {
+                string += admin.getQuizCreateEachMonth(i, year);
+            }
+
         }
         return string;
     }
@@ -233,7 +246,12 @@ public class AdminDAO extends DBContext {
         String string = "";
         AdminDAO admin = new AdminDAO();
         for (int i = 1; i <= 12; i++) {
-            string += admin.getMoneyEachMonth(i, year) + " ";
+            if(i<12){
+                string += admin.getMoneyEachMonth(i, year) + " ,";
+            } else {
+                string += admin.getMoneyEachMonth(i, year);
+            }
+            
         }
         return string;
     }
