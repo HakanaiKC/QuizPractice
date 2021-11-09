@@ -33,7 +33,7 @@
                         <!-- Search -->
                         <form class="search-form d-none d-md-flex" action="HomeSearchServlet" method="post">
                             <input type="text" name="SearchQuiz" value="${SearchQuiz}" class="form-control" placeholder="Search">
-                            <button class="btn" type="button"><i
+                            <button class="btn" type="submit"><i
                                     class="material-icons font-size-24pt">search</i></button>
                         </form>
                         <div name="SearchQuiz" value="${SearchQuiz}" ></div>
@@ -63,6 +63,7 @@
                                         <a class="dropdown-item" href="BoughtInstruction?Action=All">Bought Instructions</a>
                                         <a class="dropdown-item" href="ListExamServlet">Exam Results</a>               
                                         <a class="dropdown-item" href="Payment.jsp">Payment Method</a>
+                                        <a class="dropdown-item" href="PaymentHistory.jsp">Payment History</a>
                                     </div>
                                 </li>
                             </c:if>

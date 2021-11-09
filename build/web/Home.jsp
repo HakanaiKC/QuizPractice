@@ -105,7 +105,6 @@
                                                data-toggle="dropdown">Recommend</a>
                                             <div class="dropdown-menu">
                                                 <a href="" class="dropdown-item text-black-70">Recommend</a>
-                                                <a href="" class="dropdown-item text-black-70">Created</a>
                                                 <a class="dropdown-item text-black-70" href="HomeMoreServlet?Action=All Quiz">All Quiz</a>
                                             </div>
                                         </div>
