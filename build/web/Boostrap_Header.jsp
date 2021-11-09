@@ -76,7 +76,7 @@
                                     </li>
                                     <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button"
-                                           href="#">
+                                           href="PaymentHistory.jsp">
                                             <span class="sidebar-menu-text">Payment History</span>
                                         </a>
                                     </li>

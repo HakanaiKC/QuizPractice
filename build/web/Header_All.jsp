@@ -63,6 +63,7 @@
                                         <a class="dropdown-item" href="BoughtInstruction?Action=All">Bought Instructions</a>
                                         <a class="dropdown-item" href="ListExamServlet">Exam Results</a>               
                                         <a class="dropdown-item" href="Payment.jsp">Payment Method</a>
+                                        <a class="dropdown-item" href="PaymentHistory.jsp">Payment History</a>
                                     </div>
                                 </li>
                             </c:if>
