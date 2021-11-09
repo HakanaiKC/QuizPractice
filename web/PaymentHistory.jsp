@@ -71,9 +71,8 @@
                         <div class="card table-responsive"
                              data-toggle="lists"
                              data-lists-values='[
-                             "js-lists-values-document", 
+                             "js-lists-values-document",
                              "js-lists-values-amount",
-                             "js-lists-values-status",
                              "js-lists-values-date"
                              ]'
                              data-lists-sort-by="js-lists-values-document"
@@ -84,13 +83,16 @@
                                         <th colspan="4">
                                             <a href="javascript:void(0)"
                                                class="sort"
-                                               data-sort="js-lists-values-document">Quiz</a>
+                                               data-sort="js-lists-values-date">Date</a>                                           
                                             <a href="javascript:void(0)"
                                                class="sort"
-                                               data-sort="js-lists-values-amount">Amount</a>
+                                               data-sort="js-lists-values-amount">Money</a>
                                             <a href="javascript:void(0)"
                                                class="sort"
-                                               data-sort="js-lists-values-date">Date</a>
+                                               data-sort="js-lists-values-amount">Ruby</a>
+                                            <a href="javascript:void(0)"
+                                               class="sort"
+                                               data-sort="js-lists-values-document">Action</a>
                                         </th>
                                     </tr>
                                 </thead>
@@ -100,20 +102,51 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <a href="#"
-                                                   class="text-body small"><span class="js-lists-values-document">Tên quiz</span></a>
+                                                <small class="text-uppercase text-muted mr-2">Date</small>
+                                                <small class="text-uppercase js-lists-values-date">12 Feb 2021</small>
                                             </div>
                                         </td>
                                         <td class="text-center">
                                             <div class="d-flex align-items-center">
-                                                <small class="text-uppercase text-muted mr-2">Amount</small>
-                                                <small class="text-uppercase"><span class="js-lists-values-amount">1</span> RUBY</small>
+                                                <small class="text-uppercase text-muted mr-2">Money</small>
+                                                <small class="text-uppercase"><span class="js-lists-values-amount">100,000</span> VND</small>
                                             </div>
                                         </td>
                                         <td class="text-right">
                                             <div class="d-flex align-items-center text-right">
+                                                <small class="text-uppercase text-muted mr-2">Ruby</small>
+                                                <small class="text-uppercase"><span class="js-lists-values-amount">124</span> RUBY</small>
+                                            </div>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="d-flex align-items-center text-right">
+                                                <button type="submit" class="btn btn-success smaller">Recharge</button>
+                                            </div>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="d-flex align-items-center text-right">
+                                                <button type="submit" class="btn btn-secondary smaller">Withdraw</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
                                                 <small class="text-uppercase text-muted mr-2">Date</small>
-                                                <small class="text-uppercase js-lists-values-date">12 Feb 2021</small>
+                                                <small class="text-uppercase js-lists-values-date">12 Feb 2020</small>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="d-flex align-items-center">
+                                                <small class="text-uppercase text-muted mr-2">Money</small>
+                                                <small class="text-uppercase"><span class="js-lists-values-amount">10,000</span> VND</small>
+                                            </div>
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="d-flex align-items-center text-right">
+                                                <small class="text-uppercase text-muted mr-2">Ruby</small>
+                                                <small class="text-uppercase"><span class="js-lists-values-amount">126</span> RUBY</small>
                                             </div>
                                         </td>
                                     </tr>
