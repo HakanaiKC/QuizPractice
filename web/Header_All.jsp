@@ -44,10 +44,39 @@
                             </div>
                             <c:if test="${sessionScope.userSeisson !=null && sessionScope.userSeisson.role_id ==0}">
                                 <div style="padding-left: 10px;">
-                                    <a class="d-none d-lg-flex btn btn-info" href="CreateQuiz.jsp" role="button">Create</a>
+                                    <c:if test="${sessionScope.userSeisson.ruby >= 5}">
+                                        <a class="d-none d-lg-flex btn btn-info" href="CreateQuiz" role="button">Create</a>
+                                    </c:if>
+
+                                    <c:if test="${sessionScope.userSeisson.ruby < 5}">
+                                        <button data-id="${question.question_id}" type="button" class="d-none d-lg-flex btn btn-info" data-toggle="modal" data-target="#instructionModal">
+                                            Create Quiz
+                                        </button>
+                                    </c:if>
+
+                                   
                                 </div>                         
                                 <div class="flex"></div>
                             </c:if>
+                                 <div class="modal fade" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="instructionModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">    
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="instructionModalLabel">Create Quiz</h5>
+                                                </div>
+
+                                                <c:if test="${sessionScope.userSeisson.ruby < 5}">                                                    
+                                                    <div class="modal-body">
+                                                        <label>You don't have enough Ruby to Create Quiz</label>
+                                                    </div>
+                                                    <div class="modal-footer">                                    
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <a href="PurchaseRuby" class="btn btn-primary">Buy Ruby</a>
+                                                    </div>
+                                                </c:if>
+                                            </div>
+                                        </div>
+                                    </div>
                             <c:if test="${sessionScope.userSeisson !=null && sessionScope.userSeisson.role_id ==2}">
                                 <div style="padding-left: 10px;">
                                     <a class="d-none d-lg-flex btn btn-info" href="AdminServlet?Action=Overview" role="button">Overview</a>
@@ -61,10 +90,14 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="Home">Home</a>
                                             <a class="dropdown-item" href="LibraryServlet?Action=Recent">Library</a>
-                                            <a class="dropdown-item" href="CreateQuiz">Create Quiz</a>
+                                            <c:if test="${sessionScope.userSeisson.ruby >= 5}">
+                                                <a class="dropdown-item" href="CreateQuiz">Create Quiz</a>
+                                            </c:if>
+                                            <c:if test="${sessionScope.userSeisson.ruby < 5}">
+                                                <a class="dropdown-item" href="PurchaseRuby">Not enough ruby</a>
+                                            </c:if>
                                             <a class="dropdown-item" href="ListExamServlet">Exam Results</a> 
                                             <a class="dropdown-item" href="BoughtInstruction?Action=All">Bought Instructions</a>
-                                                       
                                         </div>
                                     </li>
                                 </c:if>
@@ -158,7 +191,6 @@
         <c:if test="${sessionScope.userSeisson.role_id ==2}">
             <div id="header">
                 <div>
-
                     <!-- Navbar -->
                     <nav id="default-navbar" class="navbar navbar-expand navbar-dark bg-primary m-0">
                         <div class="container">
@@ -175,7 +207,7 @@
                             </form>
                             <div name="SearchQuiz" value="${SearchQuiz}" ></div>
                             <!-- // END Search -->                       
-                            
+
                             <c:if test="${sessionScope.userSeisson ==null}">
                                 <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
                                     <li class="nav-item">
@@ -237,5 +269,12 @@
                 </div>
             </div>
         </c:if>
+
     </body>
+    <script>
+        $(document).on("click", ".buton", function () {
+            var myId = $(this).data('id');
+            $(".modal-footer #opId").val(myId);
+        });
+    </script>
 </html>
