@@ -54,29 +54,11 @@
                                         </button>
                                     </c:if>
 
-                                   
+
                                 </div>                         
                                 <div class="flex"></div>
                             </c:if>
-                                 <div class="modal fade" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="instructionModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">    
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="instructionModalLabel">Create Quiz</h5>
-                                                </div>
 
-                                                <c:if test="${sessionScope.userSeisson.ruby < 5}">                                                    
-                                                    <div class="modal-body">
-                                                        <label>You don't have enough Ruby to Create Quiz</label>
-                                                    </div>
-                                                    <div class="modal-footer">                                    
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <a href="PurchaseRuby" class="btn btn-primary">Buy Ruby</a>
-                                                    </div>
-                                                </c:if>
-                                            </div>
-                                        </div>
-                                    </div>
                             <c:if test="${sessionScope.userSeisson !=null && sessionScope.userSeisson.role_id ==2}">
                                 <div style="padding-left: 10px;">
                                     <a class="d-none d-lg-flex btn btn-info" href="AdminServlet?Action=Overview" role="button">Overview</a>
@@ -270,6 +252,25 @@
             </div>
         </c:if>
 
+        <div class="modal fade" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="instructionModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">    
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="instructionModalLabel">Create Quiz</h5>
+                    </div>
+
+                    <c:if test="${sessionScope.userSeisson.ruby < 5}">                                                    
+                        <div class="modal-body">
+                            <label>You don't have enough Ruby to Create Quiz</label>
+                        </div>
+                        <div class="modal-footer">                                    
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <a href="PurchaseRuby" class="btn btn-primary">Buy Ruby</a>
+                        </div>
+                    </c:if>
+                </div>
+            </div>
+        </div>
     </body>
     <script>
         $(document).on("click", ".buton", function () {
