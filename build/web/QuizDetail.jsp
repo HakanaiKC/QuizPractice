@@ -244,12 +244,20 @@
                 </div>
                 <br>
 
-                <c:if test="${question.instruction ne '' && sessionScope.userSeisson.role_id !=2}">
+                <c:if test="${question.instruction ne '' && sessionScope.userSeisson.role_id !=2 && sessionScope.userSeisson.user_id != creator.user_id}">
                     <button data-id="${question.question_id}" type="button" class="btn btn-primary buton" data-toggle="modal" data-target="#instructionModal">
                         Instruction
                     </button>
                 </c:if>
-
+                <c:if test="${sessionScope.userSeisson.user_id == creator.user_id}">
+                    <button 
+                        class="btn btn-info col-sm-3" 
+                        data-toggle="swal" 
+                        data-swal-title="A little help for you"
+                        data-swal-text="${question.instruction}">
+                        Instruction
+                    </button>
+                </c:if>
                 <div class="modal fade" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="instructionModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">    
@@ -283,14 +291,7 @@
                             </c:if>
                         </div>
                     </div>
-                </div>
-                <!--                <button 
-                                    class="btn btn-info col-sm-3" 
-                                    data-toggle="swal" 
-                                    data-swal-title="A little help for you"
-                                    data-swal-text="${question.instruction}">
-                                    Instruction
-                                </button>-->
+                </div>                
             </c:forEach>
 
         </div>
