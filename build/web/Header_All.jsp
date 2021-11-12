@@ -49,7 +49,7 @@
                                     </c:if>
 
                                     <c:if test="${sessionScope.userSeisson.ruby < 5}">
-                                        <button data-id="${question.question_id}" type="button" class="d-none d-lg-flex btn btn-info" data-toggle="modal" data-target="#instructionModal">
+                                        <button data-id="${question.question_id}" type="button" class="d-none d-lg-flex btn btn-info" data-toggle="modal" data-target="#createModal">
                                             Create Quiz
                                         </button>
                                     </c:if>
@@ -252,11 +252,11 @@
             </div>
         </c:if>
 
-        <div class="modal fade" id="instructionModal" tabindex="-1" role="dialog" aria-labelledby="instructionModalLabel" aria-hidden="true">
+        <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">    
                     <div class="modal-header">
-                        <h5 class="modal-title" id="instructionModalLabel">Create Quiz</h5>
+                        <h5 class="modal-title" id="createModalLabel">Create Quiz</h5>
                     </div>
 
                     <c:if test="${sessionScope.userSeisson.ruby < 5}">                                                    

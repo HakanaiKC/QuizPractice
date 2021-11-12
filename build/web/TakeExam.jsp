@@ -132,37 +132,6 @@
                                     <div name="timeExam" id="timeC" class="countdown sidebar-p-x"
                                          data-value="${hour}:${minute}:00"></div> <!--hour:minute:second-->                                      
                                     <!--End Time-->   
-
-                                    <!--Question-->
-                                    <ul class="list-group list-group-fit">
-                                        <c:forEach items="${listQuesInExam}" var="listE" varStatus="loop">
-                                        <li class="list-group-item active">
-                                            <a href="#">
-                                                <span class="media align-items-center">
-                                                    <span class="media-left">
-                                                        <span class="btn btn-white btn-circle">${loop.index+1}</span>
-                                                    </span>
-                                                    <span class="media-body">
-                                                        ${listE.question}
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                        </c:forEach>
-                                        <li class="list-group-item">
-                                            <a onclick="Scroll()" style="cursor: pointer;">
-                                                <span class="media align-items-center">
-                                                    <span class="media-left">
-                                                        <span class="btn btn-white btn-circle">#10</span>
-                                                    </span>
-                                                    <span class="media-body">
-                                                        Tính tổng hệ số tối giản của phương trình sau:
-                                                    </span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <!--End of Question-->
                                 </div>
                             </div>
                         </div>
