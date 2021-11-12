@@ -34,7 +34,7 @@
                             <!-- Search -->
                             <form class="search-form d-none d-md-flex" action="HomeSearchServlet" method="post">
                                 <input type="text" name="SearchQuiz" value="${SearchQuiz}" class="form-control" placeholder="Search">
-                                <button class="btn" type="button"><i
+                                <button class="btn" type="submit"><i
                                         class="material-icons font-size-24pt">search</i></button>
                             </form>
                             <div name="SearchQuiz" value="${SearchQuiz}" ></div>
